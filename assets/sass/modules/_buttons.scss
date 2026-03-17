@@ -1,0 +1,63 @@
+.green-btn {
+  background-color: $primary-color;
+  border: 1px solid black;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.5rem;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: black;
+  }
+}
+
+.black-btn {
+  background-color: black;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.5rem;
+  border: 1px solid black;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}
+
+.blue-btn {
+  background-color: #007bff;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.5rem;
+  border: 1px solid black;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: black;
+  }
+}
+
+.orange-btn {
+  background-color: $secondary-color;
+  border: 1px solid black;
+  color: white;
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.5rem;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: black;
+  }
+}
+
+.white-btn {
+  background-color: white;
+  color: black;
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.5rem;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}

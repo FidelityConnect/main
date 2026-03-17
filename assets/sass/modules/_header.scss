@@ -1,0 +1,161 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media screen and (max-width: 820px) {
+    flex-direction: column;
+    margin: 0rem 1rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .home-link {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      img {
+        object-fit: contain;
+        height: 70px;
+      }
+    }
+
+    .text {
+      margin-left: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 0px 10px;
+      height: 70px;
+    }
+
+    .menu_icon {
+      display: none;
+
+      @media screen and (max-width: 820px) {
+        display: block;
+        margin-left: auto;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .name {
+      height: 25px;
+      overflow: hidden;
+
+      @media screen and (max-width: 820px) {
+        height: 25px;
+      }
+    }
+
+    .slogan {
+      font-size: 15px;
+    }
+
+    @media screen and (max-width: 820px) {
+      .slogan {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .menu {
+    line-height: 1;
+    height: 70px;
+    margin-right: 2rem;
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 820px) {
+      margin-right: 0rem;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    ul {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      @media screen and (max-width: 820px) {
+        display: none;
+      }
+
+      li {
+        font-weight: thin;
+        cursor: pointer;
+      }
+
+      * {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .mobile_only {
+    display: none !important;
+
+    @media screen and (max-width: 820px) {
+      display: flex;
+    }
+  }
+
+  .desktop_only {
+    display: flex;
+
+    @media screen and (max-width: 820px) {
+      display: none !important;
+    }
+  }
+}
+
+#menu {
+  z-index: 10000;
+  background-image: linear-gradient(to right, $primary-color, lighten($primary-color, 10%));
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: fit-content;
+  width: 100%;
+  text-align: center;
+
+  #close-menu {
+    width: 100%;
+    background-color: white;
+    color: red;
+    display: flex;
+
+    img {
+      width: auto;
+      margin: auto;
+      height: 40px;
+    }
+  }
+
+  a {
+    &:hover {
+      color: white;
+      font-size: larger;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 2rem;
+    background-color: rgba(211, 211, 211, 0.295);
+
+    * {
+      width: 40%;
+    }
+  }
+}

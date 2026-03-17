@@ -1,0 +1,29 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main # Set a branch to trigger deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Hugo
+        run: |
+          sudo dpkg -i ./hugo_0.120.3_linux-amd64.deb
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Install Netlify CLI
+        run: npm install netlify-cli -g
+
+      - name: Deploy to Netlify
+        run: netlify deploy --prod
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

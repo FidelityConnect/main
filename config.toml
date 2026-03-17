@@ -1,0 +1,49 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'FIDELITY'
+[related]
+  threshold = 1
+  toLower = true
+  includeNewer = true
+
+[[related.indices]]
+  name = "categories"
+  weight = 100
+
+[taxonomies]
+    category = "categories"
+    platform = "platform"
+
+[menu]
+
+  [[menu.main]]
+    name = "About Us"
+    url = "/about/"
+    weight = 10
+
+  [[menu.main]]
+    name = "Our Services"
+    url = "/services/"
+    weight = 20
+
+  [[menu.main]]
+    name = "Our Team"
+    url = "/team/"
+    weight = 30
+
+  [[menu.main]]
+    name = "Blog"
+    url = "/blogs/"
+    weight = 40
+
+  [[menu.main]]
+    name = "Events"
+    url = "/events"
+    weight = 50
+
+
+ 
+
+[markup.goldmark.renderer]
+  unsafe = true
+

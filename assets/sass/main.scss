@@ -1,0 +1,71 @@
+@import "variables";
+@import "modules/header";
+@import "modules/pricing";
+@import "modules/hero";
+@import "modules/benefits";
+@import "modules/details";
+@import "modules/team";
+@import "modules/testimonials";
+@import "modules/hero2";
+@import "modules/pricingmain";
+@import "modules/blog";
+@import "modules/ribbon";
+@import "modules/hardware";
+@import "modules/footer";
+@import "modules/hero_three";
+@import "modules/single";
+@import "modules/interactive";
+@import "modules/post";
+@import "modules/buttons";
+@import "modules/animations";
+@import "modules/biasharalab";
+@import "modules/careers";
+@import "modules/releases";
+@import "modules/merchants";
+
+.pdd {
+  max-width: 1440px;
+  align-self: inherit;
+  justify-self: inherit;
+  height: 100%;
+  display: inherit;
+  margin: 0px auto;
+
+  @media screen and (min-width: 600px) {
+    padding: 0rem 2rem;
+  }
+}
+
+.white-gr {
+  background-image: linear-gradient(to right, white, #f8f9ff, #eff1fe);
+}
+
+.pulse-element {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.orange-bg {
+  background-color: $secondary-color;
+}
+
+.green-text {
+  color: $primary-color;
+}
+
+html {
+  scroll-behavior: smooth;
+}

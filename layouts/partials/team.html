@@ -1,0 +1,79 @@
+<div id="team" class="relative overflow-hidden bg-white py-20">
+
+  <!-- Background accents -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-0 w-full h-1" style="background: linear-gradient(90deg, #2bace2, #f89521);"></div>
+    <div class="absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[#2bace2]/5"></div>
+    <div class="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-[#f89521]/5"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+
+    <!-- Eyebrow -->
+    <div class="mb-5 flex items-center justify-center gap-3">
+      <span class="h-px w-8 bg-[#f89521]"></span>
+      <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#f89521]">The People Behind Fidelity</span>
+      <span class="h-px w-8 bg-[#f89521]"></span>
+    </div>
+
+    <!-- Headline -->
+    <div class="mb-14 text-center">
+      <h2 class="font-black leading-[1.05] tracking-tight text-[#0a2e3a]"
+          style="font-size: clamp(2.2rem, 4vw, 3.2rem);">
+        Meet Our <span class="text-[#2bace2]">Team</span>
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-[#3a5a6a] max-w-xl mx-auto">
+        A dedicated group of professionals committed to connecting talent with opportunity across the globe.
+      </p>
+    </div>
+
+    <!-- Team Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+      {{ range first 5 .Site.Data.team.members }}
+      <div class="group flex flex-col items-center text-center bg-[#f7f4ee] rounded-2xl p-8 shadow-sm
+                  hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+
+        <!-- Top gradient accent -->
+        <div class="absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+             style="background: linear-gradient(90deg, #2bace2, #f89521);"></div>
+
+        <!-- Avatar -->
+        <div class="mb-5 relative">
+          {{ if .image }}
+          <img src="{{ .image }}" alt="{{ .name }}"
+               class="h-32 w-32 rounded-full object-cover ring-4 ring-white shadow-md">
+          {{ else }}
+          <div class="h-32 w-32 rounded-full flex items-center justify-center ring-4 ring-white shadow-md"
+               style="background: linear-gradient(135deg, #2bace2, #0a2e3a);">
+            <span class="text-white text-2xl font-black select-none">
+              {{ slice (.name | upper) 0 1 }}
+            </span>
+          </div>
+          {{ end }}
+        </div>
+
+        <!-- Name & Role -->
+        <h3 class="text-lg font-bold text-[#0a2e3a] leading-tight">{{ .name }}</h3>
+        <p class="mt-1 text-sm font-semibold text-[#2bace2] uppercase tracking-wide">{{ .role }}</p>
+
+        <!-- Divider -->
+        <div class="my-4 h-px w-10 bg-[#f89521]"></div>
+
+        <!-- LinkedIn -->
+        {{ if .linkedin }}
+        <a href="{{ .linkedin }}" target="_blank" rel="noopener noreferrer"
+           class="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2bace2]
+                  hover:text-[#0a2e3a] transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 10h-2v2h2v6h3v-6h1.82l.18-2h-2v-.833c0-.478.096-.667.558-.667h1.442v-2.5h-2.404c-1.798 0-2.596.792-2.596 2.308v1.692z"/>
+          </svg>
+          LinkedIn
+        </a>
+        {{ end }}
+
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+</div>

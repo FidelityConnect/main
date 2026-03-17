@@ -1,0 +1,175 @@
+.careers {
+  .content {
+    max-width: 900px;
+    margin: auto;
+    background-color: white;
+    margin-top: 350px;
+    margin-bottom: 5rem;
+
+    @media screen and (max-width: 600px) {
+      margin-top: 200px;
+    }
+
+    .bg {
+      position: fixed;
+      top: 70px;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+      height: 200px;
+
+      @media screen and (max-width: 600px) {
+        top: 80px;
+        height: 300px;
+      }
+      img {
+        height: 450px;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        @media screen and (max-width: 600px) {
+          height: 300px;
+          object-fit: contain;
+        }
+      }
+    }
+
+    .blog-content {
+      padding: 3rem 3rem 4rem 3rem;
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: bold;
+        color: #068657;
+      }
+      h1 {
+        font-size: 44px;
+        line-height: 48px;
+        margin: 0 0 30px;
+      }
+      h2 {
+        font-size: 32px;
+        line-height: 42px;
+        margin: 0 0 24px;
+        padding: 12px 0 0;
+      }
+      h3 {
+        font-size: 18px;
+        line-height: 24px;
+        margin: 0 0 24px;
+        padding: 12px 0 0;
+        text-transform: uppercase;
+      }
+      p {
+        color: #2f2f2f;
+        font-size: 17px;
+        line-height: 24px;
+        margin: 0 0 24px;
+      }
+      a {
+        color: rgb(11, 135, 193);
+      }
+    }
+  }
+}
+
+.job-content {
+  display: none !important;
+}
+
+.jobs {
+  .job-title {
+    list-style-type: decimal;
+    list-style-position: inside;
+    color: #068657;
+    font-size: large;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.job {
+  background-color: rgba(0, 0, 0, 0.489);
+  display: none;
+  height: 100vh;
+  position: fixed;
+  flex-direction: column;
+  border-radius: 5px;
+  overflow: hidden;
+  animation: animatebottom 0.5s;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 500;
+
+  li p {
+    margin: 0 !important;
+  }
+
+  li {
+    list-style: none;
+    list-style-position: inside;
+    margin-left: 30px;
+  }
+
+  li li {
+    list-style-type: disc;
+  }
+
+  @keyframes animatebottom {
+    from {
+      opacity: 0;
+      top: 500px;
+    }
+
+    to {
+      opacity: 1;
+      top: 0;
+    }
+  }
+
+  .job-body {
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: auto;
+    background-color: white;
+  }
+  .job-actions {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #068657;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 20px;
+
+    p,
+    button {
+      color: white !important;
+      margin: 0 !important;
+    }
+  }
+}
+
+.jobs {
+  position: relative;
+}
+
+.modal-footer {
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  padding-right: 20px;
+  background-color: rgb(218, 159, 10);
+  max-width: 900px;
+  margin: 0 auto;
+}

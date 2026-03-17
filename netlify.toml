@@ -1,0 +1,12 @@
+[build]
+  publish = "public"
+  functions = "functions"
+  command = "npm install && npx tailwindcss -i ./main.css -o ./static/css/main.css && hugo --minify"
+
+[build.environment]
+  HUGO_VERSION = "0.120.3"
+  HUGO_EXTENDED = "true"
+  NODE_VERSION = "18"
+
+[functions]
+  directory = "functions"

@@ -1,0 +1,225 @@
+# backend:
+#   name: github
+#   repo: Fidelity/Labour
+#   branch: main
+
+# when using the default proxy server port
+local_backend: true
+
+backend:
+  name: git-gateway
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: categories
+    label: Categories
+    files:
+      - name: categories
+        file: data/categories_other.yaml
+        label: Categories
+        fields:
+          - widget: list
+            name: categories
+            label: Categories
+            required: false
+            hint: List of categories.
+            fields:
+              - widget: string
+                name: category
+                label: Category
+                required: true
+                hint: >-
+                  Category name.
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                required: false
+  - name: brands
+    label: Brands
+    files:
+      - name: brands
+        file: data/brands.yaml
+        label: Brands
+        fields:
+          - widget: list
+            name: brands
+            label: Brands
+            required: false
+            hint: List of brands.
+            fields:
+              - widget: string
+                name: brand
+                label: Brand
+                required: true
+                hint: >-
+                  Brand name.
+  - name: sizes
+    label: Sizes
+    files:
+      - name: sizes
+        file: data/sizes.yaml
+        label: Sizes
+        fields:
+          - widget: list
+            name: sizes
+            label: Sizes
+            required: false
+            hint: List of sizes.
+            fields:
+              - widget: string
+                name: size
+                label: Size
+                required: true
+                hint: >-
+                  Size name.
+  - name: "products"
+    label: "Products"
+    folder: "content/products"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date Added", name: "date", widget: "datetime"}
+      - {label: "Initial Price (KES)", name: "initial_price", widget: "number", min: 0, max: 100000}
+      - {label: "Current Price (KES)", name: "sell_price", widget: "number", min: 0, max: 100000}
+      - {
+          label: "Out of Stock",
+          name: "stock",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Coming Soon",
+          name: "coming_soon",
+          widget: "boolean",
+          default: false,
+        }
+      - {
+          label: "Colors (Comma separated)",
+          name: "color",
+          widget: "string",
+          default: "",
+          required: false
+        }
+      - {
+          label: "Sizes (Comma separated)",
+          name: "sizes",
+          widget: "string",
+          default: "",
+          required: false
+        }
+      - {
+          label: "Featured Image",
+          name: "featured_image",
+          widget: "image",
+          }
+      - {
+          label: "Images",
+          name: "images",
+          widget: "list",
+          field: {label: "Image", name: "image", widget: "image"}
+          }
+      - {
+          label: Categories,
+          name: categories,
+          widget: relation,
+          collection: categories,
+          search_fields: ["categories.*.category"],
+          value_field: categories.*.category,
+          display_fields: ["categories.*.category"],
+          multiple: true,
+          default: ["Uncategorized"],
+          options_length: 100,
+        }
+      - {label: "Description", name: "description", widget: "markdown"}
+  - name: "about"
+    label: "About"
+    files:
+      - file: "data/about.yml"
+        label: "About"
+        name: "Attributes"
+        fields:
+          - label: "Ribbon"
+            name: "ribbon"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Detail", name: "detail", widget: "text"}
+              - {label: "Image", name: "image", widget: "image"}
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Author", name: "author", widget: "string"}
+      - {label: "Featured Image", name: "featured", widget: "image"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {
+          label: Categories,
+          name: categories,
+          widget: relation,
+          collection: categories,
+          search_fields: ["categories.*.category"],
+          value_field: categories.*.category,
+          display_fields: ["categories.*.category"],
+          multiple: true,
+          default: ["Uncategorized"],
+          options_length: 100,
+        }
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: platforms
+    label: Platforms
+    files:
+      - name: platforms
+        file: data/platforms.yaml
+        label: Platforms
+        fields:
+          - widget: list
+            name: platforms
+            label: Platforms
+            required: false
+            hint: List of Platforms.
+            fields:
+              - widget: string
+                name: platform
+                label: Platform
+                required: true
+                hint: >-
+                  Platform name.
+  - name: "docs"
+    label: "Documentation Pages"
+    folder: "content/docs"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Youtube Video", name: "video", widget: "string", required: false}
+      - label: "PDF Document"
+        name: "pdf_document"
+        widget: "file"
+        required: false
+        media_folder: "/static/uploads/docs"
+        public_folder: "/uploads/docs"
+        media_library:
+          config:
+            multiple: false
+      - {label: "Featured Image", name: "featured", widget: "image", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {
+          label: Platform,
+          name: platform,
+          widget: relation,
+          collection: platforms,
+          search_fields: ["platforms.*.platform"],
+          value_field: platforms.*.platform,
+          display_fields: ["platforms.*.platform"],
+          multiple: false,
+          options_length: 100,
+        }
+      - {label: "Body", name: "body", widget: "markdown"}

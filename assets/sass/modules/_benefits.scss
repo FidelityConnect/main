@@ -1,0 +1,61 @@
+.benefits {
+  padding: 2rem 0rem;
+  @media screen and (max-width: 600px) {
+    width: 90%;
+    margin: auto;
+  }
+  .intro {
+    margin: 2rem 0rem;
+    h2 {
+      font-size: 36px;
+      font-weight: 600;
+
+      @media screen and (max-width: 600px) {
+        font-size: 24px;
+      }
+    }
+    p {
+      margin: 1rem 0rem;
+      max-width: 500px;
+      font-size: larger;
+    }
+  }
+  .items {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 600px) {
+      flex-wrap: wrap;
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: larger;
+      margin: 1rem 0rem;
+    }
+    .benefit {
+      width: 23%;
+
+      @media screen and (max-width: 600px) {
+        width: 90%;
+        margin: 2rem auto;
+      }
+      img {
+        border: 2px solid black;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        height: 380px;
+        width: 100%;
+        object-fit: cover;
+        padding: 0;
+        background-color: red;
+        @media screen and (max-width: 600px) {
+          max-width: 100%;
+          height: auto;
+          margin: auto;
+        }
+      }
+    }
+  }
+}

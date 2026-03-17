@@ -1,0 +1,134 @@
+.hero {
+  display: flex;
+  padding: 5rem 0rem;
+
+  @media screen and (max-width: 600px) {
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0rem;
+    padding-top: 0rem;
+  }
+
+  .btn-xl {
+    display: block;
+
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  .btn-sm {
+    display: none;
+
+    @media screen and (max-width: 600px) {
+      display: block;
+    }
+  }
+
+  .left {
+    width: 50%;
+
+    h1 {
+      display: flex;
+      flex-direction: column;
+      font-size: 56px;
+      text-transform: uppercase;
+      font-weight: 700;
+      line-height: normal;
+
+      @media screen and (max-width: 600px) {
+        font-size: 32px;
+      }
+
+      span {
+        color: $primary-color;
+        font-family: montserrat;
+      }
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 18px;
+      margin: 2rem 0rem;
+      width: 65%;
+      line-height: 1.5;
+
+      @media screen and (max-width: 600px) {
+        margin: 1rem 0rem;
+        width: 100%;
+      }
+    }
+
+    button {
+      min-width: 35%;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+        margin: 1rem 0rem;
+      }
+    }
+
+    .features {
+      display: flex;
+      max-width: 500px;
+      margin: 2rem 0rem;
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+        margin: 2rem 0rem 0rem 0rem;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: normal;
+
+        @media screen and (max-width: 600px) {
+          justify-content: start;
+          margin: 0.3rem 0rem;
+        }
+
+        span {
+          margin-left: 10px;
+        }
+
+        .icon {
+          background-color: black;
+          color: white;
+          padding: 5px;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+
+  .right {
+    width: 50%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      max-height: 500px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap-reverse;
+
+    .left,
+    .right {
+      width: 85%;
+      margin: 1rem 0rem;
+    }
+
+    .right {
+      img {
+        width: 90%;
+        object-fit: contain;
+        margin: auto;
+      }
+    }
+  }
+}

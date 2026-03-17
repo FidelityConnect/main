@@ -1,0 +1,65 @@
+<section class="py-20 bg-[#f7f4ee]">
+    <div class="max-w-4xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="h-px w-10 bg-amber-400"></span>
+                <span class="text-amber-400 text-xs font-semibold uppercase tracking-widest">Got Questions?</span>
+                <span class="h-px w-10 bg-amber-400"></span>
+            </div>
+            <h2 class="text-4xl font-bold md:text-5xl mb-4">
+                <span class="text-[#1a3a4a]">Frequently Asked </span>
+                <span class="text-[#3ab5e6]">Questions</span>
+            </h2>
+            <p class="mt-4 text-[#3a5a6a] max-w-2xl mx-auto">
+                Everything you need to know about our services and process.
+            </p>
+        </div>
+
+        <!-- FAQ Items -->
+        <div class="space-y-4">
+            {{ range $index, $item := .Site.Data.faq }}
+            <div class="border border-gray-100 rounded-2xl bg-gray-50/50 overflow-hidden transition-all duration-300 hover:shadow-md hover:border-[#2bace2]/30">
+                <button class="flex justify-between items-center w-full p-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
+                    <span class="text-lg font-semibold text-gray-900 pr-8">{{ $item.question }}</span>
+                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#2bace2]/10 flex items-center justify-center transition-transform duration-300">
+                        <svg class="w-5 h-5 text-[#2bace2] transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                </button>
+                <div class="px-6 pb-6 hidden text-[#3a5a6a] leading-relaxed">
+                    {{ $item.answer | markdownify }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        const iconContainer = element.querySelector('div');
+        const icon = element.querySelector('svg');
+
+        answer.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+
+        if (!answer.classList.contains('hidden')) {
+            element.parentElement.classList.add('ring-1', 'ring-[#2bace2]/20', 'bg-white');
+            element.parentElement.classList.remove('bg-gray-50/50');
+            iconContainer.classList.add('bg-[#2bace2]', 'text-white');
+            iconContainer.classList.remove('bg-[#2bace2]/10', 'text-[#2bace2]');
+            icon.classList.add('text-white');
+            icon.classList.remove('text-[#2bace2]');
+        } else {
+            element.parentElement.classList.remove('ring-1', 'ring-[#2bace2]/20', 'bg-white');
+            element.parentElement.classList.add('bg-gray-50/50');
+            iconContainer.classList.remove('bg-[#2bace2]', 'text-white');
+            iconContainer.classList.add('bg-[#2bace2]/10', 'text-[#2bace2]');
+            icon.classList.remove('text-white');
+            icon.classList.add('text-[#2bace2]');
+        }
+    }
+</script>

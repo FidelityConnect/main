@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{- partial "head.html" . -}}
+</head>
+
+<body class="bg-slate-100">
+    {{- partial "header.html" . -}}
+    <main class="bg-[#f7f4ee] py-16">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <!-- Page Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-3xl md:text-4xl font-bold text-[#0a2e3a] mb-4">Media Center</h1>
+                <div class="w-20 h-1 bg-gradient-to-r from-[#2bace2] to-[#1a8eb0] mx-auto rounded-full"></div>
+                <p class="mt-4 text-[#3a5a6a] max-w-2xl mx-auto">
+                    Explore our latest events, news, and insights.
+                </p>
+            </div>
+
+            <!-- Events Section -->
+            <div class="mb-20">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-[#0a2e3a]">Latest Events</h2>
+                    <a href="/events" class="text-[#2bace2] font-semibold hover:text-[#1a8cb5] transition-colors flex items-center gap-1">
+                        View All <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {{ $eventPages := where .Site.RegularPages "Section" "posts" }}
+                    {{ if $eventPages }}
+                        {{ range first 3 $eventPages }}
+                        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-[#2bace2]/30 transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+                            <a href="{{ .Permalink }}" class="block flex-1 flex flex-col">
+                                <div class="relative h-56 overflow-hidden">
+                                    {{ with .Params.featured }}
+                                    <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    {{ else }}
+                                    <div class="w-full h-full bg-[#0a2e3a] flex items-center justify-center">
+                                        <span class="text-[#2bace2] opacity-20">
+                                            <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5v-5z"/></svg>
+                                        </span>
+                                    </div>
+                                    {{ end }}
+                                    
+                                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-12">
+                                        {{ range first 1 .Params.Categories }}
+                                        <span class="inline-block bg-[#f89521] text-white text-xs font-bold px-2 py-1 rounded mb-1">{{ . }}</span>
+                                        {{ end }}
+                                    </div>
+                                </div>
+                                
+                                <div class="p-6 flex-1 flex flex-col">
+                                    <h3 class="text-xl font-bold text-[#0a2e3a] mb-3 group-hover:text-[#2bace2] transition-colors line-clamp-2">{{ .Title }}</h3>
+                                    <p class="text-[#3a5a6a] text-sm mb-4 line-clamp-3 flex-1">{{ .Summary | truncate 100 }}</p>
+                                    
+                                    <div class="pt-4 border-t border-gray-100 flex justify-between items-center text-sm font-medium text-[#3a5a6a]">
+                                        <div class="flex items-center gap-2">
+                                            <svg class="w-4 h-4 text-[#2bace2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                            <span>{{ dateFormat "Jan 2, 2006" .Date }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {{ end }}
+                    {{ else }}
+                        <div class="col-span-3 text-center py-10 bg-white rounded-2xl border border-gray-100">
+                            <p class="text-[#3a5a6a]">No upcoming events at the moment.</p>
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+
+            <!-- Blogs Section -->
+            <div>
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-[#0a2e3a]">Latest Insights</h2>
+                    <a href="/blogs" class="text-[#2bace2] font-semibold hover:text-[#1a8cb5] transition-colors flex items-center gap-1">
+                        Read All <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {{ $blogPages := where .Site.RegularPages "Section" "blogs" }}
+                    {{ if $blogPages }}
+                        {{ range first 3 $blogPages }}
+                        <div class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-[#2bace2]/30 transition-all duration-300 hover:-translate-y-1">
+                            <a href="{{ .Permalink }}" class="block h-full flex flex-col">
+                                <div class="relative h-56 overflow-hidden">
+                                    {{ with .Params.featured }}
+                                    <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                                    {{ else }}
+                                    <div class="w-full h-full bg-[#0a2e3a] flex items-center justify-center">
+                                        <span class="text-[#2bace2] opacity-20">
+                                            <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/><path d="M14 17H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                                        </span>
+                                    </div>
+                                    {{ end }}
+                                    
+                                    <!-- Category Badge -->
+                                    {{ with .Params.categories }}
+                                    <div class="absolute top-4 left-4">
+                                        {{ range first 1 . }}
+                                        <span class="inline-block bg-[#2bace2] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">{{ . }}</span>
+                                        {{ end }}
+                                    </div>
+                                    {{ end }}
+                                </div>
+                                
+                                <div class="p-6 flex-1 flex flex-col">
+                                    <div class="flex items-center gap-2 text-xs text-[#3a5a6a] mb-3">
+                                        <svg class="w-4 h-4 text-[#f89521]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                        <span>{{ .Date.Format "January 2, 2006" }}</span>
+                                    </div>
+                                    
+                                    <h3 class="text-xl font-bold text-[#0a2e3a] mb-3 group-hover:text-[#2bace2] transition-colors line-clamp-2">
+                                        {{ .Title }}
+                                    </h3>
+                                    
+                                    <p class="text-[#3a5a6a] text-sm mb-4 line-clamp-3 flex-1">
+                                        {{ .Summary | truncate 100 }}
+                                    </p>
+                                    
+                                    <div class="pt-4 border-t border-gray-100 flex justify-between items-center text-sm font-semibold text-[#2bace2] group-hover:translate-x-1 transition-transform">
+                                        <span>Read Article</span>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {{ end }}
+                    {{ else }}
+                        <div class="col-span-3 text-center py-10 bg-white rounded-2xl border border-gray-100">
+                            <p class="text-[#3a5a6a]">No blog posts found at the moment.</p>
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </main>
+    {{- partial "footer.html" . -}}
+</body>
+
+</html>

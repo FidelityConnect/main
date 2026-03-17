@@ -1,0 +1,35 @@
+.section_details {
+  padding: 5rem 0rem;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+    padding: 2rem 0rem;
+  }
+
+  ul {
+    list-style: disc;
+    list-style-position: inside;
+    padding-left: 1rem;
+  }
+
+  .left,
+  .right {
+    padding: 3rem;
+    p {
+      max-width: 400px;
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+    @media screen and (max-width: 600px) {
+      max-width: 90%;
+      padding: 1rem;
+    }
+  }
+
+  .right {
+    font-weight: 400;
+    font-size: x-large;
+  }
+}

@@ -1,0 +1,37 @@
+<div class="bg-white py-16">
+    <div class="pdd px-[5%]">
+        <div class="newsletter mx-auto max-w-3xl text-center">
+            <!-- Heading -->
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="h-px w-10 bg-amber-400"></span>
+                <span class="text-amber-400 text-xs font-semibold uppercase tracking-widest">Stay Updated</span>
+                <span class="h-px w-10 bg-amber-400"></span>
+            </div>
+            <h2 class="text-4xl font-bold md:text-5xl mb-4">
+                <span class="text-[#1a3a4a]">Subscribe to Our </span>
+                <span class="text-[#3ab5e6]">Newsletter</span>
+            </h2>
+
+            <!-- Description -->
+            <p class="mb-8 text-lg text-[#3a5a6a]">
+                Get the latest job opportunities delivered to your inbox.
+            </p>
+
+            <!-- Newsletter Form -->
+            <form name="newsletter" method="POST" action="/.netlify/functions/mailer" class="flex flex-col gap-4 sm:flex-row sm:gap-3">
+                <input type="hidden" name="form_type" value="newsletter" />
+                <input type="email" name="email" placeholder="Enter your email" required
+                    class="flex-1 rounded-lg border border-gray-300 px-6 py-3 text-[#0a2e3a] placeholder-slate-400 focus:border-[#2bace2] focus:outline-none focus:ring-2 focus:ring-[#2bace2]/20 transition-all">
+                <button type="submit"
+                    class="rounded-lg bg-[#2bace2] px-8 py-3 font-bold text-white transition-all duration-300 hover:bg-[#1a8eb0] hover:-translate-y-0.5 shadow-lg shadow-[#2bace2]/30 hover:shadow-xl">
+                    Subscribe
+                </button>
+            </form>
+
+            <!-- Privacy Text -->
+            <p class="mt-6 text-sm text-[#3a5a6a]/60">
+                We respect your privacy. Unsubscribe anytime.
+            </p>
+        </div>
+    </div>
+</div>

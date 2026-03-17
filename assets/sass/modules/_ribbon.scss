@@ -1,0 +1,54 @@
+.ribbon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 600px) {
+    height: auto;
+    padding: 2rem 0rem;
+  }
+
+  .text {
+    font-size: 24px;
+    text-align: center;
+
+    @media screen and (max-width: 600px) {
+      width: 80%;
+      margin: auto;
+      font-size: 18px;
+    }
+  }
+
+  .image {
+    img {
+      object-fit: contain;
+      height: 40px;
+
+      @media screen and (max-width: 600px) {
+        max-width: 50%;
+        margin: auto;
+      }
+
+      @media screen and (max-width: 600px) {
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  .link {
+    @media screen and (max-width: 600px) {
+      margin-top: 1rem;
+    }
+    img {
+      object-fit: contain;
+      height: 70px;
+
+      @media screen and (max-width: 600px) {
+        height: 50px;
+        margin-top: 1rem;
+      }
+    }
+  }
+}

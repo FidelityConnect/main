@@ -1,0 +1,32 @@
+.section_hero2 {
+  padding: 0rem 2rem;
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 3rem;
+
+    @media screen and (max-width: 600px) {
+      margin-right: 1rem;
+    }
+
+    h3 {
+      font-size: 32px;
+      max-width: 800px;
+      text-align: center;
+      margin-bottom: 2rem;
+
+      @media screen and (max-width: 600px) {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.hero-cont {
+  padding-top: 6rem;
+  @media screen and (max-width: 600px) {
+    padding-top: 4rem;
+  }
+}

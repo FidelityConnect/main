@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{- partial "head.html" . -}}
+</head>
+<body class="bg-[#f7f4ee]">
+    {{- partial "header.html" . -}}
+    
+    <main>
+        <!-- ── HERO SECTION ── -->
+        <section class="relative overflow-hidden bg-[#0a2e3a] py-24 md:py-32">
+            <!-- Decorative Accents -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-[#2bace2]/10 blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[#f89521]/5 blur-3xl"></div>
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#2bace2 1px, transparent 1px); background-size: 40px 40px;"></div>
+            </div>
+
+            <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 text-center">
+                <div class="inline-flex items-center gap-3 mb-6">
+                    <span class="h-px w-8 bg-[#f89521]"></span>
+                    <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#f89521]">Our Identity</span>
+                    <span class="h-px w-8 bg-[#f89521]"></span>
+                </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
+                    About <span class="text-[#2bace2]">Fidelity</span> Connect
+                </h1>
+                <p class="mt-8 text-lg md:text-xl text-[#c8dde6] max-w-2xl mx-auto leading-relaxed">
+                    A leading recruitment placement agency, working with global partners in labour, education and investment opportunities.
+                </p>
+            </div>
+
+            <!-- Wave Separator -->
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
+                <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                    <path d="M0 48H1440V0C1440 0 1140 48 720 48C300 48 0 0 0 0V48Z" fill="#f7f4ee"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- ── INTRO SECTION ── -->
+        <section class="py-20 md:py-28">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="h-px w-8 bg-[#f89521]"></span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-[#f89521]">Who We Are</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-black text-[#0a2e3a] mb-8 leading-tight">
+                            We Are <span class="text-[#2bace2]">Professionals</span>
+                        </h2>
+                        <div class="space-y-6 text-base md:text-lg text-[#3a5a6a] leading-relaxed">
+                            <p>
+                                We specialize helping job seekers find employment opportunities abroad, connecting students with universities abroad and providing investment options for interested individuals.
+                            </p>
+                            <p>
+                                Depending on your need, our team of experienced experts will advise on a tailor-made solution for you. We offer a comprehensive range of services to assist students in finding universities abroad.
+                            </p>
+                        </div>
+                        
+                        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                                <span class="text-[#2bace2] mb-4 block">
+                                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </span>
+                                <h3 class="font-bold text-[#0a2e3a] mb-2">Tailored Options</h3>
+                                <p class="text-sm text-[#3a5a6a]">Identifying specific needs to provide solutions that suit your requirements perfectly.</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                                <span class="text-[#f89521] mb-4 block">
+                                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </span>
+                                <h3 class="font-bold text-[#0a2e3a] mb-2">Global Network</h3>
+                                <p class="text-sm text-[#3a5a6a]">Utilizing an extensive network of global partners to open doors worldwide.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-4 border-2 border-[#f89521]/20 rounded-[2.5rem] transform rotate-3"></div>
+                        <div class="relative bg-white rounded-[2rem] overflow-hidden shadow-2xl">
+                            <img src="/images/about-hero.jpg" alt="About Fidelity" class="w-full h-full object-cover aspect-square">
+                            <!-- Floating Badge -->
+                            <div class="absolute bottom-8 right-8 bg-[#2bace2] text-white p-6 rounded-2xl shadow-xl max-w-[180px]">
+                                <span class="text-4xl font-black block mb-1">10+</span>
+                                <span class="text-xs font-bold uppercase tracking-wider opacity-80">Years of Professional Excellence</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── VISION & MISSION ── -->
+        <section class="py-20 bg-[#0a2e3a] relative overflow-hidden">
+            <!-- Accents -->
+            <div class="absolute top-0 right-0 h-full w-1/3 bg-[#2bace2]/5 skew-x-12 transform origin-top"></div>
+            
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 bg-white rounded-2xl p-6 md:p-12 lg:p-16">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:divide-x lg:divide-gray-100">
+                    <div class="lg:pr-12">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="h-px w-8 bg-[#2bace2]"></span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-[#2bace2]">Our Goal</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-black text-[#0a2e3a] mb-6 inline-flex items-center gap-3">
+                            <span class="text-4xl">01.</span> Our Vision
+                        </h3>
+                        <p class="text-lg md:text-xl text-[#3a5a6a] leading-relaxed italic border-l-4 border-[#2bace2]/30 pl-6 py-2">
+                             &ldquo;To become a trusted global partner for empowering individuals and organizations achieve their full potential.&rdquo;
+                        </p>
+                    </div>
+
+                    <div class="lg:pl-12">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="h-px w-8 bg-[#f89521]"></span>
+                            <span class="text-xs font-bold uppercase tracking-widest text-[#f89521]">Our Approach</span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-black text-[#0a2e3a] mb-6 inline-flex items-center gap-3">
+                            <span class="text-4xl">02.</span> The Mission
+                        </h3>
+                        <p class="text-lg md:text-xl text-[#3a5a6a] leading-relaxed italic border-l-4 border-[#f89521]/30 pl-6 py-2">
+                            &ldquo;To be a world class agency that transforms lives and economy by creating pathways for global success.&rdquo;
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CORE VALUES ── -->
+        <section class="py-24">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center gap-3 mb-4">
+                        <span class="h-px w-8 bg-[#f89521]"></span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-[#f89521]">Our Standards</span>
+                        <span class="h-px w-8 bg-[#f89521]"></span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-[#0a2e3a]">Core <span class="text-[#2bace2]">Values</span></h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {{ $values := slice 
+                        (dict "name" "Empowerment" "icon" "M13 10V3L4 14h7v7l9-11h-7z" "color" "#2bace2" "desc" "Providing tools and opportunities for growth.")
+                        (dict "name" "Integrity" "icon" "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" "color" "#f89521" "desc" "Honesty and strong moral principles in everything we do.")
+                        (dict "dict" "Professionalism" "icon" "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" "color" "#0a2e3a" "desc" "Highest standards of service and conduct.")
+                        (dict "name" "Love" "icon" "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" "color" "#2bace2" "desc" "Care and compassion for the individuals we serve.")
+                    }}
+                    {{ range $values }}
+                    <div class="group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl text-center">
+                        <div class="w-16 h-16 rounded-2xl mx-auto flex items-center justify-center mb-6 transition-colors group-hover:bg-opacity-20" style="background-color: {{ .color }}20;">
+                            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="{{ .color }}" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="{{ .icon }}"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-black text-[#0a2e3a] mb-3">{{ .name }}</h3>
+                        <p class="text-sm text-[#3a5a6a] leading-relaxed">{{ .desc }}</p>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    {{- partial "footer.html" . -}}
+</body>
+</html>

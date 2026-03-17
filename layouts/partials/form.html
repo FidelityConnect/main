@@ -1,0 +1,98 @@
+<style>
+    .hideForm {
+        display: none;
+    }
+
+    .showForm {
+        display: flex;
+    }
+
+    #contactForm {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.724);
+    }
+
+    #contactForm form {
+        width: 700px;
+    }
+
+    @media screen and (max-width: 600px) {
+        #contactForm form {
+            width: 90vw;
+        }
+
+    }
+
+
+
+    .closeBtn {
+        position: absolute;
+        right: 100px;
+        top: 60px;
+        width: 30px;
+    }
+</style>
+<div id="contactForm" class="hideForm">
+    <div class="pdd relative">
+        <button class="bg-green w-full closeBtn" onclick="closeForm()">X</button>
+        <form onclick="(e)=>e.stopPropagation()" class="bg-white rounded-lg m-10 p-10">
+
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="text" name="fn" id="fn"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="fn"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
+                        name</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="text" name="ln" id="ln"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="ln"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
+                        name</label>
+                </div>
+            </div>
+
+
+
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="email" name="email" id="email"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="email"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
+                        address</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="tel" name="phone" id="phone"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="phone"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
+                        number (+2547xxxxxx)</label>
+                </div>
+
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <textarea name="message" id="message"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    required> </textarea>
+                <label for="message"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Message:</label>
+            </div>
+
+            <button type="submit" class="green-btn">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+.section_team {
+  padding: 2rem;
+  .intro {
+    margin: 2rem 0rem;
+    h2 {
+      font-size: 36px;
+      font-weight: 600;
+    }
+    p {
+      margin: 1rem 0rem;
+    }
+  }
+  .members {
+    display: flex;
+    padding: 1rem 0rem;
+    text-align: center;
+    .member {
+      width: 300px;
+      border: 1px solid #88ddc0;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .img {
+        width: 220px;
+        height: 220px;
+        margin-bottom: 2rem;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+          border-radius: 50%;
+        }
+      }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .name {
+          font-weight: bold;
+        }
+        .position {
+          background-color: black;
+          color: white;
+          width: fit-content;
+          padding: 5px;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

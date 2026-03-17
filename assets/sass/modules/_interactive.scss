@@ -1,0 +1,141 @@
+.interactive {
+  min-height: 450px;
+  padding: 5.5rem 0rem;
+
+  @media screen and (max-width: 600px) {
+    padding: 5rem 0rem;
+  }
+
+  .text {
+    width: 50%;
+    padding: 2rem;
+    font-size: large;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      padding: 0rem 2rem;
+      padding-bottom: 11rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      li {
+        display: flex;
+        align-items: center;
+        max-width: 300px;
+
+        .icon {
+          margin-right: 10px;
+          background-color: black;
+          color: white;
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 3px;
+        }
+      }
+    }
+  }
+
+  .bg-cont {
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    .info {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translate(-50%);
+      z-index: 10;
+      flex-direction: column;
+      font-size: smaller;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .show {
+      display: flex;
+    }
+
+    #icon_one {
+      top: 55%;
+      left: 30%;
+
+      @media screen and (max-width: 600px) {
+        top: 50%;
+        left: 25%;
+      }
+    }
+
+    #icon_two {
+      right: 44%;
+      bottom: 10%;
+
+      @media screen and (max-width: 600px) {
+        right: 50%;
+        bottom: 10%;
+      }
+    }
+
+    #icon_three {
+      right: 10%;
+      bottom: 2%;
+      @media screen and (max-width: 600px) {
+        right: 12%;
+        bottom: 2%;
+      }
+    }
+
+    #icon_four {
+      right: 5%;
+      top: 20%;
+
+      @media screen and (max-width: 600px) {
+        right: 5%;
+        top: 20%;
+      }
+    }
+
+    .icon {
+      height: 42px;
+      width: 42px;
+      position: absolute;
+      color: gainsboro;
+
+      @media screen and (max-width: 600px) {
+        height: 28px;
+        width: 28px;
+      }
+
+      svg {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .bg-img {
+      height: 500px;
+      object-fit: contain;
+
+      @media screen and (max-width: 600px) {
+        width: 100%;
+        object-fit: cover;
+        height: 280px;
+        object-position: right;
+      }
+    }
+  }
+}

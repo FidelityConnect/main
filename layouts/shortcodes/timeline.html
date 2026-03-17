@@ -1,0 +1,24 @@
+<h2>Timeline</h2>
+{{ range .Site.Data.about.content.timeline }}
+<div class="w-full grid grid-cols-12">
+    <div class="col-span-1 ml-auto text-gray-300 mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+        </svg>
+    </div>
+</div>
+<div class="grid grid-cols-12 mb-5">
+    <div class="col-span-2 md:col-span-1 flex items-center relative gap-2 -ml-2">
+        <div class="h-2 w-2 bg-gray-300 rounded-full"></div>
+
+        <div class="italic leading-none font-bold">
+            {{ .year  }}
+        </div>
+    </div>
+    <div class="col-span-10 md:col-span-11">
+        {{ .text | markdownify }}
+    </div>
+</div>
+
+{{ end }}

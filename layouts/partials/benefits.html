@@ -1,0 +1,21 @@
+<div class="py-10" style="background-color: #D3F6D3">
+    <div class="pdd">
+        <div class="benefits mb-10">
+            <div class="intro">
+                <h2>What We Offer</h2>
+                <p>Our suite of applications connect your business and your customers like never before.</p>
+            </div>
+            <div class="items">
+                {{ range .Site.Data.about.content.benefits }}
+
+                <div class="benefit">
+                    <img src="{{ .image }}" alt="">
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .text }}</p>
+                </div>
+                {{ end }}
+
+            </div>
+        </div>
+    </div>
+</div>

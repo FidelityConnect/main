@@ -1,0 +1,144 @@
+.section_pricingmain {
+  display: flex;
+  justify-content: center;
+  padding: 120px 2rem;
+
+  @media screen and (max-width: 600px) {
+    padding: 80px 1rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+  }
+
+  .left,
+  .right {
+    width: 50%;
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .content {
+      max-width: 400px;
+
+      h2 {
+        font-size: 36px;
+        @media screen and (max-width: 600px) {
+          font-size: 24px;
+        }
+      }
+      * {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  .right {
+    @media screen and (max-width: 600px) {
+      padding: 3rem 0rem 0rem 0rem;
+    }
+    .pricing_item {
+      width: 80%;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 10px 0 15px -3px rgba(0, 0, 0, 0.1),
+        4px 0 6px -2px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (max-width: 600px) {
+        width: 90%;
+        margin: 2rem auto;
+      }
+
+      .best_price {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffbf23;
+        padding: 10px;
+        border: 2px solid rgba(0, 0, 0, 0.694);
+        z-index: 10;
+      }
+
+      .upper {
+        padding: 2rem;
+        position: relative;
+        border-radius: 10px 10px 0px 0px;
+        min-height: 200px;
+
+        .best_value {
+          background-color: #ffbf23;
+          color: black;
+          font-weight: 400;
+          height: 40px;
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, -50%);
+          padding: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        h2 {
+          font-weight: 600;
+          font-size: x-large;
+        }
+        .price {
+          position: relative;
+          font-size: 48px;
+          padding-left: 15px;
+
+          span {
+            font-size: 12px;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+        button {
+          width: 100%;
+          margin: 2rem 0rem;
+          border-radius: 7px;
+          padding: 0.8rem;
+          display: none;
+        }
+      }
+      .lower {
+        padding: 2rem;
+        border-radius: 0px 0px 10px 10px;
+        flex: 1;
+
+        li {
+          display: flex;
+          margin-bottom: 10px;
+          align-items: center;
+
+          .icon {
+            margin-right: 10px;
+            background-color: black;
+            color: white;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3px;
+          }
+        }
+      }
+    }
+  }
+}
