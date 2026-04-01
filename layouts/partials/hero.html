@@ -1,5 +1,11 @@
 <div class="relative overflow-hidden bg-[#f7f4ee]" style="min-height: 640px;">
 
+  <!-- Subtle grid overlay -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.06]"
+       style="background-image: linear-gradient(rgba(10,46,58,0.1) 1px,transparent 1px),linear-gradient(90deg,rgba(10,46,58,0.1) 1px,transparent 1px); background-size: 72px 72px;"></div>
+  <!-- Accent glow -->
+  <div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#2bace2]/8 blur-[120px] pointer-events-none"></div>
+
   <!-- ── Carousel wrapper ── -->
   <div id="hero-carousel" class="relative w-full h-full" style="min-height: 640px;">
 
@@ -9,34 +15,27 @@
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10"
          data-slide="0">
 
-      <!-- Background image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-           style="background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80');"></div>
-      <!-- Overlays -->
-      <div class="absolute inset-0 bg-gradient-to-r from-[#0a2e3a]/90 via-[#0a2e3a]/60 to-[#0a2e3a]/20"></div>
-      <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a2e3a]/60 to-transparent pointer-events-none"></div>
+      <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 h-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12" style="min-height: 640px;">
 
-      <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <div class="grid grid-cols-1 lg:grid-cols-2 items-end" style="min-height: 640px;">
-
-          <!-- LEFT -->
-          <div class="pt-16 pb-16 lg:pb-20 flex flex-col justify-center max-w-lg">
+          <!-- LEFT: Text -->
+          <div class="pt-16 pb-16 lg:py-20 flex flex-col justify-center max-w-lg">
             <div class="mb-5 inline-flex items-center gap-2">
               <span class="h-px w-8 bg-[#f89521]"></span>
               <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#f89521]">Labour &amp; Recruitment</span>
             </div>
-            <h1 class="mb-6 font-black leading-[1.05] tracking-tight text-white"
+            <h1 class="mb-6 font-black leading-[1.05] tracking-tight text-[#0a2e3a]"
                 style="font-size: clamp(2.6rem, 5vw, 3.75rem);">
               The Leading<br>
               <span class="text-[#2bace2]">Recruitment</span><br>
               Agency
             </h1>
-            <p class="mb-10 text-base leading-relaxed text-white/75 max-w-sm">
+            <p class="mb-10 text-base leading-relaxed text-[#3a5a6a] max-w-sm">
               Your next opportunity is waiting. Join top companies locally or internationally.
               Competitive pay. Real growth.
             </p>
             <div class="flex flex-wrap items-center gap-4">
-              <a href="/#jobs"
+              <a href="https://labour.fidelityltd.co.ke"
                  class="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
                  style="background-color:#2bace2; box-shadow: 0 8px 24px #2bace240;">
                 Apply Now
@@ -44,9 +43,35 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
               </a>
-              <a href="/#jobs" class="text-sm font-semibold underline underline-offset-4 transition-colors text-white/80 hover:text-white">Browse Jobs</a>
+              <a href="/#jobs" class="text-sm font-semibold underline underline-offset-4 transition-colors text-[#3a5a6a] hover:text-[#0a2e3a]">Browse Jobs</a>
             </div>
+          </div>
 
+          <!-- RIGHT: Image card -->
+          <div class="hidden lg:flex items-center justify-end py-10">
+            <div class="relative w-full max-w-[480px]">
+              <!-- Card -->
+              <div class="relative overflow-hidden rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.45)]" style="aspect-ratio: 4/3;">
+                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=960&q=80"
+                     alt="Labour and Recruitment"
+                     class="w-full h-full object-cover">
+                <!-- Inner gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a2e3a]/60 via-transparent to-transparent"></div>
+                <!-- Badge -->
+                <div class="absolute bottom-5 left-5 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3">
+                  <div class="w-9 h-9 rounded-xl bg-[#2bace2] flex items-center justify-center flex-shrink-0">
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+                  </div>
+                  <div>
+                    <p class="text-white text-xs font-bold leading-none mb-0.5">1,000+ Placements</p>
+                    <p class="text-white/55 text-[0.68rem] leading-none">Gulf · Europe · West</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Floating accent ring -->
+              <div class="absolute -bottom-6 -right-6 w-48 h-48 rounded-full border border-[#2bace2]/20 pointer-events-none"></div>
+              <div class="absolute -top-4 -left-4 w-24 h-24 rounded-full border border-[#f89521]/15 pointer-events-none"></div>
+            </div>
           </div>
 
         </div>
@@ -60,29 +85,22 @@
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0"
          data-slide="1">
 
-      <!-- Background image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-           style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600&q=80');"></div>
-      <!-- Overlays -->
-      <div class="absolute inset-0 bg-gradient-to-r from-[#0a3028]/92 via-[#0d3d2e]/65 to-[#1a8a6e]/15"></div>
-      <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a2e3a]/60 to-transparent pointer-events-none"></div>
+      <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 h-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12" style="min-height: 640px;">
 
-      <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <div class="grid grid-cols-1 lg:grid-cols-2 items-end" style="min-height: 640px;">
-
-          <!-- LEFT -->
-          <div class="pt-16 pb-16 lg:pb-20 flex flex-col justify-center max-w-lg">
+          <!-- LEFT: Text -->
+          <div class="pt-16 pb-16 lg:py-20 flex flex-col justify-center max-w-lg">
             <div class="mb-5 inline-flex items-center gap-2">
               <span class="h-px w-8 bg-[#f89521]"></span>
               <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#f89521]">Education &amp; Training</span>
             </div>
-            <h1 class="mb-6 font-black leading-[1.05] tracking-tight text-white"
+            <h1 class="mb-6 font-black leading-[1.05] tracking-tight text-[#0a2e3a]"
                 style="font-size: clamp(2.6rem, 5vw, 3.75rem);">
               Empower Your<br>
-              <span class="text-[#4cd6a8]">Future</span><br>
+              <span class="text-[#1a8a6e]">Future</span><br>
               Through Skills
             </h1>
-            <p class="mb-10 text-base leading-relaxed text-white/75 max-w-sm">
+            <p class="mb-10 text-base leading-relaxed text-[#3a5a6a] max-w-sm">
               We connect learners with accredited training programmes, scholarships, and
               professional certifications that open doors across East Africa and beyond.
             </p>
@@ -95,9 +113,31 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
               </a>
-              <a href="/education" class="text-sm font-semibold underline underline-offset-4 transition-colors text-white/80 hover:text-white">Learn More</a>
+              <a href="/education" class="text-sm font-semibold underline underline-offset-4 transition-colors text-[#3a5a6a] hover:text-[#0a2e3a]">Learn More</a>
             </div>
+          </div>
 
+          <!-- RIGHT: Image card -->
+          <div class="hidden lg:flex items-center justify-end py-10">
+            <div class="relative w-full max-w-[480px]">
+              <div class="relative overflow-hidden rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.45)]" style="aspect-ratio: 4/3;">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=960&q=80"
+                     alt="Education and Training"
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a3028]/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-5 left-5 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3">
+                  <div class="w-9 h-9 rounded-xl bg-[#1a8a6e] flex items-center justify-center flex-shrink-0">
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                  </div>
+                  <div>
+                    <p class="text-white text-xs font-bold leading-none mb-0.5">Accredited Programmes</p>
+                    <p class="text-white/55 text-[0.68rem] leading-none">Locally &amp; Internationally</p>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute -bottom-6 -right-6 w-48 h-48 rounded-full border border-[#4cd6a8]/20 pointer-events-none"></div>
+              <div class="absolute -top-4 -left-4 w-24 h-24 rounded-full border border-[#f89521]/15 pointer-events-none"></div>
+            </div>
           </div>
 
         </div>
@@ -111,32 +151,22 @@
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0"
          data-slide="2">
 
-      <!-- Background image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-           style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&q=80');"></div>
-      <!-- Overlays -->
-      <div class="absolute inset-0 bg-gradient-to-r from-[#0a2e3a]/95 via-[#0a2e3a]/70 to-[#0a2e3a]/30"></div>
-      <div class="absolute right-0 top-0 h-full w-2/3 bg-gradient-to-bl from-[#f89521]/10 to-transparent pointer-events-none"></div>
-      <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#061d26]/80 to-transparent pointer-events-none"></div>
-      <div class="absolute inset-0 opacity-[0.04] pointer-events-none"
-           style="background-image: linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px); background-size: 60px 60px;"></div>
+      <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 h-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12" style="min-height: 640px;">
 
-      <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <div class="grid grid-cols-1 lg:grid-cols-2 items-center" style="min-height: 640px;">
-
-          <!-- LEFT -->
-          <div class="pt-16 pb-16 lg:pb-20 flex flex-col justify-center max-w-lg">
+          <!-- LEFT: Text -->
+          <div class="pt-16 pb-16 lg:py-20 flex flex-col justify-center max-w-lg">
             <div class="mb-5 inline-flex items-center gap-2">
               <span class="h-px w-8 bg-[#f89521]"></span>
               <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[#f89521]">Investment &amp; Wealth</span>
             </div>
-            <h1 class="mb-6 font-black leading-[1.05] tracking-tight text-white"
+            <h1 class="mb-6 font-black leading-[1.05] tracking-tight text-[#0a2e3a]"
                 style="font-size: clamp(2.6rem, 5vw, 3.75rem);">
               Grow Your<br>
               <span class="text-[#f89521]">Wealth</span><br>
               Confidently
             </h1>
-            <p class="mb-10 text-base leading-relaxed text-[#a8c8d8] max-w-sm">
+            <p class="mb-10 text-base leading-relaxed text-[#3a5a6a] max-w-sm">
               Access vetted investment opportunities across real estate, agribusiness, and
               financial markets. Build lasting wealth with expert guidance.
             </p>
@@ -149,9 +179,31 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
               </a>
-              <a href="/investment" class="text-sm font-semibold underline underline-offset-4 transition-colors text-white/80 hover:text-white">View Opportunities</a>
+              <a href="/investment" class="text-sm font-semibold underline underline-offset-4 transition-colors text-[#3a5a6a] hover:text-[#0a2e3a]">View Opportunities</a>
             </div>
+          </div>
 
+          <!-- RIGHT: Image card -->
+          <div class="hidden lg:flex items-center justify-end py-10">
+            <div class="relative w-full max-w-[480px]">
+              <div class="relative overflow-hidden rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.45)]" style="aspect-ratio: 4/3;">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=960&q=80"
+                     alt="Investment and Wealth"
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a2e3a]/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-5 left-5 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-3">
+                  <div class="w-9 h-9 rounded-xl bg-[#f89521] flex items-center justify-center flex-shrink-0">
+                    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                  </div>
+                  <div>
+                    <p class="text-white text-xs font-bold leading-none mb-0.5">Vetted Opportunities</p>
+                    <p class="text-white/55 text-[0.68rem] leading-none">Real Estate · Agribusiness</p>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute -bottom-6 -right-6 w-48 h-48 rounded-full border border-[#f89521]/20 pointer-events-none"></div>
+              <div class="absolute -top-4 -left-4 w-24 h-24 rounded-full border border-white/10 pointer-events-none"></div>
+            </div>
           </div>
 
         </div>
@@ -161,14 +213,14 @@
 
     <!-- ── Controls ── -->
     <button id="hero-prev"
-            class="absolute left-4 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-lg border border-white/40 transition-all duration-200 hover:bg-white hover:scale-110 focus:outline-none"
+            class="absolute left-4 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center rounded-full bg-white shadow-md border border-black/8 transition-all duration-200 hover:shadow-lg hover:scale-110 focus:outline-none"
             style="width:44px;height:44px;" aria-label="Previous slide">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#0a2e3a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
       </svg>
     </button>
     <button id="hero-next"
-            class="absolute right-4 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-lg border border-white/40 transition-all duration-200 hover:bg-white hover:scale-110 focus:outline-none"
+            class="absolute right-4 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center rounded-full bg-white shadow-md border border-black/8 transition-all duration-200 hover:shadow-lg hover:scale-110 focus:outline-none"
             style="width:44px;height:44px;" aria-label="Next slide">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#0a2e3a]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
@@ -177,14 +229,14 @@
 
     <!-- Dots -->
     <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
-      <button class="hero-dot w-7 h-2 rounded-full bg-white transition-all duration-300" data-dot="0" aria-label="Labour"></button>
-      <button class="hero-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-dot="1" aria-label="Education"></button>
-      <button class="hero-dot w-2 h-2 rounded-full bg-white/30 transition-all duration-300" data-dot="2" aria-label="Investment"></button>
+      <button class="hero-dot w-7 h-2 rounded-full bg-[#0a2e3a] transition-all duration-300" data-dot="0" aria-label="Labour"></button>
+      <button class="hero-dot w-2 h-2 rounded-full bg-[#0a2e3a]/20 transition-all duration-300" data-dot="1" aria-label="Education"></button>
+      <button class="hero-dot w-2 h-2 rounded-full bg-[#0a2e3a]/20 transition-all duration-300" data-dot="2" aria-label="Investment"></button>
     </div>
 
     <!-- Progress bar -->
-    <div class="absolute bottom-0 left-0 z-30 h-[3px] bg-white/20 w-full">
-      <div id="hero-progress" class="h-full bg-white/70 transition-none" style="width:0%"></div>
+    <div class="absolute bottom-0 left-0 z-30 h-[3px] bg-black/8 w-full">
+      <div id="hero-progress" class="h-full bg-[#2bace2] transition-none" style="width:0%"></div>
     </div>
 
   </div><!-- /carousel wrapper -->
@@ -204,13 +256,13 @@
   function goTo(idx) {
     slides[current].classList.replace('opacity-100','opacity-0');
     slides[current].classList.replace('z-10','z-0');
-    dots[current].classList.remove('w-7','bg-white');
-    dots[current].classList.add('w-2','bg-white/30');
+    dots[current].classList.remove('w-7','bg-[#0a2e3a]');
+    dots[current].classList.add('w-2','bg-[#0a2e3a]/20');
     current = (idx + TOTAL) % TOTAL;
     slides[current].classList.replace('opacity-0','opacity-100');
     slides[current].classList.replace('z-0','z-10');
-    dots[current].classList.remove('w-2','bg-white/30');
-    dots[current].classList.add('w-7','bg-white');
+    dots[current].classList.remove('w-2','bg-[#0a2e3a]/20');
+    dots[current].classList.add('w-7','bg-[#0a2e3a]');
     elapsed = 0; progress.style.transition = 'none'; progress.style.width = '0%';
   }
 

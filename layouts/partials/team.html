@@ -17,6 +17,7 @@
     </div>
 
     <!-- Headline -->
+    {{ if not .Params.hide_team_headline }}
     <div class="mb-14 text-center">
       <h2 class="font-black leading-[1.05] tracking-tight text-[#0a2e3a]"
           style="font-size: clamp(2.2rem, 4vw, 3.2rem);">
@@ -26,10 +27,15 @@
         A dedicated group of professionals committed to connecting talent with opportunity across the globe.
       </p>
     </div>
+    {{ end }}
 
     <!-- Team Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-      {{ range first 5 .Site.Data.team.members }}
+      {{ $members := .Site.Data.team.members }}
+      {{ if .IsHome }}
+        {{ $members = first 5 $members }}
+      {{ end }}
+      {{ range $members }}
       <div class="group flex flex-col items-center text-center bg-[#f7f4ee] rounded-2xl p-8 shadow-sm
                   hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
 
