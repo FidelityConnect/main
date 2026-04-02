@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FidelityConnect/Labour.git"
+    "url": "git+https://github.com/FidelityConnect/main.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FidelityConnect/labour/issues"
+    "url": "https://github.com/FidelityConnect/main/issues"
   },
-  "homepage": "https://github.com/FidelityConnect/labour#readme",
+  "homepage": "https://github.com/FidelityConnect/main#readme",
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
     "concurrently": "^9.2.1",

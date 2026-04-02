@@ -9,7 +9,12 @@ module.exports = {
     "./*.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['DM Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        syne: ['Syne', 'ui-sans-serif', 'sans-serif'],
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
