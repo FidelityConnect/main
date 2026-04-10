@@ -2,32 +2,38 @@
 <html lang="en">
 <head>
     {{- partial "head.html" . -}}
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#f7f4ee] flex flex-col min-h-screen">
+<body class="bg-white flex flex-col min-h-screen">
     {{- partial "header.html" . -}}
     
-    <main class="flex-grow py-16 px-4">
-        <div class="container mx-auto max-w-4xl">
-            <!-- Header -->
-            <div class="text-center mb-12">
-                <h1 class="text-3xl md:text-5xl font-bold text-[#0a2e3a] mb-4">{{ .Title }}</h1>
-                <div class="w-20 h-1 bg-gradient-to-r from-[#2bace2] to-[#1a8eb0] mx-auto rounded-full"></div>
+    <main class="flex-grow">
+        <!-- ── PAGE HEADER ── -->
+        <header class="relative overflow-hidden bg-neutral-light py-24 md:py-32 border-b border-neutral-border">
+            <!-- Decorative Accents -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-orange/5 blur-3xl"></div>
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#111827 1px, transparent 1px); background-size: 64px 64px;"></div>
             </div>
 
-            <!-- Content -->
-            <article class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
-                <div class="prose prose-lg max-w-none 
-                    prose-headings:text-[#0a2e3a] prose-headings:font-bold 
-                    prose-p:text-[#3a5a6a] prose-p:leading-relaxed 
-                    prose-a:text-[#2bace2] prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-[#0a2e3a]
-                    prose-ul:marker:text-[#2bace2]
-                    prose-li:text-[#3a5a6a]">
-                    {{ .Content }}
+            <div class="relative z-10 mx-auto max-w-4xl px-6 md:px-12 lg:px-16 text-center">
+                <h1 class="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-neutral-dark leading-tight tracking-tight">
+                    {{ .Title }}
+                </h1>
+            </div>
+        </header>
+
+        <!-- ── CONTENT SECTION ── -->
+        <article class="py-24 bg-white">
+            <div class="mx-auto max-w-4xl px-6">
+                <div class="bg-white rounded-[32px] border border-neutral-border shadow-2xl p-8 md:p-12 lg:p-16 relative z-20 -mt-24">
+                    <div class="font-body text-lg text-neutral-dark leading-relaxed space-y-8 prose prose-lg prose-blue max-w-none">
+                        {{ .Content }}
+                    </div>
                 </div>
-            </article>
-        </div>
+            </div>
+        </article>
     </main>
 
     {{- partial "footer.html" . -}}

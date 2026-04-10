@@ -1,12 +1,6 @@
 members:
-  - name: "Maureen Muzondo"
-    role: "General Manager"
-    bio: "Jane brings over 15 years of experience in international recruitment and workforce placement across the Middle East and Africa."
-    image: "/images/team/maureen.jpg"
-    linkedin: ""
-
   - name: "Joyce Ruwa"
-    role: "Human Resource Manager"
+    role: "Human Resource Executive"
     bio: "David leads our candidate pipeline with deep expertise in matching talent to opportunities in the domestic and diaspora markets."
     image: "/images/team/joyce.jpg"
     linkedin: ""
@@ -26,5 +20,5 @@ members:
   - name: "Cyrus Kimurgor"
     role: "IT & Social Media Executive"
     bio: "Peter oversees regulatory compliance, ensuring all placements adhere to Kenyan labour laws and destination-country requirements."
-    image: "images/team/cyrusk.jpg"
+    image: "images/team/cyrusm.jpg"
     linkedin: ""

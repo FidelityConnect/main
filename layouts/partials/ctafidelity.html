@@ -1,195 +1,114 @@
-<!-- MAIN SERVICES SECTION -->
-<section class="services-section relative overflow-hidden" style="background-color:#eef4f7; padding: 72px 0 80px;">
-
-  <!-- World-map SVG watermark -->
-  <div class="absolute inset-0 pointer-events-none select-none flex items-center justify-center" aria-hidden="true">
-    <svg viewBox="0 0 1440 600" xmlns="http://www.w3.org/2000/svg"
-         class="w-full h-full object-cover opacity-[0.07]"
-         style="min-width:900px;">
-      <!-- Simplified world map dot-grid approximation using ellipses for continents -->
-      <!-- Americas -->
-      
-      <!-- Latitude lines -->
-      <line x1="0" y1="160" x2="1440" y2="160" stroke="#2bace2" stroke-width="0.8" stroke-dasharray="4 8"/>
-      <line x1="0" y1="300" x2="1440" y2="300" stroke="#2bace2" stroke-width="0.8" stroke-dasharray="4 8"/>
-      <line x1="0" y1="440" x2="1440" y2="440" stroke="#2bace2" stroke-width="0.8" stroke-dasharray="4 8"/>
-      <!-- Longitude lines -->
-      <line x1="360"  y1="0" x2="360"  y2="600" stroke="#2bace2" stroke-width="0.8" stroke-dasharray="4 8"/>
-      <line x1="720"  y1="0" x2="720"  y2="600" stroke="#2bace2" stroke-width="0.8" stroke-dasharray="4 8"/>
-      <line x1="1080" y1="0" x2="1080" y2="600" stroke="#2bace2" stroke-width="0.8" stroke-dasharray="4 8"/>
-    </svg>
-  </div>
-
-  <!-- Diagonal top slice (matching hero bottom) -->
-  <div class="absolute top-0 left-0 w-full overflow-hidden pointer-events-none" style="height:40px;">
-    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-      <polygon points="0,0 1440,0 1440,40 0,0" fill="#1a2e35"/>
-    </svg>
+<section class="relative overflow-hidden py-24 bg-white">
+  <!-- Decorative background elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-brand-blue/5 blur-[120px] rounded-full"></div>
+    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-brand-orange/5 blur-[120px] rounded-full"></div>
   </div>
 
   <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
 
-    <!-- Section label -->
-    <div class="flex items-center justify-center gap-3 mb-4">
-      <span class="h-px w-10 bg-[#f89521]"></span>
-      <span class="text-xs font-bold uppercase tracking-[0.25em] text-[#f89521]">What We Offer</span>
-      <span class="h-px w-10 bg-[#f89521]"></span>
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+        <div class="mb-5 inline-flex items-center space-x-2">
+            <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+            <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">What We Offer</span>
+            <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+        </div>
+        <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark tracking-tight">Three Pillars of <span class="text-brand-blue">Opportunity</span></h2>
     </div>
-    <h2 class="text-center font-black text-[#0a2e3a] mb-14"
-        style="font-size: clamp(1.6rem, 3vw, 2.4rem); letter-spacing:-0.02em;">
-      Three Pillars of Opportunity
-    </h2>
 
     <!-- Cards grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
 
-      <!-- ── CARD 1: LABOUR / DREAM JOB ── -->
-      <div class="service-card group relative flex flex-col items-center text-center rounded-3xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-lg px-8 pt-10 pb-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-           style="border-top: 3px solid #2bace2;">
-
-        <!-- Hexagon icon -->
-        <div class="hex-wrap relative mb-8" style="width:88px; height:88px;">
-          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full">
-            <!-- Outer hex (orange) -->
-            <polygon points="44,4 82,25 82,63 44,84 6,63 6,25"
-                     fill="none" stroke="#f89521" stroke-width="2.5"
-                     class="transition-all duration-300 group-hover:stroke-[#f89521]"/>
-            <!-- Inner hex (blue) -->
-            <polygon points="44,14 74,30 74,58 44,74 14,58 14,30"
-                     fill="#2bace2" opacity="0.08"
-                     class="transition-all duration-300 group-hover:opacity-20"/>
-          </svg>
-          <!-- Icon inside hex -->
-          <div class="absolute inset-0 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="#2bace2" stroke-width="1.6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-          </div>
-          <!-- Pulse ring on hover -->
-          <div class="absolute inset-[-6px] rounded-full border-2 border-[#2bace2]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping" style="animation-duration:2s;"></div>
+      <!-- ── CARD 1: LABOUR ── -->
+      <div class="service-card group bg-white p-10 rounded-[40px] border border-neutral-border hover:border-brand-blue transition-all duration-500 hover:shadow-2xl hover:shadow-brand-blue/10">
+        <div class="flex flex-col h-full">
+            <div class="w-16 h-16 bg-brand-blue/10 rounded-[22px] flex items-center justify-center mb-10 group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 group-hover:rotate-6">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </div>
+            
+            <div class="mb-3 inline-flex items-center space-x-2">
+                <span class="text-[10px] font-heading font-bold uppercase tracking-widest text-brand-orange">Labour</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-neutral-dark mb-4">Find Your Dream Job</h3>
+            <p class="font-body text-neutral-muted leading-relaxed mb-10">
+                We connect skilled professionals with top employers globally. Real growth, competitive pay, and seamless placement.
+            </p>
+            
+            <a href="/#jobs" class="mt-auto group/btn inline-flex items-center font-heading font-bold text-sm text-brand-blue tracking-wider uppercase">
+                Browse Jobs
+                <svg class="ml-2 w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
         </div>
-
-        <div class="inline-flex items-center gap-2 mb-2">
-          <span class="h-px w-5 bg-[#f89521]"></span>
-          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f89521]">Labour</span>
-          <span class="h-px w-5 bg-[#f89521]"></span>
-        </div>
-        <h3 class="text-xl font-black text-[#0a2e3a] mb-3 leading-tight">Find the Dream Job</h3>
-        <p class="text-sm leading-relaxed text-[#4a6a7a] mb-6">
-          We connect skilled professionals with top employers locally and internationally.
-          Competitive packages, real career growth.
-        </p>
-        <a href="/#jobs"
-           class="mt-auto inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-colors duration-200"
-           style="color:#2bace2;">
-          Browse Jobs
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
       </div>
 
       <!-- ── CARD 2: EDUCATION ── -->
-      <div class="service-card group relative flex flex-col items-center text-center rounded-3xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-lg px-8 pt-10 pb-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-           style="border-top: 3px solid #1a8a6e;">
-
-        <div class="hex-wrap relative mb-8" style="width:88px; height:88px;">
-          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full">
-            <polygon points="44,4 82,25 82,63 44,84 6,63 6,25"
-                     fill="none" stroke="#f89521" stroke-width="2.5"/>
-            <polygon points="44,14 74,30 74,58 44,74 14,58 14,30"
-                     fill="#1a8a6e" opacity="0.08"
-                     class="transition-all duration-300 group-hover:opacity-20"/>
-          </svg>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="#1a8a6e" stroke-width="1.6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422A12.083 12.083 0 0121 21H3a12.083 12.083 0 012.84-10.422L12 14z"/>
-            </svg>
-          </div>
-          <div class="absolute inset-[-6px] rounded-full border-2 border-[#1a8a6e]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping" style="animation-duration:2s;"></div>
+      <div class="service-card group bg-white p-10 rounded-[40px] border border-neutral-border hover:border-brand-blue transition-all duration-500 hover:shadow-2xl hover:shadow-brand-blue/10">
+        <div class="flex flex-col h-full">
+            <div class="w-16 h-16 bg-brand-blue/10 rounded-[22px] flex items-center justify-center mb-10 group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 group-hover:-rotate-6">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422A12.083 12.083 0 0121 21H3a12.083 12.083 0 012.84-10.422L12 14z"/>
+                </svg>
+            </div>
+            
+            <div class="mb-3 inline-flex items-center space-x-2">
+                <span class="text-[10px] font-heading font-bold uppercase tracking-widest text-brand-orange">Education</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-neutral-dark mb-4">World Class Colleges</h3>
+            <p class="font-body text-neutral-muted leading-relaxed mb-10">
+                Guiding students to accredited institutions and international study opportunities that match your budget and goals.
+            </p>
+            
+            <a href="/education" class="mt-auto group/btn inline-flex items-center font-heading font-bold text-sm text-brand-blue tracking-wider uppercase">
+                Explore Skills
+                <svg class="ml-2 w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
         </div>
-
-        <div class="inline-flex items-center gap-2 mb-2">
-          <span class="h-px w-5 bg-[#f89521]"></span>
-          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f89521]">Education</span>
-          <span class="h-px w-5 bg-[#f89521]"></span>
-        </div>
-        <h3 class="text-xl font-black text-[#0a2e3a] mb-3 leading-tight">Well-Researched Colleges</h3>
-        <p class="text-sm leading-relaxed text-[#4a6a7a] mb-6">
-          We guide you to accredited institutions and international study opportunities
-          that match your ambitions and budget.
-        </p>
-        <a href="/education"
-           class="mt-auto inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-colors duration-200"
-           style="color:#1a8a6e;">
-          Explore Programmes
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
       </div>
 
       <!-- ── CARD 3: INVESTMENT ── -->
-      <div class="service-card group relative flex flex-col items-center text-center rounded-3xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-lg px-8 pt-10 pb-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-           style="border-top: 3px solid #f89521;">
-
-        <div class="hex-wrap relative mb-8" style="width:88px; height:88px;">
-          <svg viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full">
-            <polygon points="44,4 82,25 82,63 44,84 6,63 6,25"
-                     fill="none" stroke="#f89521" stroke-width="2.5"/>
-            <polygon points="44,14 74,30 74,58 44,74 14,58 14,30"
-                     fill="#f89521" opacity="0.08"
-                     class="transition-all duration-300 group-hover:opacity-20"/>
-          </svg>
-          <div class="absolute inset-0 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 transition-transform duration-300 group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="#f89521" stroke-width="1.6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-            </svg>
-          </div>
-          <div class="absolute inset-[-6px] rounded-full border-2 border-[#f89521]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping" style="animation-duration:2s;"></div>
+      <div class="service-card group bg-white p-10 rounded-[40px] border border-neutral-border hover:border-brand-blue transition-all duration-500 hover:shadow-2xl hover:shadow-brand-blue/10">
+        <div class="flex flex-col h-full">
+            <div class="w-16 h-16 bg-brand-blue/10 rounded-[22px] flex items-center justify-center mb-10 group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 group-hover:rotate-6">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                </svg>
+            </div>
+            
+            <div class="mb-3 inline-flex items-center space-x-2">
+                <span class="text-[10px] font-heading font-bold uppercase tracking-widest text-brand-orange">Investment</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-neutral-dark mb-4">Vetted Opportunities</h3>
+            <p class="font-body text-neutral-muted leading-relaxed mb-10">
+                Access high-yield opportunities in real estate, agribusiness, and financial markets through our vetted global network.
+            </p>
+            
+            <a href="/investment" class="mt-auto group/btn inline-flex items-center font-heading font-bold text-sm text-brand-blue tracking-wider uppercase">
+                Start Investing
+                <svg class="ml-2 w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
         </div>
-
-        <div class="inline-flex items-center gap-2 mb-2">
-          <span class="h-px w-5 bg-[#f89521]"></span>
-          <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f89521]">Investment</span>
-          <span class="h-px w-5 bg-[#f89521]"></span>
-        </div>
-        <h3 class="text-xl font-black text-[#0a2e3a] mb-3 leading-tight">Promising Investments</h3>
-        <p class="text-sm leading-relaxed text-[#4a6a7a] mb-6">
-          Our global partners open doors to vetted, high-yield opportunities in real
-          estate, agribusiness, and financial markets.
-        </p>
-        <a href="/investment"
-           class="mt-auto inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest transition-colors duration-200"
-           style="color:#f89521;">
-          Start Investing
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
       </div>
 
     </div><!-- /grid -->
   </div><!-- /container -->
 </section>
 
-
 <style>
 /* Staggered entrance animation */
 @keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .service-card {
   opacity: 0;
-  animation: fadeSlideUp 0.55s ease forwards;
+  animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.service-card:nth-child(1) { animation-delay: 0.10s; }
-.service-card:nth-child(2) { animation-delay: 0.22s; }
-.service-card:nth-child(3) { animation-delay: 0.34s; }
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+</style>
 
-/* Hexagon hover glow */
-.service-card:nth-child(1):hover { box-shadow: 0 24px 48px #2bace218, 0 0 0 1px #2bace215; }
-.service-card:nth-child(2):hover { box-shadow: 0 24px 48px #1a8a6e18, 0 0 0 1px #1a8a6e15; }
-.service-card:nth-child(3):hover { box-shadow: 0 24px 48px #f8952118, 0 0 0 1px #f8952115; }
 </style>

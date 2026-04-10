@@ -3,51 +3,43 @@
 <head>
     {{- partial "head.html" . -}}
 </head>
-<body class="bg-[#f7f4ee]">
+<body class="bg-white">
     {{- partial "header.html" . -}}
     
     <main>
         <!-- ── HERO SECTION ── -->
-        <section class="relative overflow-hidden bg-[#0a2e3a] py-24 md:py-32">
+        <section class="relative overflow-hidden bg-neutral-light py-24 md:py-32">
             <!-- Decorative Accents -->
             <div class="absolute inset-0 pointer-events-none overflow-hidden">
-                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-[#2bace2]/10 blur-3xl"></div>
-                <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-[#f89521]/5 blur-3xl"></div>
+                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-orange/5 blur-3xl"></div>
                 <!-- Grid Pattern -->
-                <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#2bace2 1px, transparent 1px); background-size: 40px 40px;"></div>
+                <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#111827 1px, transparent 1px); background-size: 64px 64px;"></div>
             </div>
 
             <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 text-center">
-                <div class="inline-flex items-center gap-3 mb-6">
-                    <span class="h-px w-8 bg-[#f89521]"></span>
-                    <span class="text-xs font-bold uppercase tracking-[0.3em] text-[#f89521]">Our People</span>
-                    <span class="h-px w-8 bg-[#f89521]"></span>
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">Our People</span>
+                    <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
                 </div>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight">
-                    The <span class="text-[#2bace2]">Team</span> Behind <br> Fidelity Connect
+                <h1 class="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-neutral-dark leading-tight tracking-tight">
+                    The <span class="text-brand-blue">Team</span> Behind <br> Fidelity Connect
                 </h1>
-                <p class="mt-8 text-lg md:text-xl text-[#c8dde6] max-w-2xl mx-auto leading-relaxed">
-                    A dedicated group of professionals committed to connecting talent with opportunity across the globe.
+                <p class="mt-8 font-body text-lg md:text-xl text-neutral-muted max-w-2xl mx-auto leading-relaxed">
+                    A dedicated group of world-class professionals committed to bridging the gap between talent and global opportunity.
                 </p>
             </div>
-
-            <!-- Wave Separator -->
-            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
-                <svg viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
-                    <path d="M0 48H1440V0C1440 0 1140 48 720 48C300 48 0 0 0 0V48Z" fill="#f7f4ee"/>
-                </svg>
-            </div>
         </section>
 
-        <!-- ── TEAM SECTION (REUSING PARTIAL) ── -->
-        {{- partial "team.html" . -}}
+        <!-- ── TEAM SECTION (REUSING REDESIGNED PARTIAL) ── -->
+        <div class="bg-neutral-light">
+            {{- partial "team.html" . -}}
+        </div>
 
-        <!-- ── CTA SECTION ── -->
-        <section class="py-20">
-            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-                 {{- partial "ctafidelity.html" . -}}
-            </div>
-        </section>
+        <!-- ── PILLARS SECTION ── -->
+        {{- partial "ctafidelity.html" . -}}
+
     </main>
 
     {{- partial "footer.html" . -}}

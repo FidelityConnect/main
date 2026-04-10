@@ -1,37 +1,44 @@
-<div class="bg-white py-16">
-    <div class="pdd px-[5%]">
-        <div class="newsletter mx-auto max-w-3xl text-center">
-            <!-- Heading -->
-            <div class="flex items-center justify-center gap-3 mb-3">
-                <span class="h-px w-10 bg-amber-400"></span>
-                <span class="text-amber-400 text-xs font-semibold uppercase tracking-widest">Stay Updated</span>
-                <span class="h-px w-10 bg-amber-400"></span>
+<section class="py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+        <div class="relative overflow-hidden bg-neutral-light rounded-[40px] px-8 py-16 md:px-16 md:py-20 border border-neutral-border">
+            
+            <!-- Background accent -->
+            <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-blue/5 blur-[100px] pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto text-center">
+                <!-- Eyebrow -->
+                <div class="flex items-center justify-center space-x-2 mb-6">
+                    <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">Stay Updated</span>
+                    <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                </div>
+
+                <!-- Headline -->
+                <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark mb-6 tracking-tight">
+                    Subscribe to Our <span class="text-brand-blue">Newsletter</span>
+                </h2>
+
+                <!-- Description -->
+                <p class="font-body text-lg text-neutral-muted mb-12 max-w-2xl mx-auto leading-relaxed">
+                    Get the latest global recruitment trends and premium job opportunities delivered straight to your inbox.
+                </p>
+
+                <!-- Form -->
+                <form name="newsletter" method="POST" action="/.netlify/functions/mailer" class="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+                    <input type="hidden" name="form_type" value="newsletter" />
+                    <input type="email" name="email" placeholder="Enter your email address" required
+                        class="flex-1 rounded-[20px] border border-neutral-border bg-white px-8 py-5 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    <button type="submit"
+                        class="rounded-[20px] bg-brand-blue px-10 py-5 font-heading font-bold text-white shadow-lg shadow-brand-blue/20 transition-all hover:scale-[1.02] hover:bg-opacity-90 active:scale-95">
+                        Subscribe Now
+                    </button>
+                </form>
+
+                <!-- Privacy -->
+                <p class="mt-8 font-body text-xs text-neutral-muted/60">
+                    We value your privacy. Your email is safe with us. Unsubscribe anytime.
+                </p>
             </div>
-            <h2 class="text-4xl font-bold md:text-5xl mb-4">
-                <span class="text-[#1a3a4a]">Subscribe to Our </span>
-                <span class="text-[#3ab5e6]">Newsletter</span>
-            </h2>
-
-            <!-- Description -->
-            <p class="mb-8 text-lg text-[#3a5a6a]">
-                Get the latest job opportunities delivered to your inbox.
-            </p>
-
-            <!-- Newsletter Form -->
-            <form name="newsletter" method="POST" action="/.netlify/functions/mailer" class="flex flex-col gap-4 sm:flex-row sm:gap-3">
-                <input type="hidden" name="form_type" value="newsletter" />
-                <input type="email" name="email" placeholder="Enter your email" required
-                    class="flex-1 rounded-lg border border-gray-300 px-6 py-3 text-[#0a2e3a] placeholder-slate-400 focus:border-[#2bace2] focus:outline-none focus:ring-2 focus:ring-[#2bace2]/20 transition-all">
-                <button type="submit"
-                    class="rounded-lg bg-[#2bace2] px-8 py-3 font-bold text-white transition-all duration-300 hover:bg-[#1a8eb0] hover:-translate-y-0.5 shadow-lg shadow-[#2bace2]/30 hover:shadow-xl">
-                    Subscribe
-                </button>
-            </form>
-
-            <!-- Privacy Text -->
-            <p class="mt-6 text-sm text-[#3a5a6a]/60">
-                We respect your privacy. Unsubscribe anytime.
-            </p>
         </div>
     </div>
-</div>
+</section>

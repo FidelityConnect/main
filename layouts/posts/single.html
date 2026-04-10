@@ -3,56 +3,76 @@
 <head>
     {{- partial "head.html" . -}}
 </head>
-<body class="bg-[#f7f4ee] flex flex-col min-h-screen">
+<body class="bg-white">
     {{- partial "header.html" . -}}
-    <main class="flex-grow py-16">
-        <div class="mx-auto max-w-4xl px-6">
-            <!-- Featured image -->
-            {{ with .Params.featured }}
-            <div class="mb-10 rounded-2xl overflow-hidden shadow-lg">
-                <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-72 object-cover">
+    
+    <main>
+        <!-- ── EVENT HEADER ── -->
+        <header class="relative overflow-hidden bg-neutral-light py-24 md:py-32">
+            <!-- Decorative Accents -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-orange/5 blur-3xl"></div>
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#111827 1px, transparent 1px); background-size: 64px 64px;"></div>
             </div>
-            {{ end }}
 
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
-                <!-- Meta -->
-                <div class="flex flex-wrap gap-2 mb-4">
+            <div class="relative z-10 mx-auto max-w-4xl px-6 md:px-12 lg:px-16 text-center">
+                <div class="mb-8 flex flex-wrap justify-center gap-3">
                     {{ range .Params.Categories }}
-                    <span class="inline-block bg-[#f89521] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">{{ . }}</span>
+                    <span class="inline-block bg-brand-orange/10 text-brand-orange text-[10px] font-heading font-bold uppercase tracking-widest px-4 py-2 rounded-xl backdrop-blur-sm border border-brand-orange/20">{{ . }}</span>
                     {{ end }}
                 </div>
-
-                <h1 class="text-3xl md:text-4xl font-bold text-[#0a2e3a] mb-4">{{ .Title }}</h1>
-
-                <div class="flex items-center gap-4 text-sm text-[#3a5a6a] mb-8 pb-6 border-b border-gray-100">
-                    <span>{{ dateFormat "January 2, 2006" .Date }}</span>
+                
+                <h1 class="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-neutral-dark leading-tight tracking-tight mb-10">
+                    {{ .Title }}
+                </h1>
+                
+                <div class="flex flex-wrap items-center justify-center gap-6 text-neutral-muted font-body text-sm">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <span>{{ dateFormat "January 2, 2006" .Date }}</span>
+                    </div>
                     {{ with .Params.author }}
-                    <span>·</span>
-                    <span>{{ . }}</span>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <span>{{ . }}</span>
+                    </div>
                     {{ end }}
                 </div>
+            </div>
+        </header>
 
-                <!-- Content -->
-                <div class="prose prose-lg max-w-none
-                    prose-headings:text-[#0a2e3a] prose-headings:font-bold
-                    prose-p:text-[#3a5a6a] prose-p:leading-relaxed
-                    prose-a:text-[#2bace2] prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-[#0a2e3a]
-                    prose-ul:marker:text-[#2bace2]
-                    prose-li:text-[#3a5a6a]">
+        <!-- ── CONTENT SECTION ── -->
+        <article class="bg-white py-16 md:py-24">
+            <div class="mx-auto max-w-4xl px-6">
+                
+                <!-- Featured Image -->
+                {{ with .Params.featured }}
+                <div class="relative mb-16 -mt-32 md:-mt-48 z-20">
+                    <div class="absolute -inset-4 bg-brand-orange/5 rounded-[48px] blur-3xl opacity-50"></div>
+                    <div class="relative rounded-[40px] overflow-hidden shadow-2xl border-8 border-white">
+                        <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-auto max-h-[600px] object-cover">
+                    </div>
+                </div>
+                {{ end }}
+
+                <!-- Content Body -->
+                <div class="font-body text-lg text-neutral-dark leading-relaxed space-y-8 prose prose-lg prose-blue max-w-none">
                     {{ .Content }}
                 </div>
 
-                <!-- Back link -->
-                <div class="mt-10 pt-6 border-t border-gray-100">
-                    <a href="/media/" class="inline-flex items-center gap-2 text-sm font-semibold text-[#2bace2] hover:underline">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                <!-- Back to Media -->
+                <div class="mt-20 pt-10 border-t border-neutral-border">
+                    <a href="/media/" class="font-heading font-bold text-xs uppercase tracking-widest text-brand-blue hover:text-brand-orange transition-colors flex items-center">
+                        <svg class="mr-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
                         Back to Events
                     </a>
                 </div>
             </div>
-        </div>
+        </article>
     </main>
+
     {{- partial "footer.html" . -}}
 </body>
 </html>

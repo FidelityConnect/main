@@ -1,1021 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {{- partial "head.html" . -}}
-    <style>
-        *, *::before, *::after { box-sizing: border-box; }
-
-        body { background: #f6f3ee; }
-
-
-        /* Scroll */
-        html { scroll-behavior: smooth; }
-
-        /* ── Animations ── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes revealLine {
-            from { width: 0; }
-            to   { width: 100%; }
-        }
-        @keyframes ticker {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-        .fade-up { animation: fadeUp 0.75s cubic-bezier(.22,.68,0,1.2) both; }
-        .d1 { animation-delay: .1s; } .d2 { animation-delay: .22s; }
-        .d3 { animation-delay: .36s; } .d4 { animation-delay: .5s; }
-
-        /* ── Hero ── */
-        .hero {
-            min-height: 100svh;
-            background: #0b1f28;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 0 clamp(1.5rem, 5vw, 5rem) clamp(3rem, 8vh, 6rem);
-        }
-        .hero-bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(90px);
-            pointer-events: none;
-        }
-        .hero-grid {
-            position: absolute; inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
-            background-size: 72px 72px;
-        }
-        .hero-tag {
-            display: inline-flex; align-items: center; gap: .6rem;
-            font-size: .65rem; font-weight: 700;
-            letter-spacing: .25em; text-transform: uppercase;
-            color: #f89521;
-            margin-bottom: 1.75rem;
-        }
-        .hero-tag::before {
-            content: '';
-            display: block; width: 28px; height: 2px; background: #f89521;
-        }
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 7.5rem);
-            font-weight: 800;
-            line-height: .95;
-            color: #fff;
-            letter-spacing: -.03em;
-            max-width: 820px;
-            margin: 0 0 1.75rem;
-        }
-        .hero h1 em {
-            font-style: normal;
-            color: transparent;
-            -webkit-text-stroke: 1.5px rgba(43,172,226,.7);
-        }
-        .hero-sub {
-            color: #7aa8bb;
-            font-size: clamp(.95rem, 1.5vw, 1.15rem);
-            line-height: 1.65;
-            max-width: 480px;
-            margin: 0 0 3rem;
-            font-weight: 300;
-        }
-
-        /* Pill nav */
-        .pill-nav {
-            display: flex; gap: .6rem; flex-wrap: wrap;
-        }
-        .pill {
-            padding: .6rem 1.4rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,.12);
-            color: rgba(255,255,255,.45);
-            font-size: .68rem; font-weight: 700;
-            letter-spacing: .2em; text-transform: uppercase;
-            text-decoration: none;
-            transition: all .25s ease;
-        }
-        .pill:hover, .pill.active {
-            background: #2bace2;
-            border-color: #2bace2;
-            color: #fff;
-            box-shadow: 0 6px 24px rgba(43,172,226,.35);
-        }
-
-        /* Scroll indicator */
-        .scroll-hint {
-            position: absolute;
-            bottom: clamp(2rem, 5vh, 3.5rem);
-            right: clamp(1.5rem, 5vw, 5rem);
-            display: flex; align-items: center; gap: .75rem;
-            color: rgba(255,255,255,.25);
-            font-size: .65rem; font-weight: 600;
-            letter-spacing: .18em; text-transform: uppercase;
-        }
-        .scroll-hint::after {
-            content: '';
-            width: 40px; height: 1px; background: rgba(255,255,255,.15);
-        }
-
-        /* ── Ticker ── */
-        .ticker-wrap {
-            background: #2bace2;
-            overflow: hidden;
-            padding: 1rem 0;
-        }
-        .ticker-inner {
-            display: flex;
-            white-space: nowrap;
-            animation: ticker 22s linear infinite;
-            width: max-content;
-        }
-        .ticker-item {
-            font-size: .7rem; font-weight: 700;
-            letter-spacing: .22em; text-transform: uppercase;
-            color: #fff;
-            padding: 0 2.5rem;
-            opacity: .85;
-        }
-        .ticker-dot {
-            color: rgba(255,255,255,.4);
-        }
-
-        /* ── Section commons ── */
-        .section {
-            padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 5rem);
-        }
-        .section-label {
-            display: flex; align-items: center; gap: .75rem;
-            font-size: .62rem; font-weight: 700;
-            letter-spacing: .3em; text-transform: uppercase;
-            color: #2bace2;
-            margin-bottom: 1.1rem;
-        }
-        .section-label::before {
-            content: '';
-            display: block; width: 24px; height: 1.5px; background: currentColor;
-        }
-        .section-label.amber { color: #f89521; }
-        .section-label.amber::before { background: #f89521; }
-
-        .section-title {
-            font-size: clamp(2.4rem, 5vw, 4.2rem);
-            font-weight: 800;
-            color: #0b1f28;
-            line-height: 1.0;
-            letter-spacing: -.025em;
-            margin: 0 0 .5rem;
-        }
-        .accent { color: #2bace2; }
-        .max-7xl { max-width: 1280px; margin: 0 auto; }
-
-        /* ── Overview cards ── */
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: rgba(11,31,40,.08);
-            border-radius: 1.75rem;
-            overflow: hidden;
-            margin-top: 3.5rem;
-        }
-        @media (max-width: 768px) {
-            .overview-grid { grid-template-columns: 1fr; }
-        }
-        .ov-card {
-            background: #fff;
-            padding: clamp(2rem, 4vw, 3rem);
-            display: flex; flex-direction: column;
-            gap: 1.25rem;
-            text-decoration: none;
-            transition: background .25s ease;
-            position: relative; overflow: hidden;
-        }
-        .ov-card:hover { background: #f6f3ee; }
-        .ov-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 3px;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform .35s cubic-bezier(.22,.68,0,1.2);
-        }
-        .ov-card.blue::after  { background: #2bace2; }
-        .ov-card.amber::after { background: #f89521; }
-        .ov-card.green::after { background: #1a9b6b; }
-        .ov-card:hover::after { transform: scaleX(1); }
-        .ov-num {
-            font-size: .62rem; font-weight: 700;
-            letter-spacing: .28em; text-transform: uppercase;
-            color: rgba(11,31,40,.3);
-        }
-        .ov-icon {
-            width: 44px; height: 44px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .ov-icon.blue  { background: rgba(43,172,226,.1);  }
-        .ov-icon.amber { background: rgba(248,149,33,.1);  }
-        .ov-icon.green { background: rgba(26,155,107,.1);  }
-        .ov-card h3 {
-            font-size: 1.5rem; font-weight: 800;
-            color: #0b1f28; margin: 0;
-        }
-        .ov-card p {
-            font-size: .9rem; color: #4a6e7e;
-            line-height: 1.65; margin: 0;
-            font-weight: 300;
-        }
-        .ov-arrow {
-            margin-top: auto;
-            font-size: .75rem; font-weight: 700;
-            letter-spacing: .1em;
-            display: flex; align-items: center; gap: .5rem;
-            transition: gap .25s ease;
-        }
-        .ov-card.blue  .ov-arrow { color: #2bace2; }
-        .ov-card.amber .ov-arrow { color: #f89521; }
-        .ov-card.green .ov-arrow { color: #1a9b6b; }
-        .ov-card:hover .ov-arrow { gap: .9rem; }
-
-        /* ── Labour section ── */
-        #labour { background: #fff; scroll-margin-top: 5rem; }
-        .labour-grid {
-            display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 3.5rem;
-            align-items: start;
-        }
-        @media (max-width: 1024px) {
-            .labour-grid { grid-template-columns: 1fr; }
-        }
-
-        .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
-        .chip {
-            padding: .45rem 1rem;
-            border-radius: 999px;
-            font-size: .75rem; font-weight: 500;
-            border: 1px solid rgba(11,31,40,.1);
-            color: #2a4e5e;
-            background: #f6f3ee;
-            transition: all .2s;
-            cursor: default;
-        }
-        .chip:hover { border-color: #2bace2; color: #2bace2; }
-
-        .value-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        @media (max-width: 640px) {
-            .value-row { grid-template-columns: 1fr; }
-        }
-        .value-card {
-            padding: 1.5rem;
-            border-radius: 1.25rem;
-            background: #0b1f28;
-            color: #fff;
-        }
-        .value-card .vnum {
-            font-size: 2rem; font-weight: 800;
-            color: rgba(43,172,226,.2);
-            line-height: 1;
-            margin-bottom: .75rem;
-            transition: color .25s;
-        }
-        .value-card:hover .vnum { color: rgba(43,172,226,.5); }
-        .value-card h4 { font-size: .9rem; font-weight: 700; margin: 0 0 .4rem; }
-        .value-card p  { font-size: .78rem; color: rgba(255,255,255,.45); line-height: 1.6; margin: 0; font-weight: 300; }
-
-        /* Category list */
-        .cat-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; }
-        .cat-item {
-            display: flex; align-items: center; gap: 1rem;
-            padding: 1rem 1.25rem;
-            border-radius: 1rem;
-            background: #f6f3ee;
-            transition: all .25s ease;
-            cursor: default;
-        }
-        .cat-item:hover { background: #eef7fc; }
-        .cat-icon {
-            width: 36px; height: 36px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-        .cat-item h4 { font-size: .85rem; font-weight: 600; color: #0b1f28; margin: 0 0 .1rem; }
-        .cat-item p  { font-size: .73rem; color: #5a7e90; margin: 0; }
-
-        /* ── Stats band ── */
-        .stats-band {
-            background: #0b1f28;
-            padding: 4rem clamp(1.5rem, 5vw, 5rem);
-        }
-        .stats-inner {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 1280px;
-            margin: 0 auto;
-            gap: 1px;
-            background: rgba(255,255,255,.07);
-            border-radius: 1.5rem;
-            overflow: hidden;
-        }
-        @media (max-width: 640px) {
-            .stats-inner { grid-template-columns: 1fr; }
-        }
-        .stat-cell {
-            background: #0b1f28;
-            padding: 2.5rem 2rem;
-            text-align: center;
-        }
-        .stat-cell .num {
-            font-size: 3.5rem; font-weight: 800;
-            line-height: 1;
-            margin-bottom: .5rem;
-        }
-        .stat-cell .label { font-size: .85rem; font-weight: 600; color: #fff; margin-bottom: .25rem; }
-        .stat-cell .desc  { font-size: .75rem; color: rgba(255,255,255,.35); }
-
-        /* ── Education section ── */
-        #education { background: #f6f3ee; scroll-margin-top: 5rem; }
-        .edu-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-        @media (max-width: 900px) {
-            .edu-grid { grid-template-columns: 1fr; }
-        }
-        .prose-box {
-            background: #fff;
-            border-radius: 1.5rem;
-            padding: 2rem 2.25rem;
-            margin-bottom: 1.25rem;
-        }
-        .prose-box p {
-            font-size: .95rem; color: #3a5a6a; line-height: 1.75;
-            margin: 0 0 .85rem; font-weight: 300;
-        }
-        .prose-box p:last-child { margin: 0; }
-
-        .levels-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: .75rem;
-        }
-        .level-card {
-            background: #fff;
-            border-radius: 1.25rem;
-            padding: 1.75rem;
-            border-top: 3px solid transparent;
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-        .level-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(11,31,40,.08);
-        }
-        .level-card.c1 { border-color: #f89521; }
-        .level-card.c2 { border-color: #2bace2; }
-        .level-card.c3 { border-color: #0b1f28; }
-        .level-card.c4 { border-color: #f89521; }
-        .level-card .lnum {
-            font-size: 2rem; font-weight: 800;
-            line-height: 1; margin-bottom: .75rem;
-        }
-        .level-card.c1 .lnum { color: rgba(248,149,33,.25); }
-        .level-card.c2 .lnum { color: rgba(43,172,226,.25); }
-        .level-card.c3 .lnum { color: rgba(11,31,40,.12); }
-        .level-card.c4 .lnum { color: rgba(248,149,33,.25); }
-        .level-card h4 { font-size: .95rem; font-weight: 700; color: #0b1f28; margin: 0 0 .3rem; }
-        .level-card p  { font-size: .75rem; color: #4a6e7e; margin: 0; line-height: 1.55; font-weight: 300; }
-
-        /* ── Investment section ── */
-        #investment { background: #fff; scroll-margin-top: 5rem; }
-        .inv-hero {
-            background: #0b1f28;
-            border-radius: 2rem;
-            padding: clamp(2rem, 5vw, 4rem);
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
-        .inv-hero::before {
-            content: '';
-            position: absolute;
-            top: -60px; right: -60px;
-            width: 360px; height: 360px;
-            border-radius: 50%;
-            background: rgba(43,172,226,.07);
-            filter: blur(60px);
-        }
-        .inv-tag {
-            display: inline-flex; align-items: center; gap: .6rem;
-            background: rgba(248,149,33,.12);
-            border: 1px solid rgba(248,149,33,.3);
-            color: #f89521;
-            font-size: .62rem; font-weight: 700;
-            letter-spacing: .22em; text-transform: uppercase;
-            padding: .45rem 1rem;
-            border-radius: 999px;
-            margin-bottom: 1.5rem;
-        }
-        .inv-tag::before {
-            content: '';
-            width: 6px; height: 6px; border-radius: 50%;
-            background: #f89521;
-        }
-        .inv-hero h3 {
-            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-            font-weight: 800; color: #fff;
-            line-height: 1.15; letter-spacing: -.02em;
-            max-width: 520px; margin: 0 0 1rem;
-        }
-        .inv-hero p {
-            color: rgba(255,255,255,.45);
-            font-size: .95rem; line-height: 1.7;
-            max-width: 500px; margin: 0;
-            font-weight: 300;
-        }
-        .inv-services {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        @media (max-width: 768px) {
-            .inv-services { grid-template-columns: 1fr; }
-        }
-        .inv-card {
-            padding: 1.75rem;
-            border-radius: 1.25rem;
-            background: #f6f3ee;
-            border: 1px solid transparent;
-            transition: all .25s ease;
-        }
-        .inv-card:hover {
-            border-color: rgba(43,172,226,.2);
-            background: #fff;
-            transform: translateY(-3px);
-        }
-        .inv-card .icon {
-            width: 40px; height: 40px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.1rem;
-            transition: background .25s;
-        }
-        .inv-card.a .icon { background: rgba(43,172,226,.1); }
-        .inv-card.b .icon { background: rgba(248,149,33,.1); }
-        .inv-card.c .icon { background: rgba(43,172,226,.1); }
-        .inv-card:hover .icon { background: rgba(43,172,226,.18); }
-        .inv-card h4 { font-size: .9rem; font-weight: 700; color: #0b1f28; margin: 0 0 .5rem; }
-        .inv-card p  { font-size: .78rem; color: #4a6e7e; line-height: 1.6; margin: 0; font-weight: 300; }
-
-        .commit-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        @media (max-width: 640px) {
-            .commit-grid { grid-template-columns: 1fr; }
-        }
-        .commit-card {
-            display: flex; gap: 1.1rem; align-items: flex-start;
-            padding: 1.5rem; border-radius: 1.25rem;
-            background: #f6f3ee;
-        }
-        .commit-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-        .commit-card h4 { font-size: .9rem; font-weight: 700; color: #0b1f28; margin: 0 0 .3rem; }
-        .commit-card p  { font-size: .78rem; color: #4a6e7e; line-height: 1.6; margin: 0; font-weight: 300; }
-
-        /* ── CTA ── */
-        .cta-section {
-            background: #0b1f28;
-            padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 5rem);
-            text-align: center;
-            position: relative; overflow: hidden;
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            bottom: -80px; left: 50%;
-            transform: translateX(-50%);
-            width: 600px; height: 300px;
-            border-radius: 50%;
-            background: rgba(43,172,226,.08);
-            filter: blur(60px);
-        }
-        .cta-section h2 {
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 800; color: #fff;
-            line-height: 1.05; letter-spacing: -.025em;
-            max-width: 560px; margin: 0 auto 1rem;
-        }
-        .cta-section p {
-            color: rgba(255,255,255,.4);
-            font-size: 1rem; line-height: 1.7;
-            max-width: 440px; margin: 0 auto 2.5rem;
-            font-weight: 300;
-        }
-        .cta-btns { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
-        .btn-primary {
-            display: inline-flex; align-items: center; gap: .5rem;
-            padding: .85rem 2rem; border-radius: 999px;
-            background: #2bace2; color: #fff;
-            font-size: .78rem; font-weight: 700;
-            letter-spacing: .1em; text-transform: uppercase;
-            text-decoration: none;
-            transition: all .25s ease;
-            box-shadow: 0 8px 28px rgba(43,172,226,.3);
-        }
-        .btn-primary:hover {
-            background: #1892c4;
-            box-shadow: 0 12px 36px rgba(43,172,226,.45);
-            transform: translateY(-2px);
-        }
-        .btn-ghost {
-            display: inline-flex; align-items: center; gap: .5rem;
-            padding: .85rem 2rem; border-radius: 999px;
-            border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.7);
-            font-size: .78rem; font-weight: 700;
-            letter-spacing: .1em; text-transform: uppercase;
-            text-decoration: none;
-            transition: all .25s ease;
-        }
-        .btn-ghost:hover {
-            border-color: rgba(255,255,255,.35);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        /* Section header layout */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        .section-sub {
-            font-size: .9rem; color: #4a6e7e;
-            line-height: 1.65; max-width: 320px;
-            font-weight: 300;
-            text-align: right;
-        }
-        @media (max-width: 640px) {
-            .section-sub { text-align: left; }
-        }
-
-        /* Subtle divider */
-        .divider { height: 1px; background: rgba(11,31,40,.06); }
-    </style>
 </head>
-<body>
+
+<body class="bg-white">
     {{- partial "header.html" . -}}
-
-    <!-- ═══════════════════════════════════
-         HERO
-    ═══════════════════════════════════ -->
-    <section class="hero">
-        <!-- Background effects -->
-        <div class="hero-grid"></div>
-        <div class="hero-bg-circle" style="width:600px;height:600px;top:-200px;right:-150px;background:rgba(43,172,226,0.06)"></div>
-        <div class="hero-bg-circle" style="width:400px;height:400px;bottom:-100px;left:-100px;background:rgba(248,149,33,0.05)"></div>
-
-        <!-- Content -->
-        <div class="relative" style="z-index:2;max-width:1280px;margin:0 auto;width:100%">
-            <div class="hero-tag fade-up">Our Services</div>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight fade-up d1" style="margin-bottom: 1.75rem;">
-                Fidelity <span class="text-[#2bace2]" style="-webkit-text-stroke: 0; color: #2bace2;">Services</span>
-            </h1>
-            <p class="hero-sub fade-up d2">
-                Three powerful pillars — Labour, Education &amp; Investment — built to unlock global opportunities for every East African.
-            </p>
-            <nav class="pill-nav fade-up d3">
-                <a href="#labour"     class="pill active">Labour</a>
-                <a href="#education"  class="pill">Education</a>
-                <a href="#investment" class="pill">Investment</a>
-            </nav>
-        </div>
-
-        <div class="scroll-hint fade-up d4">Scroll to explore</div>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         TICKER
-    ═══════════════════════════════════ -->
-    <div class="ticker-wrap">
-        <div class="ticker-inner">
-            <!-- Doubled for seamless loop -->
-            <span class="ticker-item">Labour Placement</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">Education Pathways</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">Investment &amp; Business</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">Gulf · Europe · West</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">10+ Years of Excellence</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">Labour Placement</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">Education Pathways</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">Investment &amp; Business</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">Gulf · Europe · West</span>
-            <span class="ticker-item ticker-dot">·</span>
-            <span class="ticker-item">10+ Years of Excellence</span>
-            <span class="ticker-item ticker-dot">·</span>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════
-         OVERVIEW CARDS
-    ═══════════════════════════════════ -->
-    <section class="section" style="background:#f6f3ee">
-        <div class="max-7xl">
-            <div class="section-label">Three Pillars</div>
-            <h2 class="section-title">What <span class="accent">Fidelity</span> Does</h2>
-
-            <div class="overview-grid">
-                <!-- Labour -->
-                <a href="#labour" class="ov-card blue">
-                    <div>
-                        <div class="ov-num">Pillar 01</div>
-                        <div class="ov-icon blue" style="margin-top:.75rem">
-                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#2bace2" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Labour Placement</h3>
-                        <p>Connecting skilled East African workers with employers across the Gulf, Europe, and beyond.</p>
-                    </div>
-                    <div class="ov-arrow">Explore <span>→</span></div>
-                </a>
-
-                <!-- Education -->
-                <a href="#education" class="ov-card amber">
-                    <div>
-                        <div class="ov-num">Pillar 02</div>
-                        <div class="ov-icon amber" style="margin-top:.75rem">
-                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#f89521" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Education</h3>
-                        <p>Guiding students to universities, schools, and programmes abroad with full end-to-end support.</p>
-                    </div>
-                    <div class="ov-arrow">Explore <span>→</span></div>
-                </a>
-
-                <!-- Investment -->
-                <a href="#investment" class="ov-card green">
-                    <div>
-                        <div class="ov-num">Pillar 03</div>
-                        <div class="ov-icon green" style="margin-top:.75rem">
-                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#1a9b6b" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                        </div>
-                    </div>
-                    <div>
-                        <h3>Investment</h3>
-                        <p>Facilitating seamless business entry and investment opportunities across Kenya and East Africa.</p>
-                    </div>
-                    <div class="ov-arrow">Explore <span>→</span></div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════
-         LABOUR
-    ═══════════════════════════════════ -->
-    <section id="labour" class="section" style="background:#fff">
-        <div class="max-7xl">
-            <div class="section-header">
-                <div>
-                    <div class="section-label">Pillar 01</div>
-                    <h2 class="section-title">Labour <span class="accent">Placement</span></h2>
-                </div>
-                <p class="section-sub">Connecting skilled and unskilled East African candidates with top employers worldwide.</p>
+    
+    <main>
+        <!-- ── HERO SECTION ── -->
+        <section class="relative overflow-hidden bg-neutral-light py-24 md:py-32">
+            <!-- Decorative Accents -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-orange/5 blur-3xl"></div>
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#111827 1px, transparent 1px); background-size: 64px 64px;"></div>
             </div>
 
-            <div class="labour-grid">
-                <!-- Left -->
-                <div>
-                    <div class="prose-box">
-                        <p>Fidelity Labour has a strong and comprehensive model of recruitment, placing both skilled and unskilled candidates with employers in Gulf countries, Europe, and the West.</p>
-                        <p>This is part of our ambitious plan to create a linkage of job opportunities for those who wish to explore careers outside their home country. We believe in empowering young people and helping employers find the best candidates.</p>
-                    </div>
-
-                    <p style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(11,31,40,.3);margin-bottom:.85rem">Sectors We Cover</p>
-                    <div class="chips" style="margin-bottom:2rem">
-                        <span class="chip">👤 House Girls &amp; Nannies</span>
-                        <span class="chip">🌾 Farm Helpers</span>
-                        <span class="chip">🚛 Trailer Drivers</span>
-                        <span class="chip">🚘 Chauffeurs</span>
-                        <span class="chip">❤️ Caregivers</span>
-                        <span class="chip">📚 English Teachers</span>
-                        <span class="chip">🍳 Cooks</span>
-                        <span class="chip">🛍️ Mall Sales Reps</span>
-                        <span class="chip">🏍️ Motorbike Sales Reps</span>
-                        <span class="chip">💊 Nurses</span>
-                        <span class="chip">🛡️ Security Officers</span>
-                    </div>
-
-                    <div class="value-row">
-                        <div class="value-card">
-                            <div class="vnum">01</div>
-                            <h4>We Guide You</h4>
-                            <p>Full guidance on applications, visa requirements, and next steps.</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="vnum">02</div>
-                            <h4>Upon Arrival</h4>
-                            <p>Airport pick-up and settling-in support when you land.</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="vnum">03</div>
-                            <h4>Our Network</h4>
-                            <p>Extensive global employer network opening doors worldwide.</p>
-                        </div>
-                    </div>
+            <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 text-center">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">What We Offer</span>
+                    <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
                 </div>
+                <h1 class="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-neutral-dark leading-tight tracking-tight">
+                    Our <span class="text-brand-blue">Core Services</span>
+                </h1>
+                <p class="mt-8 font-body text-lg md:text-xl text-neutral-muted max-w-2xl mx-auto leading-relaxed">
+                    Whether you're seeking work abroad, studying overseas, or investing in East Africa — our offerings are designed to open doors and support your journey.
+                </p>
+                
+                <!-- Quick Navigation -->
+                <div class="mt-12 flex flex-wrap justify-center gap-4">
+                    <a href="#labour" class="px-8 py-3 rounded-2xl bg-brand-blue/5 border border-brand-blue/10 text-brand-blue font-heading font-bold text-xs uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all">Labour</a>
+                    <a href="#education" class="px-8 py-3 rounded-2xl bg-brand-orange/5 border border-brand-orange/10 text-brand-orange font-heading font-bold text-xs uppercase tracking-widest hover:bg-brand-orange hover:text-white transition-all">Education</a>
+                    <a href="#investment" class="px-8 py-3 rounded-2xl bg-neutral-dark/5 border border-neutral-border text-neutral-dark font-heading font-bold text-xs uppercase tracking-widest hover:bg-neutral-dark hover:text-white transition-all">Investment</a>
+                </div>
+            </div>
+        </section>
 
-                <!-- Right -->
-                <div>
-                    <p style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(11,31,40,.3);margin-bottom:1rem">Key Categories</p>
-                    <ul class="cat-list">
-                        <li class="cat-item">
-                            <div class="cat-icon" style="background:rgba(43,172,226,.1)">
-                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2bace2" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        <!-- ── THREE PILLARS OVERVIEW ── -->
+        <section class="py-24 bg-neutral-light">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="grid gap-10 md:grid-cols-3">
+                    <!-- Labour Pillar -->
+                    <div class="group bg-white rounded-[32px] p-10 border border-neutral-border hover:border-brand-blue transition-all duration-500 hover:shadow-2xl">
+                        <div class="mb-8">
+                            <span class="text-[10px] font-heading font-bold uppercase tracking-widest text-neutral-muted">Pillar 01</span>
+                            <div class="mt-4 w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
                             </div>
-                            <div><h4>Domestic Jobs</h4><p>House girls, Nannies, Farm Helpers</p></div>
-                        </li>
-                        <li class="cat-item">
-                            <div class="cat-icon" style="background:rgba(248,149,33,.1)">
-                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#f89521" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-neutral-dark mb-4">Labour Placement</h3>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed mb-8">Connecting skilled East African workers with employers across the Gulf, Europe, and beyond.</p>
+                        <a href="#labour" class="inline-flex items-center font-heading font-bold text-xs uppercase tracking-widest text-brand-blue group-hover:translate-x-1 transition-transform">
+                            Explore Pillar <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Education Pillar -->
+                    <div class="group bg-white rounded-[32px] p-10 border border-neutral-border hover:border-brand-orange transition-all duration-500 hover:shadow-2xl">
+                        <div class="mb-8">
+                            <span class="text-[10px] font-heading font-bold uppercase tracking-widest text-neutral-muted">Pillar 02</span>
+                            <div class="mt-4 w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
                             </div>
-                            <div><h4>Nurses &amp; Caregivers</h4><p>Qualified nurses and dedicated caregivers</p></div>
-                        </li>
-                        <li class="cat-item">
-                            <div class="cat-icon" style="background:rgba(43,172,226,.1)">
-                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2bace2" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-neutral-dark mb-4">Global Education</h3>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed mb-8">Guiding students to universities and programmes abroad with full end-to-end support.</p>
+                        <a href="#education" class="inline-flex items-center font-heading font-bold text-xs uppercase tracking-widest text-brand-orange group-hover:translate-x-1 transition-transform">
+                            Explore Pillar <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Investment Pillar -->
+                    <div class="group bg-white rounded-[32px] p-10 border border-neutral-border hover:border-neutral-dark transition-all duration-500 hover:shadow-2xl">
+                        <div class="mb-8">
+                            <span class="text-[10px] font-heading font-bold uppercase tracking-widest text-neutral-muted">Pillar 03</span>
+                            <div class="mt-4 w-12 h-12 rounded-xl bg-neutral-dark/5 flex items-center justify-center text-neutral-dark">
+                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
                             </div>
-                            <div><h4>Drivers</h4><p>Trailer, Family Drivers &amp; Chauffeurs</p></div>
-                        </li>
-                        <li class="cat-item">
-                            <div class="cat-icon" style="background:rgba(11,31,40,.06)">
-                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#0b1f28" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                            </div>
-                            <div><h4>Attendants</h4><p>Mall &amp; Motorbike Sales Reps</p></div>
-                        </li>
-                        <li class="cat-item">
-                            <div class="cat-icon" style="background:rgba(248,149,33,.1)">
-                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#f89521" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                            </div>
-                            <div><h4>Front Office</h4><p>Hotel Managers, Admin Staff</p></div>
-                        </li>
-                        <li class="cat-item">
-                            <div class="cat-icon" style="background:rgba(43,172,226,.1)">
-                                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2bace2" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                            </div>
-                            <div><h4>Security Officers</h4><p>Close Protection &amp; Manned Security</p></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════════════════
-         STATS BAND
-    ═══════════════════════════════════ -->
-    <div class="stats-band">
-        <div class="stats-inner">
-            <div class="stat-cell">
-                <div class="num" style="color:#2bace2">10+</div>
-                <div class="label">Years of Excellence</div>
-                <div class="desc">Trusted by candidates &amp; employers.</div>
-            </div>
-            <div class="stat-cell">
-                <div class="num" style="color:#f89521">3</div>
-                <div class="label">Core Service Pillars</div>
-                <div class="desc">Labour, Education &amp; Investment.</div>
-            </div>
-            <div class="stat-cell">
-                <div class="num" style="color:#2bace2">∞</div>
-                <div class="label">Global Reach</div>
-                <div class="desc">Gulf, Europe, and beyond.</div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ═══════════════════════════════════
-         EDUCATION
-    ═══════════════════════════════════ -->
-    <section id="education" class="section" style="background:#f6f3ee">
-        <div class="max-7xl">
-            <div class="section-header">
-                <div>
-                    <div class="section-label">Pillar 02</div>
-                    <h2 class="section-title">Education <span class="accent">Opportunities</span></h2>
-                </div>
-                <p class="section-sub">End-to-end support for East Africans pursuing education locally and abroad.</p>
-            </div>
-
-            <div class="edu-grid">
-                <!-- Left -->
-                <div>
-                    <div class="prose-box">
-                        <p>We offer a comprehensive range of services to assist students in finding universities and schools abroad. Our dedicated team works closely with students to identify their specific needs and preferences.</p>
-                        <p>We utilise our extensive network of institutions to provide tailored options, guidance on the application process, help with accommodation booking, and visa guidance.</p>
-                        <p>Upon arrival, the student is picked up from the airport — ensuring a smooth transition into their new environment.</p>
-                    </div>
-
-                    <div class="value-row">
-                        <div class="value-card">
-                            <div class="vnum">01</div>
-                            <h4>We Guide You</h4>
-                            <p>Application support, accommodation &amp; visa guidance.</p>
                         </div>
-                        <div class="value-card">
-                            <div class="vnum">02</div>
-                            <h4>Upon Arrival</h4>
-                            <p>Airport pick-up and full orientation for new students.</p>
-                        </div>
-                        <div class="value-card">
-                            <div class="vnum">03</div>
-                            <h4>Our Network</h4>
-                            <p>Extensive university &amp; school partnerships globally.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Programme levels -->
-                <div>
-                    <p style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(11,31,40,.3);margin-bottom:1rem">Programme Levels</p>
-                    <div class="levels-grid">
-                        <div class="level-card c1">
-                            <div class="lnum">01</div>
-                            <h4>High School</h4>
-                            <p>Secondary education placements abroad.</p>
-                        </div>
-                        <div class="level-card c2">
-                            <div class="lnum">02</div>
-                            <h4>University</h4>
-                            <p>Undergraduate enrolment worldwide.</p>
-                        </div>
-                        <div class="level-card c3">
-                            <div class="lnum">03</div>
-                            <h4>Masters</h4>
-                            <p>Postgraduate and research programmes.</p>
-                        </div>
-                        <div class="level-card c4">
-                            <div class="lnum">04</div>
-                            <h4>Conferences</h4>
-                            <p>Short courses &amp; professional development.</p>
-                        </div>
+                        <h3 class="font-heading font-bold text-2xl text-neutral-dark mb-4">Strategic Investment</h3>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed mb-8">Facilitating seamless business entry and strategic investment across East Africa.</p>
+                        <a href="#investment" class="inline-flex items-center font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark group-hover:translate-x-1 transition-transform">
+                            Explore Pillar <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-
-    <!-- ═══════════════════════════════════
-         INVESTMENT
-    ═══════════════════════════════════ -->
-    <section id="investment" class="section" style="background:#fff">
-        <div class="max-7xl">
-            <div class="section-header">
-                <div>
-                    <div class="section-label amber">Pillar 03</div>
-                    <h2 class="section-title">Investment &amp; <span class="accent">Business</span></h2>
-                </div>
-                <p class="section-sub">Your gateway to establishing and growing businesses across East Africa.</p>
-            </div>
-
-            <!-- Hero band -->
-            <div class="inv-hero">
-                <div class="inv-tag">Investment Focus</div>
-                <h3>Facilitating Global Business Entry into East Africa</h3>
-                <p>Fidelity provides a seamless platform for investors looking to establish businesses in Kenya and across East Africa — handling everything from registration to full operational setup.</p>
-            </div>
-
-            <!-- Services -->
-            <div class="inv-services">
-                <div class="inv-card a">
-                    <div class="icon">
-                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2bace2" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                    </div>
-                    <h4>Company Registration</h4>
-                    <p>End-to-end legal and administrative support for business setup in Kenya.</p>
-                </div>
-                <div class="inv-card b">
-                    <div class="icon" style="background:rgba(248,149,33,.1)">
-                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#f89521" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    </div>
-                    <h4>Business Permits</h4>
-                    <p>Navigating licensing and regulatory approvals with ease and efficiency.</p>
-                </div>
-                <div class="inv-card c">
-                    <div class="icon">
-                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2bace2" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                    </div>
-                    <h4>Market Research</h4>
-                    <p>Actionable insights to inform your East African expansion strategy.</p>
-                </div>
-            </div>
-
-            <!-- Commitments -->
-            <div class="commit-grid">
-                <div class="commit-card">
-                    <div class="commit-icon" style="background:#0b1f28">
-                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    </div>
+        <!-- ── LABOUR PLACEMENT ── -->
+        <section id="labour" class="py-24 bg-white scroll-mt-20">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="grid lg:grid-cols-2 gap-20 items-start">
                     <div>
-                        <h4>Compliance &amp; Safety</h4>
-                        <p>All investments and setups fully comply with local laws and international standards.</p>
+                        <div class="mb-6 inline-flex items-center space-x-2">
+                            <span class="w-10 h-[2px] bg-brand-blue rounded-full"></span>
+                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-blue">Pillar 01</span>
+                        </div>
+                        <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark mb-8">Labour <span class="text-brand-blue">Placement</span></h2>
+                        <div class="space-y-6 font-body text-lg text-neutral-muted leading-relaxed">
+                            <p>Fidelity Labour has a strong and comprehensive model of recruitment, placing both skilled and unskilled candidates with employers in Gulf countries, Europe, and the West.</p>
+                            <p>This is part of our ambitious plan to create a linkage of job opportunities for those who wish to explore careers outside their home country. We believe in empowering young people and helping employers find the best candidates.</p>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark mb-6">Sectors We Cover</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">House Girls & Nannies</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Farm Helpers</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Trailer Drivers</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Chauffeurs</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Caregivers</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">English Teachers</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Cooks</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Mall Sales Reps</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Nurses</span>
+                                <span class="px-5 py-2.5 rounded-xl bg-neutral-light border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Security Officers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-neutral-light rounded-[40px] p-8 md:p-12 border border-neutral-border">
+                        <h4 class="font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark mb-10">Key Categories</h4>
+                        <div class="grid gap-6">
+                            <!-- Category Item -->
+                            <div class="group flex items-center space-x-6 p-6 bg-white rounded-3xl border border-neutral-border hover:border-brand-blue transition-all duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue shrink-0">
+                                    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-heading font-bold text-neutral-dark text-lg mb-1">Domestic Jobs</h5>
+                                    <p class="font-body text-neutral-muted text-sm">House girls, Nannies, Farm Helpers</p>
+                                </div>
+                            </div>
+                            <!-- Category Item -->
+                            <div class="group flex items-center space-x-6 p-6 bg-white rounded-3xl border border-neutral-border hover:border-brand-orange transition-all duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-brand-orange/10 flex items-center justify-center text-brand-orange shrink-0">
+                                    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-heading font-bold text-neutral-dark text-lg mb-1">Nurses & Caregivers</h5>
+                                    <p class="font-body text-neutral-muted text-sm">Qualified nurses and dedicated caregivers</p>
+                                </div>
+                            </div>
+                            <!-- Category Item -->
+                            <div class="group flex items-center space-x-6 p-6 bg-white rounded-3xl border border-neutral-border hover:border-brand-blue transition-all duration-300">
+                                <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue shrink-0">
+                                    <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-heading font-bold text-neutral-dark text-lg mb-1">Drivers</h5>
+                                    <p class="font-body text-neutral-muted text-sm">Trailer, Family Drivers & Chauffeurs</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="commit-card">
-                    <div class="commit-icon" style="background:#2bace2">
-                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+        </section>
+
+        <!-- ── EDUCATION OPPORTUNITIES ── -->
+        <section id="education" class="py-24 bg-neutral-light scroll-mt-20">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="order-2 lg:order-1 grid grid-cols-2 gap-6">
+                        <div class="bg-white rounded-[32px] p-8 border border-neutral-border shadow-soft">
+                            <span class="text-3xl font-heading font-bold text-brand-orange/20 mb-4 block">01</span>
+                            <h5 class="font-heading font-bold text-neutral-dark mb-2">University Placement</h5>
+                            <p class="font-body text-neutral-muted text-xs leading-relaxed">Undergraduate & postgraduate admissions worldwide.</p>
+                        </div>
+                        <div class="bg-white rounded-[32px] p-8 border border-neutral-border shadow-soft mt-8 md:mt-12">
+                            <span class="text-3xl font-heading font-bold text-brand-blue/20 mb-4 block">02</span>
+                            <h5 class="font-heading font-bold text-neutral-dark mb-2">Visa Guidance</h5>
+                            <p class="font-body text-neutral-muted text-xs leading-relaxed">Full support navigating student visa applications.</p>
+                        </div>
+                        <div class="bg-white rounded-[32px] p-8 border border-neutral-border shadow-soft -mt-8 md:-mt-12">
+                            <span class="text-3xl font-heading font-bold text-neutral-dark/10 mb-4 block">03</span>
+                            <h5 class="font-heading font-bold text-neutral-dark mb-2">Accommodation</h5>
+                            <p class="font-body text-neutral-muted text-xs leading-relaxed">Safe, suitable housing arranged before you arrive.</p>
+                        </div>
+                        <div class="bg-white rounded-[32px] p-8 border border-neutral-border shadow-soft">
+                            <span class="text-3xl font-heading font-bold text-brand-orange/20 mb-4 block">04</span>
+                            <h5 class="font-heading font-bold text-neutral-dark mb-2">Airport Pickup</h5>
+                            <p class="font-body text-neutral-muted text-xs leading-relaxed">Welcomed on arrival for a smooth transition.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4>Efficient Execution</h4>
-                        <p>Our processes ensure your business is up and running in the shortest time possible.</p>
+                    
+                    <div class="order-1 lg:order-2">
+                        <div class="mb-6 inline-flex items-center space-x-2">
+                            <span class="w-10 h-[2px] bg-brand-orange rounded-full"></span>
+                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">Pillar 02</span>
+                        </div>
+                        <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark mb-8">Education <span class="text-brand-blue">Opportunities</span></h2>
+                        <div class="space-y-6 font-body text-lg text-neutral-muted leading-relaxed">
+                            <p>We offer a comprehensive range of services to assist students in finding universities and schools abroad. Our dedicated team works closely with students to identify their specific needs and preferences.</p>
+                            <p>We utilise our extensive network of institutions to provide tailored options, guidance on the application process, help with accommodation booking, and visa guidance.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- ── INVESTMENT & BUSINESS ── -->
+        <section id="investment" class="py-24 bg-white scroll-mt-20">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="mb-16">
+                    <div class="mb-6 inline-flex items-center space-x-2">
+                        <span class="w-10 h-[2px] bg-neutral-dark rounded-full"></span>
+                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-neutral-dark">Pillar 03</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark mb-8">Investment & <span class="text-brand-blue">Business</span></h2>
+                </div>
 
-    <!-- ═══════════════════════════════════
-         CTA
-    ═══════════════════════════════════ -->
-    <section class="cta-section">
-        <div style="position:relative;z-index:2">
-            <div class="section-label" style="justify-content:center;margin-bottom:1.25rem">
-                <span style="display:flex;align-items:center;gap:.75rem;color:#f89521">
-                    <span style="height:1px;width:24px;background:#f89521;display:block"></span>
-                    Get Started
-                    <span style="height:1px;width:24px;background:#f89521;display:block"></span>
-                </span>
+                <!-- Featured Light Card (Updated from Dark) -->
+                <div class="relative bg-neutral-light rounded-[48px] p-10 md:p-20 overflow-hidden mb-12 border border-neutral-border">
+                    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-blue/5 blur-[120px] rounded-full"></div>
+                    <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span class="inline-block px-4 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-[10px] font-heading font-bold uppercase tracking-widest text-brand-orange mb-8">Investment Focus</span>
+                            <h3 class="font-heading font-bold text-3xl md:text-4xl text-neutral-dark mb-6 leading-tight">Facilitating Global Business Entry into East Africa</h3>
+                            <p class="font-body text-lg text-neutral-muted leading-relaxed">Fidelity provides a seamless platform for investors looking to establish businesses in Kenya and across East Africa — handling everything from registration to full operational setup.</p>
+                        </div>
+                        <div class="grid gap-6">
+                            <div class="flex items-start space-x-6 p-8 bg-white border border-neutral-border rounded-3xl shadow-soft transition-all hover:border-brand-blue">
+                                <div class="w-12 h-12 rounded-xl bg-brand-blue flex items-center justify-center text-white shrink-0 shadow-lg shadow-brand-blue/20">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                </div>
+                                <div>
+                                    <h5 class="font-heading font-bold text-neutral-dark text-lg mb-2">Compliance & Safety</h5>
+                                    <p class="font-body text-neutral-muted text-sm">All investments fully comply with local laws and international standards.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-6 p-8 bg-white border border-neutral-border rounded-3xl shadow-soft transition-all hover:border-brand-blue">
+                                <div class="w-12 h-12 rounded-xl bg-neutral-dark flex items-center justify-center text-white shrink-0 shadow-lg shadow-black/10">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <div>
+                                    <h5 class="font-heading font-bold text-neutral-dark text-lg mb-2">Efficient Execution</h5>
+                                    <p class="font-body text-neutral-muted text-sm">Our processes ensure your business is up and running in record time.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Cards Grid -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-neutral-light p-10 rounded-[40px] border border-neutral-border hover:border-brand-blue transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <h4 class="font-heading font-bold text-xl text-neutral-dark mb-4">Business Registration</h4>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed">End-to-end company formation and compliance in Kenya & East Africa.</p>
+                    </div>
+                    <div class="bg-neutral-light p-10 rounded-[40px] border border-neutral-border hover:border-brand-orange transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mb-8 group-hover:bg-brand-orange group-hover:text-white transition-all">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        </div>
+                        <h4 class="font-heading font-bold text-xl text-neutral-dark mb-4">Market Entry Strategy</h4>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed">Expert guidance on entering and scaling in regional East African markets.</p>
+                    </div>
+                    <div class="bg-neutral-light p-10 rounded-[40px] border border-neutral-border hover:border-brand-blue transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+                        </div>
+                        <h4 class="font-heading font-bold text-xl text-neutral-dark mb-4">Operational Setup</h4>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed">Full support getting your business operational from day one in the region.</p>
+                    </div>
+                </div>
             </div>
-            <h2 class="syne">Ready to take the<br>next step?</h2>
-            <p>Whether you're looking for work abroad, studying overseas, or investing in East Africa — Fidelity Connect is your trusted partner.</p>
-            <div class="cta-btns">
-                <a href="/contact" class="btn-primary">Contact Us →</a>
-                <a href="https://labour.fidelityltd.co.ke" target="_blank" rel="noopener" class="btn-ghost">Apply for a Job ↗</a>
-            </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Newsletter Section (Reusing Modernized Partial) -->
+        {{- partial "newsletter.html" . -}}
+
+    </main>
 
     {{- partial "footer.html" . -}}
-
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const pills = document.querySelectorAll('.pill');
-        const sections = ['labour','education','investment'].map(id => document.getElementById(id));
-
-        const setActive = () => {
-            let cur = '';
-            sections.forEach(s => { if (s && window.scrollY + 200 >= s.offsetTop) cur = s.id; });
-            pills.forEach(p => {
-                const target = p.getAttribute('href').slice(1);
-                p.classList.toggle('active', target === cur);
-            });
-        };
-
-        window.addEventListener('scroll', setActive, { passive: true });
-        setActive();
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                const t = document.querySelector(a.getAttribute('href'));
-                if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
-            });
-        });
-    });
-    </script>
 </body>
+
 </html>

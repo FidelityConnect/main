@@ -1,21 +1,31 @@
-<div class="py-10" style="background-color: #D3F6D3">
-    <div class="pdd">
-        <div class="benefits mb-10">
-            <div class="intro">
-                <h2>What We Offer</h2>
-                <p>Our suite of applications connect your business and your customers like never before.</p>
-            </div>
-            <div class="items">
-                {{ range .Site.Data.about.content.benefits }}
+<section class="py-24 bg-white relative overflow-hidden">
+    <!-- Background element -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl px-6 pointer-events-none">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-blue/5 blur-[80px] rounded-full"></div>
+    </div>
 
-                <div class="benefit">
-                    <img src="{{ .image }}" alt="">
-                    <h3>{{ .title }}</h3>
-                    <p>{{ .text }}</p>
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+        <!-- Header -->
+        <div class="text-center max-w-2xl mx-auto mb-20">
+            <h2 class="font-heading font-bold text-3xl md:text-4xl text-neutral-dark mb-6">Our Services & Solutions</h2>
+            <p class="font-body text-lg text-neutral-muted leading-relaxed">
+                We provide a comprehensive suite of professional services designed to facilitate growth, education, and global mobility.
+            </p>
+        </div>
+
+        <!-- Benefits Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {{ range .Site.Data.about.content.benefits }}
+            <div class="group bg-white p-8 rounded-[24px] border border-neutral-border hover:border-brand-blue hover:shadow-xl hover:shadow-brand-blue/5 transition-all duration-300">
+                <div class="w-14 h-14 bg-neutral-light rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-blue/10 transition-colors">
+                    <img src="{{ .image }}" alt="{{ .title }}" class="h-8 w-8 object-contain">
                 </div>
-                {{ end }}
-
+                <h3 class="font-heading font-bold text-xl text-neutral-dark mb-4">{{ .title }}</h3>
+                <p class="font-body text-neutral-muted text-sm leading-relaxed">
+                    {{ .text }}
+                </p>
             </div>
+            {{ end }}
         </div>
     </div>
-</div>
+</section>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{- partial "head.html" . -}}
+</head>
+
+<body class="bg-white">
+    {{- partial "header.html" . -}}
+    
+    <main>
+        <!-- ── HERO SECTION ── -->
+        <section class="relative overflow-hidden bg-neutral-light py-24 md:py-32">
+            <!-- Decorative Accents -->
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-orange/5 blur-3xl"></div>
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#111827 1px, transparent 1px); background-size: 64px 64px;"></div>
+            </div>
+
+            <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 text-center">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">Career Growth</span>
+                    <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                </div>
+                <h1 class="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-neutral-dark leading-tight tracking-tight">
+                    Find Your <span class="text-brand-blue">Next Role</span>
+                </h1>
+                <p class="mt-8 font-body text-lg md:text-xl text-neutral-muted max-w-2xl mx-auto leading-relaxed">
+                    Explore high-impact career opportunities locally within Kenya and internationally across our global partner network.
+                </p>
+                
+                <!-- Category Toggle -->
+                <div class="mt-12 flex flex-wrap justify-center gap-4">
+                    <a href="/jobs/local" class="px-8 py-3 rounded-2xl bg-white border border-neutral-border text-neutral-dark font-heading font-bold text-xs uppercase tracking-widest hover:border-brand-blue hover:text-brand-blue transition-all">Local Jobs</a>
+                    <a href="/jobs/international" class="px-8 py-3 rounded-2xl bg-white border border-neutral-border text-neutral-dark font-heading font-bold text-xs uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-all">International Jobs</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── JOB LISTINGS ── -->
+        <section class="py-24 bg-neutral-light">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                
+                <div class="flex items-end justify-between mb-16 border-b border-neutral-border pb-8">
+                    <div>
+                        <h2 class="font-heading font-bold text-3xl text-neutral-dark">{{ .Title }}</h2>
+                        <p class="font-body text-neutral-muted mt-2">Showing all available listings</p>
+                    </div>
+                </div>
+
+                <div class="grid gap-8">
+                    {{ range .Pages }}
+                    <div class="group relative bg-white rounded-[32px] p-8 md:p-10 border border-neutral-border hover:border-brand-blue transition-all duration-500 hover:shadow-2xl hover:shadow-brand-blue/10">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+                            <div class="flex-1">
+                                <div class="flex flex-wrap items-center gap-3 mb-4">
+                                    <span class="inline-block px-3 py-1 rounded-lg bg-brand-blue/10 text-brand-blue text-[10px] font-heading font-bold uppercase tracking-widest">{{ .Params.job_type }}</span>
+                                    <span class="inline-block px-3 py-1 rounded-lg bg-neutral-light text-neutral-muted text-[10px] font-heading font-bold uppercase tracking-widest">{{ .Params.remote_status }}</span>
+                                </div>
+                                <h3 class="font-heading font-bold text-2xl md:text-3xl text-neutral-dark mb-4 group-hover:text-brand-blue transition-colors">
+                                    <a href="{{ .Permalink }}" class="stretched-link">{{ .Title }}</a>
+                                </h3>
+                                <div class="flex flex-wrap items-center gap-6 text-neutral-muted font-body text-sm">
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                        <span>{{ .Params.client }}</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-brand-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <span>{{ .Params.salary_range }}</span>
+                                    </div>
+                                    {{ with .Params.deadline }}
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-neutral-dark/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                        <span>Deadline: {{ dateFormat "Jan 2, 2006" . }}</span>
+                                    </div>
+                                    {{ end }}
+                                </div>
+                            </div>
+                            
+                            <div class="shrink-0">
+                                <span class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-neutral-light text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all transform group-hover:translate-x-2">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <!-- Empty State -->
+                {{ if eq (len .Pages) 0 }}
+                <div class="text-center py-24 bg-neutral-light rounded-[40px] border border-neutral-border border-dashed">
+                    <svg class="w-20 h-20 text-neutral-dark/10 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <h3 class="font-heading font-bold text-2xl text-neutral-dark mb-4">No active listings</h3>
+                    <p class="font-body text-neutral-muted max-w-md mx-auto">We are currently updating our job board. Please check back shortly or follow us on social media for instant updates.</p>
+                </div>
+                {{ end }}
+            </div>
+        </section>
+
+        <!-- Newsletter Section (Reusing Modernized Partial) -->
+        {{- partial "newsletter.html" . -}}
+    </main>
+
+    {{- partial "footer.html" . -}}
+</body>
+
+</html>

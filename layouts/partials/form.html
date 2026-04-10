@@ -1,98 +1,102 @@
-<style>
-    .hideForm {
-        display: none;
-    }
+<!-- Contact Form Modal -->
+<div id="contactForm" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-4">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-neutral-dark/40 backdrop-blur-md transition-opacity duration-300" onclick="closeForm()"></div>
+    
+    <!-- Modal Card -->
+    <div class="relative z-[10001] w-full max-w-2xl bg-white rounded-[32px] shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0" id="contactModal">
+        <!-- Close Button -->
+        <button class="absolute top-6 right-6 p-2 rounded-full bg-neutral-light text-neutral-muted hover:text-brand-blue hover:bg-brand-blue/10 transition-all z-20" onclick="closeForm()" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
 
-    .showForm {
-        display: flex;
-    }
-
-    #contactForm {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 10000;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.724);
-    }
-
-    #contactForm form {
-        width: 700px;
-    }
-
-    @media screen and (max-width: 600px) {
-        #contactForm form {
-            width: 90vw;
-        }
-
-    }
-
-
-
-    .closeBtn {
-        position: absolute;
-        right: 100px;
-        top: 60px;
-        width: 30px;
-    }
-</style>
-<div id="contactForm" class="hideForm">
-    <div class="pdd relative">
-        <button class="bg-green w-full closeBtn" onclick="closeForm()">X</button>
-        <form onclick="(e)=>e.stopPropagation()" class="bg-white rounded-lg m-10 p-10">
-
-            <div class="grid md:grid-cols-2 md:gap-6">
-                <div class="relative z-0 w-full mb-6 group">
-                    <input type="text" name="fn" id="fn"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" " required />
-                    <label for="fn"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
-                        name</label>
-                </div>
-                <div class="relative z-0 w-full mb-6 group">
-                    <input type="text" name="ln" id="ln"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" " required />
-                    <label for="ln"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
-                        name</label>
-                </div>
+        <div class="px-8 py-10 md:p-12">
+            <!-- Header -->
+            <div class="mb-10">
+                <h2 class="font-heading font-bold text-3xl text-neutral-dark mb-4 tracking-tight">Get in <span class="text-brand-blue">Touch</span></h2>
+                <p class="font-body text-neutral-muted leading-relaxed">
+                    Leave us a message and our expert team will get back to you within 24 hours.
+                </p>
             </div>
 
-
-
-            <div class="grid md:grid-cols-2 md:gap-6">
-                <div class="relative z-0 w-full mb-6 group">
-                    <input type="email" name="email" id="email"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" " required />
-                    <label for="email"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
-                        address</label>
-                </div>
-                <div class="relative z-0 w-full mb-6 group">
-                    <input type="tel" name="phone" id="phone"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" " required />
-                    <label for="phone"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone
-                        number (+2547xxxxxx)</label>
+            <!-- Form -->
+            <form name="contact" method="POST" action="/.netlify/functions/mailer" class="space-y-6">
+                <!-- Row: Name -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="fn" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">First Name</label>
+                        <input type="text" name="fn" id="fn" required
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="ln" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Last Name</label>
+                        <input type="text" name="ln" id="ln" required
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
                 </div>
 
-            </div>
-            <div class="relative z-0 w-full mb-6 group">
-                <textarea name="message" id="message"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    required> </textarea>
-                <label for="message"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Message:</label>
-            </div>
+                <!-- Row: Contact -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="email" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Email Address</label>
+                        <input type="email" name="email" id="email" required
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="phone" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Phone Number</label>
+                        <input type="tel" name="phone" id="phone" required placeholder="+254..."
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                </div>
 
-            <button type="submit" class="green-btn">Submit</button>
-        </form>
+                <!-- Message -->
+                <div class="space-y-2">
+                    <label for="message" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">How can we help?</label>
+                    <textarea name="message" id="message" rows="4" required
+                        class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all resize-none"></textarea>
+                </div>
+
+                <!-- Submit -->
+                <div class="pt-4">
+                    <button type="submit"
+                        class="w-full rounded-[20px] bg-brand-blue px-10 py-5 font-heading font-bold text-white shadow-lg shadow-brand-blue/20 transition-all hover:scale-[1.01] hover:bg-opacity-90 active:scale-95">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+<script>
+    function openForm() {
+        const contactForm = document.getElementById('contactForm');
+        const contactModal = document.getElementById('contactModal');
+        contactForm.classList.remove('hidden');
+        contactForm.classList.add('flex');
+        
+        // Trigger animation
+        setTimeout(() => {
+            contactModal.classList.remove('scale-95', 'opacity-0');
+            contactModal.classList.add('scale-100', 'opacity-100');
+        }, 10);
+        
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeForm() {
+        const contactForm = document.getElementById('contactForm');
+        const contactModal = document.getElementById('contactModal');
+        
+        contactModal.classList.remove('scale-100', 'opacity-100');
+        contactModal.classList.add('scale-95', 'opacity-0');
+        
+        setTimeout(() => {
+            contactForm.classList.remove('flex');
+            contactForm.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+</script>
