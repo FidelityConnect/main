@@ -65,8 +65,9 @@ exports.handler = async function (event, context, callback) {
     params.forEach((v, k) => (fields[k] = v));
   }
 
-  var { form_type, name, email, phone, job_title, cover_letter, linkedin } = fields;
-  var resume = files["resume"] || null; // { filename, mimeType, content }
+  var { form_type, fn, ln, name, email, phone, job_title, cover_letter, linkedin, contact_name, company, role_needed, num_candidates, requirements } = fields;
+  name = name || (fn && ln ? fn + " " + ln : null) || contact_name;
+  var cv = files["cv"] || files["resume"] || null; // { filename, mimeType, content }
 
   if (!email) {
     return callback(null, { statusCode: 400, body: "Missing email address." });
@@ -94,8 +95,8 @@ exports.handler = async function (event, context, callback) {
         ${linkedin ? `<p><b>LinkedIn:</b> ${linkedin}</p>` : ""}
         <p><b>Cover Letter:</b><br>${cover_letter}</p>
       `,
-      attachments: resume
-        ? [{ filename: resume.filename, content: resume.content }]
+      attachments: cv
+        ? [{ filename: cv.filename, content: cv.content }]
         : [],
     };
     replyMail = {
@@ -129,8 +130,8 @@ exports.handler = async function (event, context, callback) {
         ${linkedin ? `<p><b>LinkedIn:</b> ${linkedin}</p>` : ""}
         <p><b>Cover Letter:</b><br>${cover_letter}</p>
       `,
-      attachments: resume
-        ? [{ filename: resume.filename, content: resume.content }]
+      attachments: cv
+        ? [{ filename: cv.filename, content: cv.content }]
         : [],
     };
     replyMail = {
@@ -143,6 +144,39 @@ exports.handler = async function (event, context, callback) {
         <p>Please note that a <b>placement fee applies</b> for all international positions. Our client services team will contact you with full details after reviewing your profile.</p>
         <br>
         <p>Kind regards,<br><b>Fidelity Connect Client Services</b><br>${clientUser}</p>
+      `,
+    };
+
+  } else if (form_type === "employer") {
+    var careersUser = process.env.CAREERS_USER;
+    var careersPass = process.env.CAREERS_PASS;
+    transporter = makeTransporter(careersUser, careersPass);
+
+    adminMail = {
+      from: `Fidelity Connect <${careersUser}>`,
+      to: careersUser, // "for employer will go same as local"
+      subject: `Employer Talent Request – ${company}`,
+      html: `
+        <h2>Employer Talent Request</h2>
+        <p><b>Company:</b> ${company}</p>
+        <p><b>Contact Person:</b> ${contact_name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Role Needed:</b> ${role_needed}</p>
+        <p><b>No. of Candidates:</b> ${num_candidates || 1}</p>
+        ${requirements ? `<p><b>Requirements:</b><br>${requirements}</p>` : ""}
+      `,
+    };
+    replyMail = {
+      from: `Fidelity Connect <${careersUser}>`,
+      to: email,
+      subject: `Talent Request Received – Fidelity Connect`,
+      html: `
+        <p>Dear ${contact_name},</p>
+        <p>Thank you for submitting a talent request for <b>${role_needed}</b> on behalf of <b>${company}</b>.</p>
+        <p>We have successfully received your request. Our recruitment team will review your requirements and get back to you within 48 hours to discuss candidate matches.</p>
+        <br>
+        <p>Kind regards,<br><b>Fidelity Connect Careers Team</b><br>${careersUser}</p>
       `,
     };
 
@@ -174,7 +208,7 @@ exports.handler = async function (event, context, callback) {
     return callback(null, { statusCode: 400, body: "Unknown form type." });
   }
 
-  console.log({ form_type, email, resume: resume ? resume.filename : "none" });
+  console.log({ form_type, email, cv: cv ? cv.filename : "none" });
 
   try {
     await Promise.all([

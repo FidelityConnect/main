@@ -23,6 +23,8 @@
 
             <!-- Form -->
             <form name="employer-request" method="POST" action="/.netlify/functions/mailer" class="space-y-6">
+                <!-- Hidden netlify mailer fields -->
+                <input type="hidden" name="form_type" value="employer">
                 <!-- Row: Company & Contact -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
