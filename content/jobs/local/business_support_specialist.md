@@ -8,6 +8,7 @@ overview: "Coordinate cargo aircraft operations and manage relationships for a r
 category: "Local"
 deadline: "2026-03-06"
 client: "Reputable Flight & Cargo Company (Kenya & UAE)"
+status: "past"
 ---
 
 **Client:** Reputable Flight & Cargo Company (Kenya & UAE)

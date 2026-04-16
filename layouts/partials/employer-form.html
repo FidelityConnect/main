@@ -1,0 +1,111 @@
+<!-- Employer Request Form Modal -->
+<div id="employerForm" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-4">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-neutral-dark/40 backdrop-blur-md transition-opacity duration-300" onclick="closeEmployerForm()"></div>
+
+    <!-- Modal Card -->
+    <div class="relative z-[10001] w-full max-w-2xl bg-white rounded-[32px] shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0" id="employerModal">
+        <!-- Close Button -->
+        <button class="absolute top-6 right-6 p-2 rounded-full bg-neutral-light text-neutral-muted hover:text-brand-blue hover:bg-brand-blue/10 transition-all z-20" onclick="closeEmployerForm()" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="px-8 py-10 md:p-12">
+            <!-- Header -->
+            <div class="mb-10">
+                <h2 class="font-heading font-bold text-3xl text-neutral-dark mb-4 tracking-tight">Request <span class="text-brand-blue">Talent</span></h2>
+                <p class="font-body text-neutral-muted leading-relaxed">
+                    Tell us what you're looking for and we'll match you with the right candidates within 48 hours.
+                </p>
+            </div>
+
+            <!-- Form -->
+            <form name="employer-request" method="POST" action="/.netlify/functions/mailer" class="space-y-6">
+                <!-- Row: Company & Contact -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="company" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Company Name</label>
+                        <input type="text" name="company" id="company" required
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="contact-name" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Contact Person</label>
+                        <input type="text" name="contact_name" id="contact-name" required
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                </div>
+
+                <!-- Row: Email & Phone -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="emp-email" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Email Address</label>
+                        <input type="email" name="email" id="emp-email" required
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="emp-phone" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Phone Number</label>
+                        <input type="tel" name="phone" id="emp-phone" required placeholder="+254..."
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                </div>
+
+                <!-- Row: Role & No. of Candidates -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="role-needed" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Role / Position Needed</label>
+                        <input type="text" name="role_needed" id="role-needed" required placeholder="e.g. House Manager"
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="num-candidates" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">No. of Candidates</label>
+                        <input type="number" name="num_candidates" id="num-candidates" min="1" placeholder="1"
+                            class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all">
+                    </div>
+                </div>
+
+                <!-- Requirements -->
+                <div class="space-y-2">
+                    <label for="requirements" class="block font-heading font-bold text-xs uppercase tracking-widest text-neutral-dark opacity-70">Additional Requirements</label>
+                    <textarea name="requirements" id="requirements" rows="3" placeholder="Skills, experience level, location preferences..."
+                        class="w-full rounded-2xl border border-neutral-border bg-neutral-light px-6 py-4 text-neutral-dark font-body placeholder-neutral-muted focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/5 transition-all resize-none"></textarea>
+                </div>
+
+                <!-- Submit -->
+                <div class="pt-2">
+                    <button type="submit"
+                        class="w-full rounded-[20px] bg-brand-blue px-10 py-5 font-heading font-bold text-white shadow-lg shadow-brand-blue/20 transition-all hover:scale-[1.01] hover:bg-opacity-90 active:scale-95">
+                        Submit Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openEmployerForm() {
+        const form = document.getElementById('employerForm');
+        const modal = document.getElementById('employerModal');
+        form.classList.remove('hidden');
+        form.classList.add('flex');
+        setTimeout(() => {
+            modal.classList.remove('scale-95', 'opacity-0');
+            modal.classList.add('scale-100', 'opacity-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeEmployerForm() {
+        const form = document.getElementById('employerForm');
+        const modal = document.getElementById('employerModal');
+        modal.classList.remove('scale-100', 'opacity-100');
+        modal.classList.add('scale-95', 'opacity-0');
+        setTimeout(() => {
+            form.classList.remove('flex');
+            form.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+</script>

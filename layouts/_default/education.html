@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{- partial "head.html" . -}}
+</head>
+<body class="bg-white">
+    {{- partial "header.html" . -}}
+    
+    <main>
+        <!-- HERO -->
+        <section class="relative overflow-hidden bg-neutral-light py-24 md:py-32 border-b border-neutral-border">
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-orange/5 blur-3xl"></div>
+                <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#111827 1px, transparent 1px); background-size: 64px 64px;"></div>
+            </div>
+            <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 text-center">
+
+                <h1 class="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-neutral-dark leading-tight tracking-tight">
+                    Education <span class="text-brand-blue">Opportunities</span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- CONTENT -->
+        <section class="py-24 bg-white border-b border-neutral-border">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="order-2 lg:order-1 grid grid-cols-2 gap-6">
+                        <div class="bg-white rounded-[32px] p-8 border border-neutral-border shadow-soft">
+                            <span class="text-3xl font-heading font-bold text-brand-orange/20 mb-4 block">01</span>
+                            <h5 class="font-heading font-bold text-neutral-dark mb-2">University Placement</h5>
+                            <p class="font-body text-neutral-muted text-xs leading-relaxed">Undergraduate & postgraduate admissions worldwide.</p>
+                        </div>
+                        <div class="bg-white rounded-[32px] p-8 border border-neutral-border shadow-soft mt-8 md:mt-12">
+                            <span class="text-3xl font-heading font-bold text-brand-blue/20 mb-4 block">02</span>
+                            <h5 class="font-heading font-bold text-neutral-dark mb-2">Visa Guidance</h5>
+                            <p class="font-body text-neutral-muted text-xs leading-relaxed">Full support navigating student visa applications.</p>
+                        </div>
+                        <div class="bg-white rounded-[32px] p-8 border border-neutral-border shadow-soft -mt-8 md:-mt-12">
+                            <span class="text-3xl font-heading font-bold text-neutral-dark/10 mb-4 block">03</span>
+                            <h5 class="font-heading font-bold text-neutral-dark mb-2">Accommodation</h5>
+                            <p class="font-body text-neutral-muted text-xs leading-relaxed">Safe, suitable housing arranged before you arrive.</p>
+                        </div>
+                        <div class="bg-white rounded-[32px] p-8 border border-neutral-border shadow-soft">
+                            <span class="text-3xl font-heading font-bold text-brand-orange/20 mb-4 block">04</span>
+                            <h5 class="font-heading font-bold text-neutral-dark mb-2">Airport Pickup</h5>
+                            <p class="font-body text-neutral-muted text-xs leading-relaxed">Welcomed on arrival for a smooth transition.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2">
+                        <div class="space-y-6 font-body text-lg text-neutral-muted leading-relaxed">
+                            <p>We offer a comprehensive range of services to assist students in finding universities and schools abroad. Our dedicated team works closely with students to identify their specific needs and preferences.</p>
+                            <p>We utilise our extensive network of institutions to provide tailored options, guidance on the application process, help with accommodation booking, and visa guidance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {{- partial "newsletter.html" . -}}
+    </main>
+
+    {{- partial "footer.html" . -}}
+</body>
+</html>

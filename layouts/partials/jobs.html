@@ -1,0 +1,97 @@
+<section id="jobs" class="relative overflow-hidden bg-neutral-light py-24 md:py-32 border-t border-neutral-border">
+    <!-- Background Accents -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-orange/5 blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+        <!-- Section Header -->
+        <div class="text-center mb-16 md:mb-24">
+            <div class="inline-flex items-center space-x-2 mb-6">
+                <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">Job Opportunities</span>
+                <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+            </div>
+            <h2 class="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-neutral-dark leading-tight tracking-tight mb-6">
+                Latest Job <span class="text-brand-blue">Openings</span>
+            </h2>
+            <p class="font-body text-lg text-neutral-muted max-w-2xl mx-auto leading-relaxed">
+                Discover your next big career move with our curated selection of top opportunities locally and internationally.
+            </p>
+        </div>
+
+        <!-- Jobs List -->
+        <div class="space-y-24">
+
+            <!-- International Jobs Section -->
+            <div class="relative">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-neutral-border">
+                    <div>
+                        <h3 class="font-heading font-bold text-3xl text-neutral-dark flex items-center gap-4">
+                            <span class="w-2 h-10 bg-brand-orange rounded-full"></span>
+                            International Opportunities
+                        </h3>
+                    </div>
+                    <a href="/jobs/international" class="hidden md:inline-flex items-center text-brand-orange font-heading font-bold hover:text-neutral-dark transition-colors group mt-6 md:mt-0">
+                        View All International Jobs
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {{ $intlJobs := where (where .Site.RegularPages "Section" "jobs") "Params.category" "International" }}
+                    {{ range first 3 (sort $intlJobs "Date" "desc") }}
+                        {{ partial "job-card.html" . }}
+                    {{ else }}
+                    <div class="col-span-full py-16 bg-white rounded-3xl text-center border border-dashed border-neutral-border">
+                        <p class="font-body text-neutral-muted text-lg">No international positions currently available. Check back soon!</p>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <div class="mt-10 md:hidden text-center">
+                    <a href="/jobs/international" class="inline-flex items-center px-8 py-4 rounded-2xl bg-white border border-neutral-border text-neutral-dark font-heading font-bold text-xs uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-all">
+                        View All International Jobs 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Local Jobs Section -->
+            <div class="relative">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-neutral-border">
+                    <div>
+                        <h3 class="font-heading font-bold text-3xl text-neutral-dark flex items-center gap-4">
+                            <span class="w-2 h-10 bg-brand-blue rounded-full"></span>
+                            Local Opportunities
+                        </h3>
+                    </div>
+                    <a href="/jobs/local" class="hidden md:inline-flex items-center text-brand-blue font-heading font-bold hover:text-neutral-dark transition-colors group mt-6 md:mt-0">
+                        View All Local Jobs
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {{ $localJobs := where (where .Site.RegularPages "Section" "jobs") "Params.category" "Local" }}
+                    {{ range first 3 (sort $localJobs "Date" "desc") }}
+                        {{ partial "job-card.html" . }}
+                    {{ else }}
+                    <div class="col-span-full py-16 bg-white rounded-3xl text-center border border-dashed border-neutral-border">
+                        <p class="font-body text-neutral-muted text-lg">No local positions currently available. Check back soon!</p>
+                    </div>
+                    {{ end }}
+                </div>
+                
+                <div class="mt-10 md:hidden text-center">
+                    <a href="/jobs/local" class="inline-flex items-center px-8 py-4 rounded-2xl bg-white border border-neutral-border text-neutral-dark font-heading font-bold text-xs uppercase tracking-widest hover:border-brand-blue hover:text-brand-blue transition-all">
+                        View All Local Jobs 
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

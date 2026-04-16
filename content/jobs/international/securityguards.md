@@ -6,6 +6,7 @@ remote_status: "On-site"
 salary_range: "AED 1,800"
 overview: "Opportunity for Security Guards in Dubai."
 category: "International"
+status: "past"
 featured: false
 ---
 

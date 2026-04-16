@@ -6,13 +6,14 @@ remote_status: "On-site"
 salary_range: "Competitive"
 overview: "Front office and accounts role at a Reputable Flight & Cargo Company."
 category: "Local"
-deadline: "2026-03-06"
+deadline: "2026-03-28"
 client: "Reputable Flight & Cargo Company"
+status: "past"
 ---
 
 **Client:** Reputable Flight & Cargo Company
 
-**Application Deadline:** 06/03/2026
+**Application Deadline:** 28/03/2026
 
 ## Job Description
 

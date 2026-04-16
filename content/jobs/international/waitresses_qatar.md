@@ -6,6 +6,7 @@ remote_status: "On-site"
 salary_range: "QAR 3,200"
 overview: "Waitresses needed for roles in Qatar."
 category: "International"
+status: "past"
 featured: false
 ---
 

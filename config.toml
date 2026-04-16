@@ -1,6 +1,6 @@
 baseURL = '/'
 languageCode = 'en-us'
-title = 'FIDELITY'
+title = 'FIDELITY- LABOUR | EDUCATION | INVESTMENT'
 [related]
   threshold = 1
   toLower = true

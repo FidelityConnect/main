@@ -1,21 +1,18 @@
 content:
   whatsapp: "https://wa.me/254110698037"
   clients:
-    - name: "FATUMA"
-      text: "Fatuma shares her journey of working with Fidelity Connect to travel to Saudi Arabia, highlighting the valuable pre-departure training and support she received."
+    - name: "Triza"
       loc:  "Nairobi, Kenya"
-      footer: "Fatuma, Candidate"
-      video: "https://youtu.be/xvA_xxPhveM?si=rPtNlbWCPUygvtP7"
-    - name: "FATUMA"
-      text: "Fatuma shares her journey of working with Fidelity Connect to travel to Saudi Arabia, highlighting the valuable pre-departure training and support she received."
+      footer: "Saudi Arabia"
+      video: "https://youtu.be/yqVRJe524pk?si=JFq-sFWSod-NlZJ9"
+    - name: "Sharifa"
       loc:  "Nairobi, Kenya"
-      footer: "Fatuma, Candidate"
-      video: "https://youtu.be/xvA_xxPhveM?si=rPtNlbWCPUygvtP7"
+      footer: "Saudi Arabia"
+      video: "https://youtu.be/qdHl307uoFA?si=FJSA4IXj8BFHuq4k"
     - name: "FATUMA"
-      text: "Fatuma shares her journey of working with Fidelity Connect to travel to Saudi Arabia, highlighting the valuable pre-departure training and support she received."
       loc:  "Nairobi, Kenya"
-      footer: "Fatuma, Candidate"
-      video: "https://youtu.be/xvA_xxPhveM?si=rPtNlbWCPUygvtP7"
+      footer: "Saudi Arabia"
+      video: "https://youtu.be/xvA_xxPhveM?si=rPtNlbWCPUygvtP7" 
   contacts:
     - icon: |
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

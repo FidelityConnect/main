@@ -6,6 +6,7 @@ remote_status: "On-site"
 salary_range: "AED 1,600"
 overview: "Certified Scaffolders needed in the UAE."
 category: "International"
+status: "past"
 featured: false
 ---
 

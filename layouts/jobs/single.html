@@ -90,17 +90,22 @@
                                 </div>
 
                                 <div class="mt-12 pt-10 border-t border-neutral-border">
-                                    <a href="/thank-you/" class="w-full flex items-center justify-center bg-brand-blue text-white font-heading font-bold text-sm uppercase tracking-widest px-8 py-5 rounded-2xl shadow-xl shadow-brand-blue/20 hover:scale-[1.02] transition-all">Apply for this Role</a>
-                                    <p class="text-[10px] text-center text-neutral-muted font-body mt-4 leading-relaxed">By clicking, you will be redirected to our placement form or partner portal.</p>
+                                    {{ if eq .Params.status "past" }}
+                                    <div class="w-full flex flex-col items-center justify-center gap-3 bg-red-50 border border-red-100 rounded-2xl px-8 py-6">
+                                        <div class="flex items-center gap-2 text-red-500">
+                                            <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                            <span class="font-heading font-bold text-sm uppercase tracking-widest">Position Closed</span>
+                                        </div>
+                                        <p class="text-[11px] text-center text-neutral-muted font-body leading-relaxed">Applications for this role are no longer being accepted. Check our other listings for current opportunities.</p>
+                                    </div>
+                                    {{ else }}
+                                    <button onclick="openForm()" class="w-full flex items-center justify-center bg-brand-blue text-white font-heading font-bold text-sm uppercase tracking-widest px-8 py-5 rounded-2xl shadow-xl shadow-brand-blue/20 hover:scale-[1.02] active:scale-95 transition-all">Apply for this Role</button>
+                                    <p class="text-[10px] text-center text-neutral-muted font-body mt-4 leading-relaxed">Fill in your details and our team will get back to you within 24 hours.</p>
+                                    {{ end }}
                                 </div>
                             </div>
 
-                            <!-- Support Card -->
-                            <div class="bg-neutral-light rounded-[32px] p-8 border border-neutral-border">
-                                <h4 class="font-heading font-bold text-neutral-dark mb-4">Need Assistance?</h4>
-                                <p class="font-body text-sm text-neutral-muted leading-relaxed mb-6">Our recruitment team is available to help you with the application process.</p>
-                                <a href="tel:+254746690671" class="font-heading font-bold text-xs text-brand-blue uppercase tracking-widest flex items-center hover:translate-x-1 transition-transform">Speak to a Consultant <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -108,6 +113,7 @@
         </article>
     </main>
 
+    {{- partial "form.html" . -}}
     {{- partial "footer.html" . -}}
 </body>
 

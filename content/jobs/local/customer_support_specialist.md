@@ -8,6 +8,7 @@ overview: "Customer support role managing cargo bookings, shipments, and consoli
 category: "Local"
 deadline: "2026-03-06"
 client: "Reputable Flight & Cargo Company"
+status: "past"
 ---
 
 **Client:** Reputable Flight & Cargo Company

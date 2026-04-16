@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{- partial "head.html" . -}}
+</head>
+<body class="bg-white">
+    {{- partial "header.html" . -}}
+
+    <main>
+        <!-- HERO -->
+        <section class="relative overflow-hidden bg-neutral-light py-24 md:py-32 border-b border-neutral-border">
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-brand-orange/5 blur-3xl"></div>
+                <div class="absolute inset-0 opacity-[0.05]" style="background-image: radial-gradient(#111827 1px, transparent 1px); background-size: 64px 64px;"></div>
+            </div>
+            <div class="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 text-center">
+                <div class="inline-flex items-center space-x-2 mb-6">
+                    <span class="w-8 h-[2px] bg-brand-blue rounded-full"></span>
+                    <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-blue">For Employers</span>
+                    <span class="w-8 h-[2px] bg-brand-blue rounded-full"></span>
+                </div>
+                <h1 class="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-neutral-dark leading-tight tracking-tight mb-8">
+                    Find Your Next <span class="text-brand-blue">Top Talent</span>
+                </h1>
+                <p class="font-body text-lg md:text-xl text-neutral-muted max-w-2xl mx-auto leading-relaxed mb-12">
+                    We connect businesses with skilled, vetted candidates across East Africa. Tell us what you need — we'll handle the rest.
+                </p>
+                <button onclick="openEmployerForm()" class="inline-flex items-center gap-3 bg-brand-blue text-white font-heading font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-[20px] shadow-xl shadow-brand-blue/20 hover:scale-[1.02] active:scale-95 transition-all">
+                    Request Talent
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- WHY PARTNER WITH US -->
+        <section class="py-24 bg-white border-b border-neutral-border">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center space-x-2 mb-6">
+                        <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">Why Choose Us</span>
+                        <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                    </div>
+                    <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark tracking-tight">
+                        Why Partner with <span class="text-brand-blue">Fidelity</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="group bg-neutral-light p-10 rounded-[40px] border border-neutral-border hover:border-brand-blue transition-all duration-300 hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-neutral-dark mb-4">Pre-Vetted Candidates</h3>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed">Every candidate is thoroughly screened, background-checked, and matched to your specific requirements before you meet them.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="group bg-neutral-light p-10 rounded-[40px] border border-neutral-border hover:border-brand-orange transition-all duration-300 hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mb-8 group-hover:bg-brand-orange group-hover:text-white transition-all">
+                            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-neutral-dark mb-4">Fast Turnaround</h3>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed">We respond within 48 hours with a curated shortlist of candidates — no lengthy agency delays or bureaucratic back-and-forth.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="group bg-neutral-light p-10 rounded-[40px] border border-neutral-border hover:border-brand-blue transition-all duration-300 hover:shadow-xl">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue mb-8 group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="font-heading font-bold text-xl text-neutral-dark mb-4">Local & International</h3>
+                        <p class="font-body text-neutral-muted text-sm leading-relaxed">Whether you need staff in Nairobi or workers for the Gulf, Europe, or beyond — our network spans across borders.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTORS WE SERVE -->
+        <section class="py-24 bg-neutral-light border-b border-neutral-border">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 mb-6">
+                            <span class="w-8 h-[2px] bg-brand-blue rounded-full"></span>
+                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-blue">Our Reach</span>
+                        </div>
+                        <h2 class="font-heading font-bold text-3xl md:text-4xl text-neutral-dark tracking-tight mb-6">Sectors We <span class="text-brand-blue">Serve</span></h2>
+                        <p class="font-body text-lg text-neutral-muted leading-relaxed mb-10">We place candidates across a wide range of industries, helping employers find the right fit — from domestic staff to skilled professionals.</p>
+                        <button onclick="openEmployerForm()" class="inline-flex items-center gap-3 bg-brand-blue text-white font-heading font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-[16px] shadow-lg shadow-brand-blue/20 hover:scale-[1.02] active:scale-95 transition-all">
+                            Get Started
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Domestic Staff</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Hospitality</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Healthcare & Nursing</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Drivers & Logistics</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Security</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Education & Teaching</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Agribusiness</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Retail & Sales</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Construction</span>
+                        <span class="px-5 py-2.5 rounded-xl bg-white border border-neutral-border text-sm font-medium text-neutral-dark hover:border-brand-blue hover:text-brand-blue transition-all cursor-default">Caregiving</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="py-24 bg-white border-b border-neutral-border">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+                <div class="text-center mb-16">
+                    <div class="inline-flex items-center space-x-2 mb-6">
+                        <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                        <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">The Process</span>
+                        <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+                    </div>
+                    <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark tracking-tight">
+                        How It <span class="text-brand-blue">Works</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative text-center group">
+                        <div class="w-16 h-16 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue mx-auto mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <span class="font-heading font-bold text-xl">01</span>
+                        </div>
+                        <h4 class="font-heading font-bold text-neutral-dark mb-3">Submit Request</h4>
+                        <p class="font-body text-sm text-neutral-muted leading-relaxed">Fill out our short employer form with your role and requirements.</p>
+                        <div class="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-[2px] bg-neutral-border"></div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative text-center group">
+                        <div class="w-16 h-16 rounded-2xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mx-auto mb-6 group-hover:bg-brand-orange group-hover:text-white transition-all">
+                            <span class="font-heading font-bold text-xl">02</span>
+                        </div>
+                        <h4 class="font-heading font-bold text-neutral-dark mb-3">We Search</h4>
+                        <p class="font-body text-sm text-neutral-muted leading-relaxed">Our team searches and vets candidates from our talent pool within 48 hours.</p>
+                        <div class="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-[2px] bg-neutral-border"></div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative text-center group">
+                        <div class="w-16 h-16 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue mx-auto mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <span class="font-heading font-bold text-xl">03</span>
+                        </div>
+                        <h4 class="font-heading font-bold text-neutral-dark mb-3">Review Shortlist</h4>
+                        <p class="font-body text-sm text-neutral-muted leading-relaxed">Receive a curated shortlist of pre-screened candidates to review and interview.</p>
+                        <div class="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-[2px] bg-neutral-border"></div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="text-center group">
+                        <div class="w-16 h-16 rounded-2xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mx-auto mb-6 group-hover:bg-brand-orange group-hover:text-white transition-all">
+                            <span class="font-heading font-bold text-xl">04</span>
+                        </div>
+                        <h4 class="font-heading font-bold text-neutral-dark mb-3">Hire with Confidence</h4>
+                        <p class="font-body text-sm text-neutral-muted leading-relaxed">Select your hire and we support the onboarding and placement process end-to-end.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA BANNER -->
+        <section class="py-20 bg-brand-blue">
+            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 text-center">
+                <h2 class="font-heading font-bold text-3xl md:text-5xl text-white tracking-tight mb-6">Ready to find your next hire?</h2>
+                <p class="font-body text-lg text-white/70 max-w-xl mx-auto leading-relaxed mb-10">Submit your requirements today and we'll have a shortlist ready for you within 48 hours.</p>
+                <button onclick="openEmployerForm()" class="inline-flex items-center gap-3 bg-white text-brand-blue font-heading font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-[20px] shadow-xl hover:scale-[1.02] active:scale-95 transition-all">
+                    Request Talent Now
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </button>
+            </div>
+        </section>
+
+        {{- partial "newsletter.html" . -}}
+        {{- partial "employer-form.html" . -}}
+    </main>
+
+    {{- partial "footer.html" . -}}
+</body>
+</html>

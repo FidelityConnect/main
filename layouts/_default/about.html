@@ -27,68 +27,12 @@
                     About <span class="text-brand-blue">Fidelity</span> Connect
                 </h1>
                 <p class="mt-8 font-body text-lg md:text-xl text-neutral-muted max-w-2xl mx-auto leading-relaxed">
-                    A premier recruitment and professional services firm dedicated to building global pathways through excellence and integrity.
+                    A premier recruitment and professional services company dedicated to building global pathways through excellence and integrity.
                 </p>
             </div>
         </section>
 
-        <!-- ── INTRO SECTION ── -->
-        <section class="py-24 bg-white">
-            <div class="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <div class="mb-5 inline-flex items-center space-x-2">
-                            <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
-                            <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">Who We Are</span>
-                        </div>
-                        <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark mb-8 tracking-tight leading-tight">
-                            We Are <span class="text-brand-blue">Professionals</span> Committed to Your Success
-                        </h2>
-                        <div class="space-y-6 font-body text-lg text-neutral-muted leading-relaxed">
-                            <p>
-                                We specialize in connecting talent with global opportunities, identifying the perfect synergy between skilled professionals and world-class employers.
-                            </p>
-                            <p>
-                                Our team of experienced consultants provides tailor-made solutions across labour recruitment, academic placements, and strategic investment guidance.
-                            </p>
-                        </div>
-                        
-                        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div class="bg-neutral-light p-8 rounded-[24px] border border-neutral-border group hover:border-brand-blue transition-all">
-                                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-all text-brand-blue">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                    </svg>
-                                </div>
-                                <h3 class="font-heading font-bold text-neutral-dark mb-2">Tailored Options</h3>
-                                <p class="text-sm text-neutral-muted leading-relaxed">Personalized strategies that align perfectly with your unique global ambitions.</p>
-                            </div>
-                            <div class="bg-neutral-light p-8 rounded-[24px] border border-neutral-border group hover:border-brand-orange transition-all">
-                                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-brand-orange group-hover:text-white transition-all text-brand-orange">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                </div>
-                                <h3 class="font-heading font-bold text-neutral-dark mb-2">Global Network</h3>
-                                <p class="text-sm text-neutral-muted leading-relaxed">Leveraging extensive international partnerships to provide unmatched access.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-brand-blue/5 rounded-[40px] blur-2xl"></div>
-                        <div class="relative rounded-[32px] overflow-hidden shadow-2xl border-8 border-white">
-                            <img src="/images/about-hero.jpg" alt="About Fidelity" class="w-full aspect-square object-cover">
-                            <!-- Floating Accreditation Badge -->
-                            <div class="absolute bottom-8 right-8 bg-white/95 backdrop-blur-sm p-6 rounded-[32px] shadow-2xl border border-neutral-border flex flex-col items-center">
-                                <span class="text-[9px] font-heading font-bold uppercase tracking-[0.2em] text-neutral-muted mb-3">Accredited By</span>
-                                <img src="/images/NEAIMSLOGO.png" alt="National Employment Authority Logo" class="h-20 w-auto object-contain">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        {{- partial "about.html" . -}}
 
         <!-- ── VISION & MISSION ── -->
         <section class="py-24 bg-neutral-dark relative overflow-hidden">
@@ -145,10 +89,10 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {{ $values := slice 
-                        (dict "name" "Empowerment" "icon" "M13 10V3L4 14h7v7l9-11h-7z" "color" "brand-blue" "desc" "Providing the tools, guidance, and opportunities for meaningful professional growth.")
-                        (dict "name" "Integrity" "icon" "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" "color" "brand-orange" "desc" "Unwavering commitment to honesty and ethical standards in all global operations.")
-                        (dict "name" "Excellence" "icon" "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" "color" "neutral-dark" "desc" "Maintaining the highest international standards in recruitment and placement.")
-                        (dict "name" "Compassion" "icon" "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" "color" "brand-blue" "desc" "Approaching every individual's journey with genuine care and personalized dedication.")
+                        (dict "name" "Love" "icon" "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" "color" "brand-blue" "desc" "We genuinely care about people's success, and it shows in how we support, serve, and celebrate their journeys.")
+                        (dict "name" "Integrity" "icon" "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" "color" "brand-orange" "desc" "We uphold honesty, transparency, and trust in every interaction—with clients, partners, and each other.")
+                        (dict "name" "Empowerment" "icon" "M13 10V3L4 14h7v7l9-11h-7z" "color" "neutral-dark" "desc" "We equip individuals with tools, skills, and guidance to take control of their futures and thrive on the global stage.")
+                        (dict "name" "Professionalism" "icon" "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" "color" "brand-blue" "desc" "Our services are delivered with excellence, efficiency, and a commitment to high standards in everything we do.")
                     }}
                     {{ range $values }}
                     <div class="group bg-white p-10 rounded-[32px] border border-neutral-border hover:border-{{ .color }} hover:shadow-2xl transition-all duration-500 text-center">

@@ -1,0 +1,63 @@
+<section id="process" class="relative overflow-hidden bg-neutral-light py-24 md:py-32">
+  <!-- Minimal subtle background -->
+  <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 h-96 w-96 rounded-full bg-brand-blue/5 blur-[100px]"></div>
+      <div class="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-brand-orange/5 blur-[100px]"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-5xl px-6 md:px-12">
+    <!-- Header -->
+    <div class="mb-16 md:mb-20 flex flex-col items-center text-center">
+        <div class="mb-5 inline-flex items-center space-x-2">
+            <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+            <span class="text-xs font-heading font-bold uppercase tracking-widest text-brand-orange">The Process</span>
+            <span class="w-8 h-[2px] bg-brand-orange rounded-full"></span>
+        </div>
+        <h2 class="font-heading font-bold text-3xl md:text-5xl text-neutral-dark mb-4 tracking-tight leading-[1.1]">
+            How It <span class="text-brand-blue">Works</span>
+        </h2>
+        <p class="font-body text-lg text-neutral-muted max-w-2xl mx-auto leading-relaxed">
+            Your journey to landing a job abroad in 7 simple steps
+        </p>
+    </div>
+
+    <!-- Minimal Timeline -->
+    <div class="relative py-4">
+        <!-- Vertical Line -->
+        <div class="absolute inset-y-0 left-[39px] md:left-1/2 w-[2px] bg-neutral-border md:-ml-[1px]"></div>
+        
+        <div class="space-y-8 md:space-y-12">
+            {{ range $index, $step := .Site.Data.recruiting.steps }}
+            <!-- Step Row -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group">
+                
+                <!-- Center Dot/Marker -->
+                <div class="absolute left-[20px] md:left-1/2 w-10 h-10 border-4 border-neutral-light bg-white rounded-full flex items-center justify-center text-brand-blue font-heading font-bold shadow-sm z-10 md:-ml-5 group-hover:border-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all duration-300">
+                    {{ add $index 1 }}
+                </div>
+
+                <!-- Card Container - Odd vs Even Desktop Alignment -->
+                <div class="w-full md:w-[calc(50%-3rem)] pl-[80px] md:pl-0 {{ if eq (mod $index 2) 0 }}md:mr-auto{{ else }}md:ml-auto{{ end }}">
+                    <div class="bg-white p-6 md:p-7 rounded-[28px] border border-neutral-border hover:border-brand-blue hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-start space-x-4 md:space-x-5">
+                            <div class="w-14 h-14 bg-brand-blue/10 rounded-2xl flex items-center justify-center flex-shrink-0 text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-colors duration-300">
+                                <div class="w-7 h-7 flex items-center justify-center">
+                                    {{ $step.icon | safeHTML }}
+                                </div>
+                            </div>
+                            <div class="pt-2">
+                                <h3 class="font-heading font-bold text-lg text-neutral-dark mb-2 leading-tight">{{ $step.title }}</h3>
+                                <p class="font-body text-sm text-neutral-muted leading-relaxed">
+                                    {{ $step.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+
+  </div>
+</section>
