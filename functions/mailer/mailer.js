@@ -59,9 +59,11 @@ exports.handler = async function (event, context, callback) {
   if (contentType.includes("multipart/form-data")) {
     ({ fields, files } = await parseMultipart(event));
   } else if (contentType.includes("application/json")) {
-    fields = JSON.parse(event.body);
+    var rawBodyStr = event.isBase64Encoded ? Buffer.from(event.body, "base64").toString("utf-8") : event.body;
+    fields = JSON.parse(rawBodyStr);
   } else {
-    var params = new URLSearchParams(event.body);
+    var rawBodyStr = event.isBase64Encoded ? Buffer.from(event.body, "base64").toString("utf-8") : event.body;
+    var params = new URLSearchParams(rawBodyStr);
     params.forEach((v, k) => (fields[k] = v));
   }
 
@@ -181,8 +183,11 @@ exports.handler = async function (event, context, callback) {
     };
 
   } else if (form_type === "newsletter") {
-    var itUser = process.env.IT_USER;
-    var itPass = process.env.IT_PASS;
+    var itUser = process.env.IT_USER || process.env.CAREERS_USER;
+    var itPass = process.env.IT_PASS || process.env.CAREERS_PASS;
+    if (!itUser) {
+        return callback(null, { statusCode: 500, body: "There was an error sending your submission. Missing IT_USER or CAREERS_USER config." });
+    }
     transporter = makeTransporter(itUser, itPass);
 
     adminMail = {
@@ -225,7 +230,7 @@ exports.handler = async function (event, context, callback) {
     console.log("Mailer error:", error);
     callback(null, {
       statusCode: 500,
-      body: "There was an error sending your submission. Please try again.",
+      body: "There was an error sending your submission. Please try again. (" + error.message + ")",
     });
   }
 };
