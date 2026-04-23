@@ -1,12 +1,12 @@
 ---
-title: "Cyber Café Sales Attendants"
+title: "Cyber Café Attendants"
 draft: false
 job_type: "Full-time"
 remote_status: "On-site"
 salary_range: "KES 15,000 Gross"
-overview: "We are looking for a reliable and tech-savvy Cyber Café Sales Attendant to deliver excellent customer service and digital solutions across our branches."
+overview: "We are looking for a reliable and tech-savvy Cyber Café Attendant to deliver excellent customer service and digital solutions across our branches."
 category: "Local"
-deadline: "2026-05-05"
+deadline: "2026-04-28"
 client: "Cyber Café Branches"
 status: "open"
 weight: 1
@@ -19,7 +19,7 @@ weight: 1
 
 ## Job Summary
 
-We are looking for a reliable and tech-savvy Cyber Café Sales Attendant to join our team at the Eastleigh and Gitanga Road branches. The ideal candidate will be responsible for delivering excellent customer service while handling a wide range of services including DHL logistics, photocopying, scanning, eCitizen services, and other digital solutions. You will also be expected to maintain accurate weekly reports using Excel and ensure smooth day-to-day operations.
+We are looking for a reliable and tech-savvy Cyber Café Attendant to join our team at the Eastleigh and Gitanga Road branches. The ideal candidate will be responsible for delivering excellent customer service while handling a wide range of services including DHL logistics, photocopying, scanning, eCitizen services, and other digital solutions. You will also be expected to maintain accurate weekly reports using Excel and ensure smooth day-to-day operations.
 
 ## Key Responsibilities
 
@@ -48,3 +48,4 @@ We are looking for a reliable and tech-savvy Cyber Café Sales Attendant to join
 - Strong customer service skills with a professional demeanor
 - Must be able to work under pressure and multitask effectively
 - Experience in handling cash and mobile money transactions
+- **N/B: Ladies are encouraged to apply**
