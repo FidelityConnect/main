@@ -1,10 +1,10 @@
 <!-- Contact Form Modal -->
-<div id="contactForm" class="hidden fixed inset-0 z-[10000] flex items-center justify-center p-4">
+<div id="contactForm" class="hidden fixed inset-0 z-[10000] overflow-y-auto flex justify-center p-4 py-10 md:py-20">
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-neutral-dark/40 backdrop-blur-md transition-opacity duration-300" onclick="closeForm()"></div>
+    <div class="fixed inset-0 bg-neutral-dark/40 backdrop-blur-md transition-opacity duration-300" onclick="closeForm()"></div>
     
     <!-- Modal Card -->
-    <div class="relative z-[10001] w-full max-w-2xl bg-white rounded-[32px] shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0" id="contactModal">
+    <div class="relative z-[10001] w-full max-w-2xl bg-white rounded-[32px] shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0 my-auto" id="contactModal">
         <!-- Close Button -->
         <button class="absolute top-6 right-6 p-2 rounded-full bg-neutral-light text-neutral-muted hover:text-brand-blue hover:bg-brand-blue/10 transition-all z-20" onclick="closeForm()" aria-label="Close">
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
