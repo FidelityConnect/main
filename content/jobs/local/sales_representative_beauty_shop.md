@@ -8,7 +8,7 @@ overview: "Smart, presentable, and customer-focused Sales Representative for a g
 category: "Local"
 deadline: "2026-04-17"
 client: "Growing beauty business (Nairobi)"
-status: "past"
+status: "open"
 ---
 
 **Client:** Growing beauty business (Nairobi)
