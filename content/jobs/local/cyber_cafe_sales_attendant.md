@@ -8,8 +8,7 @@ overview: "We are looking for a reliable and tech-savvy Cyber Café Attendant to
 category: "Local"
 deadline: "2026-04-28"
 client: "Cyber Café Branches"
-status: "open"
-weight: 1
+status: "past"
 ---
 
 **Location:** BBS Mall, Eastleigh | Lavington - Westfield Mall | Naivasha Branch - Buffalo Mall

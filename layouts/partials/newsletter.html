@@ -42,3 +42,18 @@
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.forms['newsletter'];
+    if (form) {
+        if (localStorage.getItem('newsletter_subscribed')) {
+            form.innerHTML = '<p class="text-brand-blue font-body font-bold text-lg text-center w-full py-4 bg-white rounded-[20px] border border-neutral-border shadow-sm">You are already subscribed to our newsletter. Thank you!</p>';
+        }
+
+        form.addEventListener('submit', function() {
+            localStorage.setItem('newsletter_subscribed', 'true');
+        });
+    }
+});
+</script>

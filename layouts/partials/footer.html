@@ -139,4 +139,18 @@
   if (yearEl) yearEl.innerText = currentYear;
   const yearMobileEl = document.getElementById("year-mobile");
   if (yearMobileEl) yearMobileEl.innerText = currentYear;
+
+  // Global share function
+  function sharePage() {
+      if (navigator.share) {
+          navigator.share({
+              title: document.title,
+              url: window.location.href
+          }).catch(console.error);
+      } else {
+          navigator.clipboard.writeText(window.location.href).then(() => {
+              alert("Link copied to clipboard!");
+          }).catch(console.error);
+      }
+  }
 </script>
