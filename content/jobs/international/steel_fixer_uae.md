@@ -5,7 +5,7 @@ job_type: "Contract"
 remote_status: "On-site"
 salary_range: "AED 1,400"
 overview: "Experienced Steel Fixers needed in the UAE."
-category: "International"
+category: "international"
 status: "past"
 featured: false
 ---

@@ -5,7 +5,7 @@ job_type: "Contract"
 remote_status: "On-site"
 salary_range: "AED 1,600"
 overview: "Certified Scaffolders needed in the UAE."
-category: "International"
+category: "international"
 status: "past"
 featured: false
 ---

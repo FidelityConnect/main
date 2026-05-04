@@ -5,7 +5,7 @@ job_type: "Contract"
 remote_status: "On-site"
 salary_range: "QAR 1200"
 overview: "Opportunity for Care Givers in Qatar."
-category: "International"
+category: "international"
 status: "past"
 featured: false
 ---

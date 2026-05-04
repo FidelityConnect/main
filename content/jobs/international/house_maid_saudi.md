@@ -5,7 +5,7 @@ job_type: "Contract"
 remote_status: "On-site"
 salary_range: "SAR 900 - 1100"
 overview: "Opportunity for House Maids in Saudi Arabia."
-category: "International"
+category: "international"
 status: "active"
 featured: false
 weight : 2

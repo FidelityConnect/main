@@ -34,6 +34,7 @@
                 
                 <!-- Category Toggle -->
                 <div class="mt-12 flex flex-wrap justify-center gap-4">
+                    <a href="/jobs/" class="px-8 py-3 rounded-2xl bg-brand-blue text-white font-heading font-bold text-xs uppercase tracking-widest hover:shadow-lg hover:shadow-brand-blue/20 transition-all">All Positions</a>
                     <a href="/jobs/local" class="px-8 py-3 rounded-2xl bg-white border border-neutral-border text-neutral-dark font-heading font-bold text-xs uppercase tracking-widest hover:border-brand-blue hover:text-brand-blue transition-all">Local Jobs</a>
                     <a href="/jobs/international" class="px-8 py-3 rounded-2xl bg-white border border-neutral-border text-neutral-dark font-heading font-bold text-xs uppercase tracking-widest hover:border-brand-orange hover:text-brand-orange transition-all">International Jobs</a>
                 </div>
@@ -52,7 +53,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {{ range .Pages }}
+                    {{ range .RegularPagesRecursive }}
                     {{ partial "job-card.html" . }}
                     {{ end }}
                 </div>

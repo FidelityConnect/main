@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {{ $intlJobs := where (where .Site.RegularPages "Section" "jobs") "Params.category" "International" }}
+                    {{ $intlJobs := where .Site.RegularPages "Params.category" "international" }}
                     {{ range first 3 (sort $intlJobs "Date" "desc") }}
                         {{ partial "job-card.html" . }}
                     {{ else }}
@@ -74,7 +74,7 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {{ $localJobs := where (where .Site.RegularPages "Section" "jobs") "Params.category" "Local" }}
+                    {{ $localJobs := where .Site.RegularPages "Params.category" "local" }}
                     {{ range first 3 (sort $localJobs "Date" "desc") }}
                         {{ partial "job-card.html" . }}
                     {{ else }}

@@ -5,7 +5,7 @@ job_type: "Full-time"
 remote_status: "On-site"
 salary_range: "Competitive"
 overview: "Motorcycle Sales Representative."
-category: "Local"
+category: "local"
 deadline: "2026-03-28"
 client: "Manufacturer"
 weight: 3

@@ -5,7 +5,7 @@ job_type: "Contract"
 remote_status: "On-site"
 salary_range: "QAR 2280"
 overview: "We are hiring Heavy Bus Drivers (Ex-Qatar) with a valid Qatar Driving License for a premium transport contract in Qatar."
-category: "International"
+category: "international"
 client: "Qatar Transport Group"
 status: "active"
 featured: true
