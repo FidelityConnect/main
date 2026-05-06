@@ -3,3 +3,4 @@
 .netlify
 public
 resources/_gen
+.env
