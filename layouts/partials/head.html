@@ -18,23 +18,28 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO -->
+<!-- SEO & Meta Tags -->
 <meta name="keywords" content="jobs in Kenya, Kenya job vacancies, international jobs from Kenya, overseas jobs Kenya, local jobs Kenya, job seekers Kenya, work abroad from Kenya, recruitment agency Kenya, career opportunities Kenya, apply jobs online Kenya, global education placement Kenya, study abroad Kenya, international student placement, labour recruitment Kenya, skilled worker recruitment, workforce solutions Kenya, investment facilitation Kenya, business investment Kenya, foreign investment opportunities Kenya, Fidelity Connect Limited">
-<meta name="description" content="Fidelity Connect Limited offers verified local and international job opportunities, global education placement, professional labour recruitment, and investment facilitation services in Kenya. Connect with trusted employers, institutions, and investors worldwide.">
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Params.overview }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}{{ end }}">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Fidelity Connect Limited">
 <meta name="language" content="English">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Jobs, Education Placement & Investment Facilitation | Fidelity Connect Limited Kenya">
-<meta property="og:description" content="Your trusted partner for local and international job opportunities, global education placement, skilled labour recruitment, and investment facilitation in Kenya.">
-<meta property="og:type" content="website">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="Fidelity Connect">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Params.overview }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}{{ end }}">
+<meta property="og:image" content="{{ with .Params.featured }}{{ . | absURL }}{{ else }}{{ index .Site.Params.images 0 | absURL }}{{ end }}">
 <meta property="og:locale" content="en_KE">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Jobs, Education Placement & Investment Facilitation | Fidelity Connect Limited Kenya">
-<meta name="twitter:description" content="Explore jobs, global education placement, labour recruitment, and investment facilitation services in Kenya. Trusted connections worldwide.">
+<meta name="twitter:url" content="{{ .Permalink }}">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Params.overview }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}{{ end }}">
+<meta name="twitter:image" content="{{ with .Params.featured }}{{ . | absURL }}{{ else }}{{ index .Site.Params.images 0 | absURL }}{{ end }}">
 <style>
     .animate-me {
         opacity: 0;

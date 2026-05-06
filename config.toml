@@ -48,3 +48,7 @@ title = 'FIDELITY- LABOUR | EDUCATION | INVESTMENT'
 [markup.goldmark.renderer]
   unsafe = true
 
+[params]
+  description = "Fidelity Connect Limited offers verified local and international job opportunities, global education placement, professional labour recruitment, and investment facilitation services in Kenya."
+  images = ["/images/hero.png"]
+
