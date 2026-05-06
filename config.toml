@@ -1,4 +1,5 @@
 baseURL = '/'
+relativeURLs = true
 languageCode = 'en-us'
 title = 'FIDELITY- LABOUR | EDUCATION | INVESTMENT'
 [related]

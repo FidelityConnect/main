@@ -88,20 +88,53 @@ exports.handler = async function (event, context, callback) {
     const itUser = process.env.IT_USER || careersUser;
     const itPass = process.env.IT_PASS || careersPass;
 
+    // Company Footer Template
+    const footerHtml = `
+      <div style="margin-top: 40px; padding-top: 20px; border-t: 1px solid #eeeeee; font-size: 12px; color: #777777; font-family: sans-serif;">
+        <p><b>Fidelity Connect Limited</b><br>
+        Kingdom Gardens, Muthaiga Road, Nairobi, Kenya<br>
+        Phone: +254 746 690 671 | Email: admin@fidelityltd.co.ke</p>
+        <p><i>Your trusted partner for global career and education placement.</i></p>
+      </div>
+    `;
+
     if (form_type === "local") {
       transporter = makeTransporter(careersUser, careersPass);
       adminMail = {
         from: `Fidelity Connect <${careersUser}>`,
         to: careersUser,
         subject: `Local Application – ${job_title}`,
-        html: `<h2>Local Job Application</h2><p><b>Name:</b> ${name}</p><p><b>Email:</b> ${email}</p><p><b>Phone:</b> ${phone}</p><p><b>Position:</b> ${job_title}</p>${linkedin ? `<p><b>LinkedIn:</b> ${linkedin}</p>` : ""}<p><b>Cover Letter:</b><br>${cover_letter}</p>`,
+        html: `
+          <div style="font-family: sans-serif; color: #333;">
+            <h2 style="color: #1a6fdb;">New Local Job Application</h2>
+            <p>A new application has been submitted for the <b>${job_title}</b> position.</p>
+            <hr style="border: 0; border-top: 1px solid #eee;">
+            <p><b>Name:</b> ${name}</p>
+            <p><b>Email:</b> ${email}</p>
+            <p><b>Phone:</b> ${phone}</p>
+            <p><b>LinkedIn:</b> ${linkedin || "Not provided"}</p>
+            <p><b>Cover Letter:</b></p>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">${cover_letter}</div>
+            ${footerHtml}
+          </div>
+        `,
         attachments: cv ? [{ filename: cv.filename, content: cv.content }] : [],
       };
       replyMail = {
         from: `Fidelity Connect <${careersUser}>`,
         to: email,
         subject: `Application Received – ${job_title}`,
-        html: `<p>Dear ${name},</p><p>Thank you for applying for the <b>${job_title}</b> position at Fidelity Connect.</p><p>We have received your application and our team will review it shortly.</p><br><p>Kind regards,<br><b>Fidelity Connect Careers Team</b></p>`,
+        html: `
+          <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+            <h2 style="color: #1a6fdb;">Application Received</h2>
+            <p>Dear ${name},</p>
+            <p>Thank you for applying for the <b>${job_title}</b> position at Fidelity Connect.</p>
+            <p>Our recruitment team has received your details and will review your profile shortly. We will contact you if your qualifications match the requirements for this role.</p>
+            <p>Thank you for choosing Fidelity Connect as your career partner.</p>
+            <p>Best regards,<br><b>Fidelity Connect Careers Team</b></p>
+            ${footerHtml}
+          </div>
+        `,
       };
 
     } else if (form_type === "international") {
@@ -110,14 +143,38 @@ exports.handler = async function (event, context, callback) {
         from: `Fidelity Connect <${clientUser}>`,
         to: clientUser,
         subject: `International Application – ${job_title}`,
-        html: `<h2>International Job Application</h2><p><b>Name:</b> ${name}</p><p><b>Email:</b> ${email}</p><p><b>Phone:</b> ${phone}</p><p><b>Position:</b> ${job_title}</p>${linkedin ? `<p><b>LinkedIn:</b> ${linkedin}</p>` : ""}<p><b>Cover Letter:</b><br>${cover_letter}</p>`,
+        html: `
+          <div style="font-family: sans-serif; color: #333;">
+            <h2 style="color: #1a6fdb;">New International Application</h2>
+            <p>A new international application has been submitted for <b>${job_title}</b>.</p>
+            <hr style="border: 0; border-top: 1px solid #eee;">
+            <p><b>Name:</b> ${name}</p>
+            <p><b>Email:</b> ${email}</p>
+            <p><b>Phone:</b> ${phone}</p>
+            <p><b>LinkedIn:</b> ${linkedin || "Not provided"}</p>
+            <p><b>Cover Letter:</b></p>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">${cover_letter}</div>
+            ${footerHtml}
+          </div>
+        `,
         attachments: cv ? [{ filename: cv.filename, content: cv.content }] : [],
       };
       replyMail = {
         from: `Fidelity Connect <${clientUser}>`,
         to: email,
         subject: `Application Received – ${job_title}`,
-        html: `<p>Dear ${name},</p><p>Thank you for applying for the <b>${job_title}</b> position at Fidelity Connect.</p><p>Please note that a <b>placement fee applies</b> for all international positions. Our team will contact you shortly.</p><br><p>Kind regards,<br><b>Fidelity Connect Client Services</b></p>`,
+        html: `
+          <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+            <h2 style="color: #1a6fdb;">Application Received</h2>
+            <p>Dear ${name},</p>
+            <p>Thank you for applying for the <b>${job_title}</b> position at Fidelity Connect.</p>
+            <p style="background: #fff8f1; padding: 15px; border-left: 4px solid #f97316;">
+              <b>Important:</b> Please note that a <b>placement fee applies</b> for all international positions. Our client services team will contact you shortly with full details on the process.
+            </p>
+            <p>Best regards,<br><b>Fidelity Connect Client Services</b></p>
+            ${footerHtml}
+          </div>
+        `,
       };
 
     } else if (form_type === "employer") {
@@ -126,13 +183,37 @@ exports.handler = async function (event, context, callback) {
         from: `Fidelity Connect <${careersUser}>`,
         to: careersUser,
         subject: `Employer Talent Request – ${company}`,
-        html: `<h2>Employer Talent Request</h2><p><b>Company:</b> ${company}</p><p><b>Contact Person:</b> ${contact_name}</p><p><b>Email:</b> ${email}</p><p><b>Phone:</b> ${phone}</p><p><b>Role Needed:</b> ${role_needed}</p><p><b>No. of Candidates:</b> ${num_candidates || 1}</p>${requirements ? `<p><b>Requirements:</b><br>${requirements}</p>` : ""}`,
+        html: `
+          <div style="font-family: sans-serif; color: #333;">
+            <h2 style="color: #1a6fdb;">New Talent Request</h2>
+            <p>An employer has requested talent through the website.</p>
+            <hr style="border: 0; border-top: 1px solid #eee;">
+            <p><b>Company:</b> ${company}</p>
+            <p><b>Contact Person:</b> ${contact_name}</p>
+            <p><b>Email:</b> ${email}</p>
+            <p><b>Phone:</b> ${phone}</p>
+            <p><b>Role Needed:</b> ${role_needed}</p>
+            <p><b>Number of Candidates:</b> ${num_candidates || 1}</p>
+            <p><b>Requirements:</b></p>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">${requirements || "No specific requirements provided."}</div>
+            ${footerHtml}
+          </div>
+        `,
       };
       replyMail = {
         from: `Fidelity Connect <${careersUser}>`,
         to: email,
         subject: `Talent Request Received – Fidelity Connect`,
-        html: `<p>Dear ${contact_name},</p><p>Thank you for submitting a talent request for <b>${role_needed}</b>.</p><p>Our recruitment team will review your requirements and get back to you within 48 hours.</p><br><p>Kind regards,<br><b>Fidelity Connect Careers Team</b></p>`,
+        html: `
+          <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+            <h2 style="color: #1a6fdb;">Talent Request Received</h2>
+            <p>Dear ${contact_name},</p>
+            <p>Thank you for reaching out to Fidelity Connect. We have received your request for <b>${role_needed}</b> on behalf of <b>${company}</b>.</p>
+            <p>Our recruitment team will review your requirements and get back to you within 48 hours to discuss potential candidate matches.</p>
+            <p>Best regards,<br><b>Fidelity Connect Careers Team</b></p>
+            ${footerHtml}
+          </div>
+        `,
       };
 
     } else if (form_type === "newsletter") {
@@ -141,13 +222,27 @@ exports.handler = async function (event, context, callback) {
         from: `Fidelity Connect <${itUser}>`,
         to: itUser,
         subject: `New Newsletter Subscriber – ${email}`,
-        html: `<h2>New Newsletter Subscriber</h2><p><b>Email:</b> ${email}</p>`,
+        html: `
+          <div style="font-family: sans-serif; color: #333;">
+            <h2 style="color: #1a6fdb;">New Subscriber</h2>
+            <p>A new user has subscribed to the newsletter: <b>${email}</b></p>
+            ${footerHtml}
+          </div>
+        `,
       };
       replyMail = {
         from: `Fidelity Connect <${itUser}>`,
         to: email,
         subject: `You're subscribed to Fidelity Connect`,
-        html: `<p>Hello,</p><p>You have successfully subscribed to the <b>Fidelity Connect newsletter</b>.</p><p>Kind regards,<br><b>Fidelity Connect</b></p>`,
+        html: `
+          <div style="font-family: sans-serif; color: #333; line-height: 1.6;">
+            <h2 style="color: #1a6fdb;">Welcome to Our Newsletter</h2>
+            <p>Hello,</p>
+            <p>Thank you for subscribing to the Fidelity Connect newsletter. You will now receive regular updates on new job opportunities, educational placements, and investment insights.</p>
+            <p>Best regards,<br><b>Fidelity Connect Team</b></p>
+            ${footerHtml}
+          </div>
+        `,
       };
 
     } else {
