@@ -1,13 +1,9 @@
 backend:
-  name: github
-  repo: Fidelity/main
+  name: git-gateway
   branch: main
 
-# # when using the default proxy server port
-# local_backend: true
-
-# backend:
-#   name: git-gateway
+# when using the default proxy server port
+local_backend: true
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
