@@ -1,13 +1,13 @@
-# backend:
-#   name: github
-#   repo: Fidelity/Labour
-#   branch: main
-
-# when using the default proxy server port
-local_backend: true
-
 backend:
-  name: git-gateway
+  name: github
+  repo: Fidelity/main
+  branch: main
+
+# # when using the default proxy server port
+# local_backend: true
+
+# backend:
+#   name: git-gateway
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
@@ -172,20 +172,38 @@ collections:
           options_length: 100,
         }
       - {label: "Body", name: "body", widget: "markdown"}
-  - name: "jobs"
-    label: "Jobs"
-    folder: "content/jobs"
-    path: "{{category}}/{{slug}}"
+  - name: "local_jobs"
+    label: "Local Jobs"
+    label_singular: "Local Job"
+    folder: "content/jobs/local"
     create: true
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options: 
-          - { label: "Local", value: "local" }
-          - { label: "International", value: "international" }
+      - {label: "Location", name: "location", widget: "string", default: "Nairobi"}
+      - {label: "Category", name: "category", widget: "hidden", default: "local"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Job Type", name: "job_type", widget: "select", options: ["Full-time", "Part-time", "Contract", "Internship"], default: "Full-time"}
+      - {label: "Remote Status", name: "remote_status", widget: "select", options: ["On-site", "Remote", "Hybrid"], default: "On-site"}
+      - {label: "Salary Range", name: "salary_range", widget: "string", required: false}
+      - {label: "Overview", name: "overview", widget: "text"}
+      - {label: "Deadline", name: "deadline", widget: "date", format: "YYYY-MM-DD", required: false}
+      - {label: "Client", name: "client", widget: "string", required: false}
+      - {label: "Status", name: "status", widget: "select", options: ["open", "past", "active"], default: "open"}
+      - {label: "Featured", name: "featured", widget: "boolean", default: false, required: false}
+      - {label: "Weight", name: "weight", widget: "number", default: 1}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "international_jobs"
+    label: "International Jobs"
+    label_singular: "International Job"
+    folder: "content/jobs/international"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Location", name: "location", widget: "string", hint: "e.g. Qatar, UAE, Saudi Arabia"}
+      - {label: "Category", name: "category", widget: "hidden", default: "international"}
       - {label: "Draft", name: "draft", widget: "boolean", default: false}
       - {label: "Job Type", name: "job_type", widget: "select", options: ["Full-time", "Part-time", "Contract", "Internship"], default: "Full-time"}
       - {label: "Remote Status", name: "remote_status", widget: "select", options: ["On-site", "Remote", "Hybrid"], default: "On-site"}

@@ -6,6 +6,7 @@ remote_status: "On-site"
 salary_range: "AED 1,500"
 overview: "Experienced Masons needed for projects in the UAE."
 category: "international"
+location: "UAE"
 status: "past"
 featured: false
 ---
