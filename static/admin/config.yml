@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Fidelity/main
+  repo: FidelityConnect/main
   branch: main
 
 # when using the default proxy server port
