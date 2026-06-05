@@ -9,7 +9,7 @@ category: "local"
 location: "Nairobi"
 deadline: "2026-05-09"
 client: "Fidelity Connect Ltd"
-status: "open"
+status: "past"
 weight: 1
 ---
 
