@@ -20,5 +20,5 @@ members:
   - name: "Wence Louis"
     role: "IT & Social Media Executive"
     bio: "Louis oversees regulatory compliance, ensuring all placements adhere to Kenyan labour laws and destination-country requirements."
-    image: "images/team/wence.jpg"
+    image: "/images/team/wence.jpg"
     linkedin: ""
