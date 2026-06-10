@@ -22,4 +22,4 @@ Requirements:
 - Relevant skills and experience
 - Must be capable and compassionate
 
-Contact: clientservice@fidelityltd.co.ke | +254798207153
+Contact: clientservice@fidelityltd.co.ke | +254798207154
