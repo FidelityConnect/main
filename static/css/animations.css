@@ -1,0 +1,114 @@
+/* ================================
+   FIDELITY CONNECT ANIMATIONS
+   Modern Motion Graphics
+================================ */
+
+/* Fade + Slide Up on Scroll */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Text Animation */
+h1, h2 {
+  animation: fadeSlideIn 1s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gold Underline on Headings */
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #f5a623;
+  margin-top: 8px;
+  animation: expandLine 1s ease forwards;
+}
+
+@keyframes expandLine {
+  from { width: 0; }
+  to { width: 60px; }
+}
+
+/* Button Hover Animation */
+a[class*="btn"], button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+a[class*="btn"]:hover, button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 119, 182, 0.3);
+}
+
+/* Card Hover Animation */
+.card, [class*="card"] {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover, [class*="card"]:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Floating Animation for Hero Image */
+[class*="hero"] img {
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Gold Pulse on Apply Button */
+[class*="apply"], [href*="apply"] {
+  animation: goldPulse 2s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(245, 166, 35, 0); }
+}
+
+/* Navbar Scroll Effect */
+nav {
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Team Card Hover */
+[class*="team"] img {
+  transition: transform 0.4s ease;
+}
+
+[class*="team"] img:hover {
+  transform: scale(1.05);
+}
+
+/* Counter Animation */
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+[class*="stat"], [class*="counter"] {
+  animation: countUp 0.8s ease forwards;
+}
+
+/* Scroll Trigger JavaScript */
