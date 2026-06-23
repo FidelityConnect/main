@@ -7,10 +7,8 @@ salary_range: "KD 140"
 overview: "Fidelity Connect is recruiting Delivery Drivers & Riders for placement in Kuwait. Experience with Uber, Bolt, Glovo or Jumia Food required."
 category: "international"
 location: "Kuwait"
-client: "Kuwait Delivery Group"
 status: "active"
 featured: true
-weight: 3
 ---
 **Job Title:** DELIVERY DRIVER & RIDER
 **Location:** KUWAIT
