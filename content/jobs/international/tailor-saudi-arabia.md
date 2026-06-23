@@ -7,10 +7,8 @@ salary_range: "SAR 1500–1800"
 overview: "Fidelity Connect is recruiting skilled Male and Female Tailors for placement in Saudi Arabia. Turn your tailoring skills into an international career."
 category: "international"
 location: "Saudi Arabia"
-client: "Saudi Fashion Group"
 status: "active"
 featured: true
-weight: 5
 ---
 **Job Title:** MALE & FEMALE TAILOR
 **Location:** SAUDI ARABIA
