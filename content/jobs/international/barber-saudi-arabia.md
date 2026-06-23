@@ -1,25 +1,26 @@
 ---
 title: "Barber"
+draft: false
+job_type: "Contract"
+remote_status: "On-site"
+salary_range: "SAR 2000"
+overview: "Fidelity Connect is recruiting skilled Barbers for placement in Saudi Arabia. If you are experienced and passionate about barbering, this is your opportunity."
+category: "international"
 location: "Saudi Arabia"
-salary: "2000 SAR per month"
-category: "Beauty & Grooming"
-date: 2026-06-23
+client: "Saudi Grooming Group"
+status: "active"
+featured: true
+weight: 4
 ---
+**Job Title:** BARBER
+**Location:** SAUDI ARABIA
+**Salary:** SAR 2000
+**Requirements:**
+* Valid Passport
+* Passport-size Photo
+* Good Conduct Certificate
+* Age: 21–40 Years
 
-## About the Role
-Fidelity Connect is recruiting skilled Barbers for placement in Saudi Arabia.
-
-## Requirements
-- Good Conduct Certificate
-- Passport-size Photo
-- Valid Passport
-- Age: 21–40 Years
-
-## Benefits
-- Accommodation
-- Transportation
-
-## How to Apply
-**Phone:** +254798207153
-**Email:** clientservice@fidelityltd.co.ke
-**Website:** www.fidelityltd.co.ke
+**Benefits:**
+* Accommodation
+* Transportation
