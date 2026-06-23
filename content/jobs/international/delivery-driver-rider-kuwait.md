@@ -1,29 +1,31 @@
 ---
 title: "Delivery Driver & Rider"
+draft: false
+job_type: "Contract"
+remote_status: "On-site"
+salary_range: "KD 140"
+overview: "Fidelity Connect is recruiting Delivery Drivers & Riders for placement in Kuwait. Experience with Uber, Bolt, Glovo or Jumia Food required."
+category: "international"
 location: "Kuwait"
-salary: "140 KD per month"
-duty_hours: "12 Hours Per Day"
-working_days: "28 Days Per Month"
-category: "Driving & Logistics"
-date: 2026-06-23
+client: "Kuwait Delivery Group"
+status: "active"
+featured: true
+weight: 3
 ---
+**Job Title:** DELIVERY DRIVER & RIDER
+**Location:** KUWAIT
+**Salary:** KD 140
+**Working Hours:** 12 Hours Per Day
+**Working Days:** 28 Days Per Month
+**Requirements:**
+* Valid Passport
+* Passport-size Photo
+* Good Conduct Certificate
+* Age: 21–45 Years
+* Experience with Uber, Bolt, Glovo or Jumia Food
 
-## About the Role
-Fidelity Connect is recruiting Delivery Drivers & Riders for placement in Kuwait. Applicants must have proven experience working with digital delivery platforms such as Uber, Bolt, Jumia Food, Glovo or similar applications.
-
-## Requirements
-- Good Conduct Certificate
-- Passport-size Photo
-- Valid Passport
-- Age: 21–45 Years
-
-## Benefits
-- Accommodation
-- Food
-- Transport
-- Medical Cover
-
-## How to Apply
-**Phone:** +254798207153
-**Email:** clientservice@fidelityltd.co.ke
-**Website:** www.fidelityltd.co.ke
+**Benefits:**
+* Accommodation
+* Food
+* Transport
+* Medical Cover
