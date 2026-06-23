@@ -1,5 +1,6 @@
 ---
 title: "Male & Female Tailor"
+date: 2026-06-23
 draft: false
 job_type: "Contract"
 remote_status: "On-site"
