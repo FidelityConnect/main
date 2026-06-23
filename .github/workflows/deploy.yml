@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Deploy Hugo Site
 
 on:
   push:
@@ -10,19 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Hugo
         run: |
           sudo dpkg -i ./hugo_0.120.3_linux-amd64.deb
 
       - name: Build
-        run: hugo --minify
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: fidelityconnect
-          directory: public
+        run: hugo --minify 
