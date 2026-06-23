@@ -1,9 +1,9 @@
-name: Build and Deploy
+name: Deploy to Cloudflare Pages
 
 on:
   push:
     branches:
-      - main # Set a branch to trigger deployment
+      - main
 
 jobs:
   deploy:
@@ -19,11 +19,10 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Install Netlify CLI
-        run: npm install netlify-cli -g
-
-      - name: Deploy to Netlify
-        run: netlify deploy --prod
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: fidelityconnect
+          directory: public
