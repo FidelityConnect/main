@@ -1,31 +1,32 @@
 ---
 title: "Nail Technician & Beautician"
+draft: false
+job_type: "Contract"
+remote_status: "On-site"
+salary_range: "SAR 1800–2200"
+overview: "Fidelity Connect is recruiting Nail Technicians and Beauticians for placement in Saudi Arabia. Great salary and full benefits package included."
+category: "international"
 location: "Saudi Arabia"
-salary: "1800–2200 SAR per month"
-category: "Beauty & Wellness"
-date: 2026-06-23
+client: "Saudi Beauty Group"
+status: "active"
+featured: true
+weight: 6
 ---
+**Job Title:** NAIL TECHNICIAN & BEAUTICIAN
+**Location:** SAUDI ARABIA
+**Salary:** SAR 1800–2200
+**Positions Available:**
+* Nail Technician
+* Beautician
 
-## About the Role
-Fidelity Connect is recruiting Nail Technicians and Beauticians for placement in Saudi Arabia.
+**Requirements:**
+* Valid Passport
+* Passport-size Photo
+* Good Conduct Certificate
+* Age: 21–40 Years
 
-## Positions Available
-- Nail Technician
-- Beautician
-
-## Requirements
-- Good Conduct Certificate
-- Passport-size Photo
-- Valid Passport
-- Age: 21–40 Years
-
-## Benefits
-- Accommodation
-- Food
-- Transport
-- Medical Cover
-
-## How to Apply
-**Phone:** +254798207153
-**Email:** clientservice@fidelityltd.co.ke
-**Website:** www.fidelityltd.co.ke
+**Benefits:**
+* Accommodation
+* Food
+* Transport
+* Medical Cover
