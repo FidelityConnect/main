@@ -1,65 +1,90 @@
-<!-- ✅ Fidelity Connect Footer — START -->
+<!-- FIDELITY CONNECT FOOTER — COPY FROM HERE -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--orange:#f5821f;--blue:#3ab0e2;--black:#0f1113;--white:#ffffff;--muted:#6b7280}
-.wrap{position:relative;background:#fff;font-family:system-ui,-apple-system,sans-serif;overflow:hidden}
-canvas#c{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.inner{position:relative;z-index:1}
-.top-bar{background:var(--black);padding:11px 48px;display:flex;align-items:center;justify-content:space-between}
-.tb-brand{display:flex;align-items:center;gap:9px}
-.tb-dot{width:27px;height:27px;border-radius:7px;background:var(--orange);display:flex;align-items:center;justify-content:center}
-.tb-dot i{font-size:14px;color:#fff}
-.tb-name{font-size:13px;font-weight:500;color:#fff}
-.tb-nav{display:flex;gap:26px}
-.tb-nav a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s}
-.tb-nav a:hover{color:#fff}
-.tb-cta{background:var(--orange);color:#fff;font-size:12px;font-weight:500;padding:6px 16px;border-radius:6px;text-decoration:none}
-.tb-cta:hover{opacity:.88}
-.body{padding:52px 48px 44px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1.3fr;gap:0}
-.col{padding-right:44px}
-.col:last-child{padding-right:0}
-.b-logo{display:flex;align-items:center;gap:8px;margin-bottom:5px}
-.b-dot{width:32px;height:32px;border-radius:9px;background:var(--orange);display:flex;align-items:center;justify-content:center}
-.b-dot i{font-size:17px;color:#fff}
-.b-name{font-size:17px;font-weight:600;color:var(--black)}
-.b-tag{font-size:10px;color:var(--orange);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
-.socials{display:flex;gap:8px;flex-wrap:wrap}
-.soc{width:32px;height:32px;border-radius:8px;border:1.5px solid #e5e7eb;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:15px;text-decoration:none;transition:all .18s}
-.soc:hover{border-color:var(--orange);color:var(--orange)}
-.col-h{font-size:10px;font-weight:600;color:var(--blue);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.col-h::after{content:'';flex:1;height:1.5px;background:var(--blue);opacity:.15;border-radius:2px}
-.col-ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.col-ul a{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .15s}
-.col-ul a::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--orange);opacity:0;transition:opacity .15s;flex-shrink:0}
-.col-ul a:hover{color:var(--black)}
-.col-ul a:hover::before{opacity:1}
-.citem{display:flex;align-items:flex-start;gap:10px;margin-bottom:13px}
-.cico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cico.o{border:1.5px solid var(--orange);color:var(--orange)}
-.cico.b{border:1.5px solid var(--blue);color:var(--blue)}
-.cico i{font-size:13px}
-.ctxt{font-size:12px;color:var(--muted);line-height:1.55}
-.ctxt strong{display:block;font-size:13px;color:var(--black);font-weight:500;margin-bottom:1px}
-.mapbtn{margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;height:34px;border-radius:8px;border:1.5px solid var(--blue);font-size:12px;color:var(--blue);font-weight:500;cursor:pointer;transition:all .18s;text-decoration:none}
-.mapbtn:hover{background:var(--blue);color:#fff}
-.divider{height:1px;background:#f0f1f3;margin:0 48px}
-.bottom{padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
-.bot-copy{font-size:12px;color:var(--muted)}
-.bot-links{display:flex;gap:20px}
-.bot-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color .15s}
-.bot-links a:hover{color:var(--black)}
+:root{
+  --orange:#f5821f;
+  --blue:#3ab0e2;
+  --black:#0f1113;
+  --white:#ffffff;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+}
+.fc-footer{position:relative;background:#fff;font-family:'Inter',system-ui,-apple-system,sans-serif;overflow:hidden;}
+canvas#fc-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.fc-inner{position:relative;z-index:1;}
+.fc-topbar{background:var(--blue);padding:12px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.fc-tb-brand{display:flex;align-items:center;gap:10px;}
+.fc-tb-logo{height:32px;width:auto;border-radius:4px;}
+.fc-tb-name{font-size:13px;font-weight:600;color:#fff;letter-spacing:.3px;}
+.fc-tb-nav{display:flex;gap:24px;flex-wrap:wrap;}
+.fc-tb-nav a{font-size:12px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .15s;white-space:nowrap;}
+.fc-tb-nav a:hover{color:#fff;}
+.fc-tb-cta{background:var(--orange);color:#fff;font-size:12px;font-weight:600;padding:7px 18px;border-radius:7px;text-decoration:none;white-space:nowrap;transition:opacity .15s;flex-shrink:0;}
+.fc-tb-cta:hover{opacity:.88;}
+.fc-body{padding:52px 48px 44px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr;gap:0;}
+.fc-col{padding-right:44px;}
+.fc-col:last-child{padding-right:0;}
+.fc-brand-logo{height:72px;width:auto;margin-bottom:6px;display:block;}
+.fc-brand-tag{font-size:10px;color:var(--orange);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;font-weight:600;}
+.fc-socials{display:flex;gap:8px;flex-wrap:wrap;}
+.fc-soc{width:34px;height:34px;border-radius:9px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:16px;text-decoration:none;transition:all .18s;}
+.fc-soc:hover{border-color:var(--orange);color:var(--orange);background:#fff8f2;}
+.fc-col-h{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.fc-col-h::after{content:'';flex:1;height:1.5px;background:var(--blue);opacity:.15;border-radius:2px;}
+.fc-col-ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+.fc-col-ul a{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .15s;}
+.fc-col-ul a::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--orange);opacity:0;transition:opacity .15s;flex-shrink:0;}
+.fc-col-ul a:hover{color:var(--black);}
+.fc-col-ul a:hover::before{opacity:1;}
+.fc-citem{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.fc-cico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fc-cico.o{background:#fff7f0;border:1.5px solid #fddbbf;color:var(--orange);}
+.fc-cico.b{background:#f0f9ff;border:1.5px solid #b3e4f8;color:var(--blue);}
+.fc-cico i{font-size:16px;}
+.fc-ctxt{font-size:12px;color:var(--muted);line-height:1.6;}
+.fc-ctxt strong{display:block;font-size:13px;color:var(--black);font-weight:600;margin-bottom:1px;}
+.fc-mapbtn{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px;height:36px;border-radius:9px;border:1.5px solid var(--blue);font-size:12px;color:var(--blue);font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;}
+.fc-mapbtn:hover{background:var(--blue);color:#fff;}
+.fc-divider{height:1px;background:#f0f1f3;margin:0 48px;}
+.fc-bottom{padding:16px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.fc-copy{font-size:12px;color:var(--muted);}
+.fc-bot-links{display:flex;gap:20px;flex-wrap:wrap;}
+.fc-bot-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color .15s;}
+.fc-bot-links a:hover{color:var(--black);}
+
+@media(max-width:900px){
+  .fc-topbar{padding:12px 20px;flex-wrap:wrap;gap:12px;}
+  .fc-tb-nav{display:none;}
+  .fc-body{grid-template-columns:1fr 1fr;padding:36px 20px 28px;gap:32px 0;}
+  .fc-col{padding-right:20px;}
+  .fc-col:nth-child(2n){padding-right:0;}
+  .fc-divider{margin:0 20px;}
+  .fc-bottom{padding:14px 20px;}
+}
+@media(max-width:520px){
+  .fc-topbar{flex-direction:column;align-items:flex-start;gap:10px;}
+  .fc-tb-cta{width:100%;text-align:center;}
+  .fc-body{grid-template-columns:1fr;gap:28px;padding:28px 18px;}
+  .fc-col{padding-right:0;}
+  .fc-brand-logo{height:60px;}
+  .fc-bottom{flex-direction:column;align-items:flex-start;padding:14px 18px;}
+  .fc-divider{margin:0 18px;}
+}
 </style>
 
-<div class="wrap">
-  <canvas id="c"></canvas>
-  <div class="inner">
+<footer class="fc-footer" aria-label="Fidelity Connect footer">
+  <canvas id="fc-canvas"></canvas>
+  <div class="fc-inner">
 
-    <div class="top-bar">
-      <div class="tb-brand">
-        <div class="tb-dot"><i class="ti ti-world"></i></div>
-        <span class="tb-name">Fidelity Connect</span>
+    <div class="fc-topbar">
+      <div class="fc-tb-brand">
+        <img class="fc-tb-logo" src="YOUR_LOGO_URL_HERE" alt="Fidelity Connect logo">
+        <span class="fc-tb-name">Fidelity Connect</span>
       </div>
-      <nav class="tb-nav">
+      <nav class="fc-tb-nav">
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Services</a>
@@ -67,76 +92,77 @@ canvas#c{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-
         <a href="#">Blog</a>
         <a href="#">Events</a>
       </nav>
-      <a class="tb-cta" href="#">Apply now →</a>
+      <a class="fc-tb-cta" href="#">Apply now →</a>
     </div>
 
-    <div class="body">
-      <div class="col">
-        <div class="b-logo">
-          <div class="b-dot"><i class="ti ti-world"></i></div>
-          <span class="b-name">Fidelity</span>
-        </div>
-        <div class="b-tag">Your world of opportunities</div>
-        <div class="socials">
-          <a class="soc" href="#"><i class="ti ti-brand-instagram"></i></a>
-          <a class="soc" href="#"><i class="ti ti-brand-facebook"></i></a>
-          <a class="soc" href="#"><i class="ti ti-brand-twitter"></i></a>
-          <a class="soc" href="#"><i class="ti ti-brand-youtube"></i></a>
-          <a class="soc" href="#"><i class="ti ti-brand-linkedin"></i></a>
-          <a class="soc" href="#"><i class="ti ti-brand-tiktok"></i></a>
+    <div class="fc-body">
+
+      <div class="fc-col">
+        <img class="fc-brand-logo" src="YOUR_LOGO_URL_HERE" alt="Fidelity Connect">
+        <div class="fc-brand-tag">Your world of opportunities</div>
+        <div class="fc-socials">
+          <a class="fc-soc" href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
+          <a class="fc-soc" href="#" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
+          <a class="fc-soc" href="#" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
+          <a class="fc-soc" href="#" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+          <a class="fc-soc" href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+          <a class="fc-soc" href="#" aria-label="TikTok"><i class="ti ti-brand-tiktok"></i></a>
         </div>
       </div>
 
-      <div class="col">
-        <div class="col-h">Pages</div>
-        <ul class="col-ul">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Our team</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Events</a></li>
+      <div class="fc-col">
+        <div class="fc-col-h">Pages</div>
+        <ul class="fc-col-ul">
+          <li><a href="#"><i class="ti ti-home-2" style="font-size:13px;color:var(--orange);opacity:.7"></i>Home</a></li>
+          <li><a href="#"><i class="ti ti-info-circle" style="font-size:13px;color:var(--orange);opacity:.7"></i>About us</a></li>
+          <li><a href="#"><i class="ti ti-users" style="font-size:13px;color:var(--orange);opacity:.7"></i>Our team</a></li>
+          <li><a href="#"><i class="ti ti-news" style="font-size:13px;color:var(--orange);opacity:.7"></i>Blog</a></li>
+          <li><a href="#"><i class="ti ti-calendar-event" style="font-size:13px;color:var(--orange);opacity:.7"></i>Events</a></li>
         </ul>
       </div>
 
-      <div class="col">
-        <div class="col-h">Services</div>
-        <ul class="col-ul">
+      <div class="fc-col">
+        <div class="fc-col-h">Services</div>
+        <ul class="fc-col-ul">
           <li><a href="#">Labour</a></li>
           <li><a href="#">Education</a></li>
           <li><a href="#">Investment</a></li>
           <li><a href="#">Employer</a></li>
         </ul>
-        <div class="col-h" style="margin-top:26px">Legal</div>
-        <ul class="col-ul">
+        <div class="fc-col-h" style="margin-top:26px">Legal</div>
+        <ul class="fc-col-ul">
           <li><a href="#">Privacy policy</a></li>
           <li><a href="#">Terms of use</a></li>
           <li><a href="#">Cookies</a></li>
         </ul>
       </div>
 
-      <div class="col">
-        <div class="col-h">Get in touch</div>
-        <div class="citem">
-          <div class="cico o"><i class="ti ti-phone"></i></div>
-          <div class="ctxt"><strong>+254 746 690 671</strong>Mon – Fri · 8am – 6pm</div>
+      <div class="fc-col">
+        <div class="fc-col-h">Get in touch</div>
+        <div class="fc-citem">
+          <div class="fc-cico o"><i class="ti ti-phone-call"></i></div>
+          <div class="fc-ctxt"><strong>+254 746 690 671</strong>Mon – Fri · 8am – 5pm EAT</div>
         </div>
-        <div class="citem">
-          <div class="cico b"><i class="ti ti-mail"></i></div>
-          <div class="ctxt"><strong>admin@fidelityltd.co.ke</strong>Reply within 24 hours</div>
+        <div class="fc-citem">
+          <div class="fc-cico b"><i class="ti ti-mail-opened"></i></div>
+          <div class="fc-ctxt"><strong>admin@fidelityltd.co.ke</strong>We reply within 24 hours</div>
         </div>
-        <div class="citem">
-          <div class="cico o"><i class="ti ti-map-pin"></i></div>
-          <div class="ctxt"><strong>Kingdom Gardens</strong>Muthaiga Road, Nairobi</div>
+        <div class="fc-citem">
+          <div class="fc-cico o"><i class="ti ti-building-skyscraper"></i></div>
+          <div class="fc-ctxt"><strong>Kingdom Gardens</strong>Muthaiga Road, Nairobi, Kenya</div>
         </div>
-        <a class="mapbtn" href="#"><i class="ti ti-map-2"></i> Open in Google Maps</a>
+        <a class="fc-mapbtn" href="https://maps.google.com/?q=Kingdom+Gardens+Muthaiga+Road+Nairobi" target="_blank" rel="noopener">
+          <i class="ti ti-map-pin-filled" style="font-size:15px"></i> Open in Google Maps
+        </a>
       </div>
+
     </div>
 
-    <div class="divider"></div>
+    <div class="fc-divider"></div>
 
-    <div class="bottom">
-      <span class="bot-copy">© 2026 Fidelity Connect Limited. All rights reserved.</span>
-      <div class="bot-links">
+    <div class="fc-bottom">
+      <span class="fc-copy">© 2026 Fidelity Connect Limited. All rights reserved.</span>
+      <div class="fc-bot-links">
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
         <a href="#">Cookies</a>
@@ -145,31 +171,31 @@ canvas#c{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-
     </div>
 
   </div>
-</div>
+</footer>
 
 <script>
-const cv=document.getElementById('c'),cx=cv.getContext('2d');
-let W,H,pts=[];
-function resize(){W=cv.width=cv.parentElement.offsetWidth;H=cv.height=cv.parentElement.offsetHeight}
-function mk(){const o=Math.random()>.5;return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.38,vy:(Math.random()-.5)*.38,r:Math.random()*1.8+.6,a:Math.random()*.15+.04,col:o?'245,130,31':'58,176,226'}}
-function init(){resize();pts=Array.from({length:65},mk)}
-function tick(){
-  cx.clearRect(0,0,W,H);
-  for(let i=0;i<pts.length;i++){
-    const p=pts[i];p.x+=p.vx;p.y+=p.vy;
-    if(p.x<0)p.x=W;if(p.x>W)p.x=0;
-    if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-    cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    cx.fillStyle=`rgba(${p.col},${p.a})`;cx.fill();
-    for(let j=i+1;j<pts.length;j++){
-      const q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
-      if(d<100){cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);
-        cx.strokeStyle=`rgba(${p.col},${.05*(1-d/100)})`;cx.lineWidth=.5;cx.stroke()}
+(function(){
+  const cv=document.getElementById('fc-canvas'),cx=cv.getContext('2d');
+  let W,H,pts=[];
+  function resize(){W=cv.width=cv.parentElement.offsetWidth;H=cv.height=cv.parentElement.offsetHeight;}
+  function mk(){const o=Math.random()>.5;return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.38,vy:(Math.random()-.5)*.38,r:Math.random()*1.8+.6,a:Math.random()*.15+.04,col:o?'245,130,31':'58,176,226'};}
+  function init(){resize();pts=Array.from({length:65},mk);}
+  function tick(){
+    cx.clearRect(0,0,W,H);
+    for(let i=0;i<pts.length;i++){
+      const p=pts[i];p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      cx.fillStyle=`rgba(${p.col},${p.a})`;cx.fill();
+      for(let j=i+1;j<pts.length;j++){
+        const q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<100){cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.strokeStyle=`rgba(${p.col},${.05*(1-d/100)})`;cx.lineWidth=.5;cx.stroke();}
+      }
     }
+    requestAnimationFrame(tick);
   }
-  requestAnimationFrame(tick)
-}
-init();tick();
-window.addEventListener('resize',init);
+  init();tick();
+  window.addEventListener('resize',init);
+})();
 </script>
-<!-- ✅ Fidelity Connect Footer — END -->       
+<!-- FIDELITY CONNECT FOOTER — END -->
