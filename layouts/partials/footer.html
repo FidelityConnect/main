@@ -1,201 +1,96 @@
-<!-- FIDELITY CONNECT FOOTER — COPY FROM HERE -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --orange:#f5821f;
-  --blue:#3ab0e2;
-  --black:#0f1113;
-  --white:#ffffff;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-}
-.fc-footer{position:relative;background:#fff;font-family:'Inter',system-ui,-apple-system,sans-serif;overflow:hidden;}
-canvas#fc-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
-.fc-inner{position:relative;z-index:1;}
-.fc-topbar{background:var(--blue);padding:12px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-.fc-tb-brand{display:flex;align-items:center;gap:10px;}
-.fc-tb-logo{height:32px;width:auto;border-radius:4px;}
-.fc-tb-name{font-size:13px;font-weight:600;color:#fff;letter-spacing:.3px;}
-.fc-tb-nav{display:flex;gap:24px;flex-wrap:wrap;}
-.fc-tb-nav a{font-size:12px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .15s;white-space:nowrap;}
-.fc-tb-nav a:hover{color:#fff;}
-.fc-tb-cta{background:var(--orange);color:#fff;font-size:12px;font-weight:600;padding:7px 18px;border-radius:7px;text-decoration:none;white-space:nowrap;transition:opacity .15s;flex-shrink:0;}
-.fc-tb-cta:hover{opacity:.88;}
-.fc-body{padding:52px 48px 44px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr;gap:0;}
-.fc-col{padding-right:44px;}
-.fc-col:last-child{padding-right:0;}
-.fc-brand-logo{height:72px;width:auto;margin-bottom:6px;display:block;}
-.fc-brand-tag{font-size:10px;color:var(--orange);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;font-weight:600;}
-.fc-socials{display:flex;gap:8px;flex-wrap:wrap;}
-.fc-soc{width:34px;height:34px;border-radius:9px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:16px;text-decoration:none;transition:all .18s;}
-.fc-soc:hover{border-color:var(--orange);color:var(--orange);background:#fff8f2;}
-.fc-col-h{font-size:10px;font-weight:700;color:var(--blue);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.fc-col-h::after{content:'';flex:1;height:1.5px;background:var(--blue);opacity:.15;border-radius:2px;}
-.fc-col-ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
-.fc-col-ul a{font-size:13px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .15s;}
-.fc-col-ul a::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--orange);opacity:0;transition:opacity .15s;flex-shrink:0;}
-.fc-col-ul a:hover{color:var(--black);}
-.fc-col-ul a:hover::before{opacity:1;}
-.fc-citem{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
-.fc-cico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.fc-cico.o{background:#fff7f0;border:1.5px solid #fddbbf;color:var(--orange);}
-.fc-cico.b{background:#f0f9ff;border:1.5px solid #b3e4f8;color:var(--blue);}
-.fc-cico i{font-size:16px;}
-.fc-ctxt{font-size:12px;color:var(--muted);line-height:1.6;}
-.fc-ctxt strong{display:block;font-size:13px;color:var(--black);font-weight:600;margin-bottom:1px;}
-.fc-mapbtn{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px;height:36px;border-radius:9px;border:1.5px solid var(--blue);font-size:12px;color:var(--blue);font-weight:600;cursor:pointer;transition:all .18s;text-decoration:none;}
-.fc-mapbtn:hover{background:var(--blue);color:#fff;}
-.fc-divider{height:1px;background:#f0f1f3;margin:0 48px;}
-.fc-bottom{padding:16px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-.fc-copy{font-size:12px;color:var(--muted);}
-.fc-bot-links{display:flex;gap:20px;flex-wrap:wrap;}
-.fc-bot-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color .15s;}
-.fc-bot-links a:hover{color:var(--black);}
-
-@media(max-width:900px){
-  .fc-topbar{padding:12px 20px;flex-wrap:wrap;gap:12px;}
-  .fc-tb-nav{display:none;}
-  .fc-body{grid-template-columns:1fr 1fr;padding:36px 20px 28px;gap:32px 0;}
-  .fc-col{padding-right:20px;}
-  .fc-col:nth-child(2n){padding-right:0;}
-  .fc-divider{margin:0 20px;}
-  .fc-bottom{padding:14px 20px;}
-}
-@media(max-width:520px){
-  .fc-topbar{flex-direction:column;align-items:flex-start;gap:10px;}
-  .fc-tb-cta{width:100%;text-align:center;}
-  .fc-body{grid-template-columns:1fr;gap:28px;padding:28px 18px;}
-  .fc-col{padding-right:0;}
-  .fc-brand-logo{height:60px;}
-  .fc-bottom{flex-direction:column;align-items:flex-start;padding:14px 18px;}
-  .fc-divider{margin:0 18px;}
-}
-</style>
-
-<footer class="fc-footer" aria-label="Fidelity Connect footer">
-  <canvas id="fc-canvas"></canvas>
-  <div class="fc-inner">
-
-    <div class="fc-topbar">
-      <div class="fc-tb-brand">
-        <img class="fc-tb-logo" src="https://www.image2url.com/r2/default/images/1782467810011-b4d518f5-1c74-4bc0-a549-d4b218c02bd3.jpg" alt="Fidelity Connect logo">
-        <span class="fc-tb-name">Fidelity Connect</span>
-      </div>
-      <nav class="fc-tb-nav">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Team</a>
-        <a href="#">Blog</a>
-        <a href="#">Events</a>
-      </nav>
-      <a class="fc-tb-cta" href="#">Apply now →</a>
-    </div>
-
-    <div class="fc-body">
-
-      <div class="fc-col">
-        <img class="fc-brand-logo" src="https://www.image2url.com/r2/default/images/1782467810011-b4d518f5-1c74-4bc0-a549-d4b218c02bd3.jpg" alt="Fidelity Connect">
-        <div class="fc-brand-tag">Your world of opportunities</div>
-        <div class="fc-socials">
-          <a class="fc-soc" href="#" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a>
-          <a class="fc-soc" href="#" aria-label="Facebook"><i class="ti ti-brand-facebook"></i></a>
-          <a class="fc-soc" href="#" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
-          <a class="fc-soc" href="#" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
-          <a class="fc-soc" href="#" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
-          <a class="fc-soc" href="#" aria-label="TikTok"><i class="ti ti-brand-tiktok"></i></a>
-        </div>
-      </div>
-
-      <div class="fc-col">
-        <div class="fc-col-h">Pages</div>
-        <ul class="fc-col-ul">
-          <li><a href="#"><i class="ti ti-home-2" style="font-size:13px;color:var(--orange);opacity:.7"></i>Home</a></li>
-          <li><a href="#"><i class="ti ti-info-circle" style="font-size:13px;color:var(--orange);opacity:.7"></i>About us</a></li>
-          <li><a href="#"><i class="ti ti-users" style="font-size:13px;color:var(--orange);opacity:.7"></i>Our team</a></li>
-          <li><a href="#"><i class="ti ti-news" style="font-size:13px;color:var(--orange);opacity:.7"></i>Blog</a></li>
-          <li><a href="#"><i class="ti ti-calendar-event" style="font-size:13px;color:var(--orange);opacity:.7"></i>Events</a></li>
-        </ul>
-      </div>
-
-      <div class="fc-col">
-        <div class="fc-col-h">Services</div>
-        <ul class="fc-col-ul">
-          <li><a href="#">Labour</a></li>
-          <li><a href="#">Education</a></li>
-          <li><a href="#">Investment</a></li>
-          <li><a href="#">Employer</a></li>
-        </ul>
-        <div class="fc-col-h" style="margin-top:26px">Legal</div>
-        <ul class="fc-col-ul">
-          <li><a href="#">Privacy policy</a></li>
-          <li><a href="#">Terms of use</a></li>
-          <li><a href="#">Cookies</a></li>
-        </ul>
-      </div>
-
-      <div class="fc-col">
-        <div class="fc-col-h">Get in touch</div>
-        <div class="fc-citem">
-          <div class="fc-cico o"><i class="ti ti-phone-call"></i></div>
-          <div class="fc-ctxt"><strong>+254 746 690 671</strong>Mon – Fri · 8am – 5pm EAT</div>
-        </div>
-        <div class="fc-citem">
-          <div class="fc-cico b"><i class="ti ti-mail-opened"></i></div>
-          <div class="fc-ctxt"><strong>admin@fidelityltd.co.ke</strong>We reply within 24 hours</div>
-        </div>
-        <div class="fc-citem">
-          <div class="fc-cico o"><i class="ti ti-building-skyscraper"></i></div>
-          <div class="fc-ctxt"><strong>Kingdom Gardens</strong>Muthaiga Road, Nairobi, Kenya</div>
-        </div>
-        <a class="fc-mapbtn" href="https://maps.google.com/?q=Kingdom+Gardens+Muthaiga+Road+Nairobi" target="_blank" rel="noopener">
-          <i class="ti ti-map-pin-filled" style="font-size:15px"></i> Open in Google Maps
-        </a>
-      </div>
-
-    </div>
-
-    <div class="fc-divider"></div>
-
-    <div class="fc-bottom">
-      <span class="fc-copy">© 2026 Fidelity Connect Limited. All rights reserved.</span>
-      <div class="fc-bot-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Cookies</a>
-        <a href="#">Careers</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
-
-<script>
-(function(){
-  const cv=document.getElementById('fc-canvas'),cx=cv.getContext('2d');
-  let W,H,pts=[];
-  function resize(){W=cv.width=cv.parentElement.offsetWidth;H=cv.height=cv.parentElement.offsetHeight;}
-  function mk(){const o=Math.random()>.5;return{x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.38,vy:(Math.random()-.5)*.38,r:Math.random()*1.8+.6,a:Math.random()*.15+.04,col:o?'245,130,31':'58,176,226'};}
-  function init(){resize();pts=Array.from({length:65},mk);}
-  function tick(){
-    cx.clearRect(0,0,W,H);
-    for(let i=0;i<pts.length;i++){
-      const p=pts[i];p.x+=p.vx;p.y+=p.vy;
-      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-      cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      cx.fillStyle=`rgba(${p.col},${p.a})`;cx.fill();
-      for(let j=i+1;j<pts.length;j++){
-        const q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
-        if(d<100){cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.strokeStyle=`rgba(${p.col},${.05*(1-d/100)})`;cx.lineWidth=.5;cx.stroke();}
-      }
-    }
-    requestAnimationFrame(tick);
+  /* ── Footer tokens ── */
+  .ft {
+    --ft-blue: rgb(26 111 219);
+    --ft-orange: rgb(240 113 32);
+    --ft-muted: rgb(107 114 128);
+    --ft-dark: rgb(17 24 39);
+    --ft-border: rgb(229 231 235);
+    --ft-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --ft-dur: 0.55s;
   }
-  init();tick();
-  window.addEventListener('resize',init);
-})();
-</script>
-<!-- FIDELITY CONNECT FOOTER — END -->
+
+  /* ── Headings ── */
+  .ft-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-family: Poppins, DM Sans, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ft-dark);
+  }
+  .ft-heading-line {
+    flex: 1;
+    height: 1px;
+    background: rgb(26 111 219 / 0.2);
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+  .ft-reveal.is-visible .ft-heading-line {
+    animation: ft-line-grow 0.8s var(--ft-ease) forwards;
+  }
+
+  /* ── Links (nav + meta) ── */
+  .ft-link {
+    color: var(--ft-muted);
+    transition: color 0.3s ease;
+  }
+  .ft-link:hover { color: var(--ft-blue); }
+  .ft-link--nav { font-size: 0.875rem; }
+  .ft-link--meta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ft-meta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ft-muted);
+  }
+
+  /* ── Icon box (shared: social + contact) ── */
+  .ft-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.75rem;
+    background: #fff;
+    border: 1px solid var(--ft-border);
+    transition: transform 0.35s var(--ft-ease), border-color 0.3s, color 0.3s, box-shadow 0.35s;
+    will-change: transform;
+  }
+  .ft-icon-glyph {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+    transition: transform 0.35s var(--ft-ease);
+  }
+  .ft-icon--stroke {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--ft-blue);
+  }
+
+  .ft-icon--social {
+    color: var(--ft-muted);
+  }
+  .ft-icon--social:hover {
+    color: var(--ft-blue);
+    border-color: var(--ft-blue);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+    transform: translate3d(0, -3px, 0) scale(1.05);
+  }
+  .ft-icon--social:hover .ft-icon-glyph { transform: scale(1.12); }
+
+  .ft-contact { display: flex; align-items: center; gap: 0.75rem; }
+  .ft-contact span
