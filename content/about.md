@@ -1,6 +1,7 @@
 ---
 title: "About Fidelity Connect"
 layout: "about"
+description: "Fidelity Connect Limited is a Nairobi-based recruitment agency helping Kenyans access verified job opportunities across the Gulf and beyond."
 ---
 
 Fidelity Ltd is a leading recruitment placement agency, working with global partners in labour, education and investment opportunities.
