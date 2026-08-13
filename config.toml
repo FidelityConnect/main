@@ -1,7 +1,7 @@
 baseURL = '/'
 relativeURLs = true
 languageCode = 'en-us'
-title = 'FIDELITY- LABOUR | EDUCATION | INVESTMENT'
+title = 'Fidelity Connect | Recruitment Agency Kenya'
 [related]
   threshold = 1
   toLower = true
@@ -49,6 +49,5 @@ title = 'FIDELITY- LABOUR | EDUCATION | INVESTMENT'
   unsafe = true
 
 [params]
-  description = "Fidelity Connect Limited offers verified local and international job opportunities, global education placement, professional labour recruitment, and investment facilitation services in Kenya."
+  description = "Fidelity Connect places Kenyan talent in verified jobs across Saudi Arabia, Qatar, Kuwait, UAE and the UK. Apply for vetted Gulf job openings today."
   images = ["/images/hero.png"]
-
