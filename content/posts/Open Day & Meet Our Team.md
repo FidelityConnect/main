@@ -2,7 +2,7 @@
 title: "Open Day & Meet Our Team"
 author: "Fidelity"
 featured: "/images/open-day-2026.png"
-date: "2026-09-03"
+date: "2026-09-11"
 summary: "Fidelity Connect invites you to a free Open Day on Friday, 11th September 2026 at Kingdom Gardens, Muthaiga. Come meet our team and learn how we can help you land a job abroad."
 categories:
 - "Events"
