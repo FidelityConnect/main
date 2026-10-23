@@ -21,17 +21,8 @@
                 </p>
             </div>
 
-            <!-- Form -->
-            <form name="contact" method="POST" action="https://formsubmit.co/careers@fidelityltd.co.ke" enctype="multipart/form-data" class="space-y-6">
-                <!-- FormSubmit Configuration -->
-                <input type="hidden" name="_subject" value="New Job Application – {{ .Title | default "General Application" }}">
-                <input type="hidden" name="_next" value="https://fidelityltd.co.ke/thank-you/">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_cc" value="infofidelityltd@gmail.com">
-                <input type="text" name="_honey" style="display:none">
-
-                <!-- Job Info -->
+            <!-- Form pointing directly to your own cPanel Mailer -->
+            <form name="contact" method="POST" action="https://mail.fidelityltd.co.ke/mailer.php" enctype="multipart/form-data" class="space-y-6">
                 <input type="hidden" name="form_type" value="{{ if in .RelPermalink "international" }}international{{ else }}local{{ end }}">
                 <input type="hidden" name="job_title" value="{{ .Title | default "General Application" }}">
 
@@ -97,7 +88,6 @@
         contactForm.classList.remove('hidden');
         contactForm.classList.add('flex');
         
-        // Trigger animation
         setTimeout(() => {
             contactModal.classList.remove('scale-95', 'opacity-0');
             contactModal.classList.add('scale-100', 'opacity-100');
@@ -120,7 +110,6 @@
         }, 300);
     }
 
-    // CV upload — show selected filename
     document.addEventListener('DOMContentLoaded', function () {
         const cvInput = document.getElementById('cv');
         const cvLabel = document.getElementById('cv-label');
