@@ -23,10 +23,15 @@
 
             <!-- Form -->
             <form name="contact" method="POST" action="https://formsubmit.co/careers@fidelityltd.co.ke" enctype="multipart/form-data" class="space-y-6">
-                <!-- FormSubmit Settings -->
+                <!-- FormSubmit Configuration -->
                 <input type="hidden" name="_subject" value="New Job Application – {{ .Title | default "General Application" }}">
                 <input type="hidden" name="_next" value="https://fidelityltd.co.ke/thank-you/">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_cc" value="infofidelityltd@gmail.com">
+                <input type="text" name="_honey" style="display:none">
+
+                <!-- Job Info -->
                 <input type="hidden" name="form_type" value="{{ if in .RelPermalink "international" }}international{{ else }}local{{ end }}">
                 <input type="hidden" name="job_title" value="{{ .Title | default "General Application" }}">
 
